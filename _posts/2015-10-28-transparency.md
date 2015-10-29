@@ -51,7 +51,7 @@ int writeToFile(char *name) {
 }
 {% endhighlight %}
 
-Moving into C, we start to see a bit more information popping out.  We know that it takes in a <pre>char*</pre> for the name.  Since this also isn't const, we know that it's allowed to change the contents of the string we pass in.  We also know it returns an int, likely for error codes.   
+Moving into C, we start to see a bit more information popping out.  We know that it takes in a ```char*``` for the name.  Since this also isn't const, we know that it's allowed to change the contents of the string we pass in.  We also know it returns an int, likely for error codes.   
 
 We are starting to see into what the function can do, but there's still quite a bit we don't know.  Can this function change our system?  Can the name value be deleted? Can the function raise a signal (a C-flavored way of exceptions/events)?  And what about those error codes?  How do we know the int is for error codes, and not returning the length of data written? If it is for error codes, how do we know which ones it supports?
 
