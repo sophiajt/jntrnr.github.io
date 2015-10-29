@@ -127,3 +127,104 @@ Now we have all the steps in place, each time we turn the crank of the whole ite
 **Line 31:** We've already done all the hard work.  Now we just have to sum those numbers together.
 
 With that, we're done.  While it was quite a mouthful, we can see the compositional nature of Rust, a bit of the type system, and how iterators work in more detail.
+
+# Problem 3 
+
+"highest prime factor of 600851475143"
+
+{% highlight rust linenos %}
+fn is_prime(num:u64) -> bool {
+    for i in 2..(num / 2 + 1) {
+        if num % i == 0 {
+            return false;
+        }
+    }
+    return true; 
+}    
+
+struct Prime {
+    curr: u64,
+}
+
+impl Iterator for Prime {
+    type Item = u64;
+    fn next(&mut self) -> Option<u64> {
+        let mut new_next = self.curr + 1;
+        while !is_prime(new_next) {
+            new_next += 1;
+        }
+
+        self.curr = new_next;
+
+        Some(self.curr)
+    }
+}
+
+
+// Returns the primes
+fn primes() -> Prime {
+    Prime { curr: 1 }
+}
+
+fn main() {
+    let mut num:u64 = 600851475143;
+    let mut highest_prime_factor = 0;
+    
+    for i in primes() {
+        if num % i == 0 {
+            highest_prime_factor = i;
+        }
+        while (num % i == 0) && (num >= 2) {
+            num /= i;
+        }
+        if num == 1 {
+            break;
+        }
+    }
+    println!("num: {}", highest_prime_factor);
+}
+{% endhighlight %}
+
+Very similar to Problem #2 above, I create an implementation of Iterator, so I can use it later.  This time, rather than creating a stream of fibonacci values, I create a stream of prime numbers.
+
+Just like we had a struct for Fibonacci in Problem #2, I create one here for Prime numbers.  Since we don't need the previous one to calculate the next one, I only keep the current value around and then start with that number + 1 when trying to find the next prime.
+
+Once we have our iterator, we take each prime, and then try to divide out all its multiples from our give number.  What's left should be our highest prime factor.  Easy peasy.
+
+PS: I know it's probably already too late, but I should have warned you to avert your eyes from my inefficient prime number skills :)
+
+# Problem 4
+
+"largest palindrome product of two 3-digit numbers"
+
+{% highlight rust linenos %}
+fn is_palindrome(num: u64) -> bool {
+    let s = num.to_string();
+    for (i1, i2) in s.chars().zip(s.chars().rev()) {
+        if i1 != i2 {
+            return false;
+        }
+    }
+    return true;
+}
+
+fn main() {
+    let mut largest = 0;
+    for i in 100..999 {
+        for j in 100..999 {
+            if is_palindrome(i * j) && ((i * j) > largest) {
+                largest = i * j;
+                println!("Largest: {}, {} x {}", largest, i, j);
+            }
+        }
+    }
+}
+{% endhighlight %}
+
+Problem #4 also uses some iterators to find the palindrome product (**line 13** and **line 14**).  If it finds a palindrome product, and that new product is larger than what it saw before, it replaces it with the new one.
+
+There's one fun trick in this solution on **line 3**.  We need to check if the number is a palindrome.  While you can do this [numerically](http://stackoverflow.com/questions/199184/how-do-i-check-if-a-number-is-a-palindrome), I couldn't help but use some more iterators.  This time, after converting the number to a string, we create an iterator over the characters in the string (using ```.chars()```).  We want to see if the number is a palindrome, so one way to test this is that if we reverse the string and if still get the same value, we know we've got one.
+
+That's exactly what we do.  Here, I use ```.zip(s.chars().rev())``` to combine the iterator that goes forward over the characters with one that goes in reverse.  The ```.zip()``` call brings both iterators together and iterates over both iterators for us, returning a pair (or tuple) of values.  Think of it running both machines side by side, and with each turn of the crank one value pops out of each and zip returns both values tied together with a bow.
+
+Now that we have a single pair, we immediately use it.  At the beginning of line 3, you can see the for ```(i1, i2)``` in part of the line.  Just as before ```for..in``` will run over the iterator.  We know that the iterator is going to be outputting pairs of values.  We could have just grabbed the pair as a single value and used it later, but here I go one step further by taking the pair the iterator gives me and pulling it apart so I can use it.  This pulling apart, called destructuring, is a handy way of working with structured data when you're interested in its constituent parts rather than the structure itself.  In this case, this lets me more easily compare the left side to the right side, so I destructure the pair into two values: ```i1``` and ```i2```.
