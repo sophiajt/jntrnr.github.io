@@ -109,7 +109,7 @@ Since this might be unfamiliar let's take a second to breakdown what we're seein
 * After the type, we write out the actual implementation of the function
 * Just as in Rust, Haskell is immutable by default.  When we say we pass in a String, we're also implying that this string can't be changed or deleted.  
 
-Also similar to Rust, in Haskell there are no exceptions, so you must handle all possible values when you call the function.  By saying ```IO ()```, this might at first seem similar to the Result<()>.  In some sense, it is, in that IO carries along any possible errors.  
+Also similar to Rust, in Haskell there are no exceptions, so you must handle all possible values when you call the function.  By saying ```IO ()```, this might at first seem similar to the ```Result<()>```.  In some sense, it is, in that IO carries along any possible errors.  
 
 It also goes a bit further.  In essence, it says: "I'm going to go change the world, and when I come back you need to carry that truth on."  In Haskell, if you call a function that performs I/O like our writeToFile function, you must also carry on that fact in your own return type.  You have to be fully transparent all the way through the call stack of who is changing the world, even indirectly.  This lets you clearly document who is modifying the world and who isn't.
 
