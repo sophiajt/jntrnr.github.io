@@ -1,5 +1,5 @@
 ---
-title: Telling the truth in code: function signatures and transparency
+title: Telling the truth in code, function signatures and transparency
 ---
 
 When people talk about reasons to use a type system, there are always a couple usual suspects: error checking, documentation, and if you're an IDE person like me, tooling/editor tricks that use type information, like auto-complete.
