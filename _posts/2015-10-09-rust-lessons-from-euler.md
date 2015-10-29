@@ -382,3 +382,112 @@ Once we have this iterator, **line 24** takes this iterator and maps a function 
 To see which of success/failure is returned, we use the match keyword.  Just as in other languages with pattern matching, the match keyword lets us ask which of the possible values is in the Result: ```Ok``` or ```Err```.  Pattern matching lets us destructure and find the success value or error message.
 
 Finally, on **line 29**, we use the ```.collect()``` method to run through the iterator and create a vector of ```i32```.
+
+# Problem 12
+
+"triangle number with over 500 divisors"
+
+{% highlight rust linenos %}
+fn main() {
+    let mut num = 0u64;
+
+    // Cache the primes we'll be using
+    let first_primes: Vec<u64> = primes().take(1000).collect();
+
+    for i in 1..1000000u64 {
+        num += i;
+
+        let mut num_div = 1u64;
+
+        let mut num_tmp = num;
+        for &x in &first_primes {
+            let prime = x;
+            if (num % prime) == 0 {
+                let mut exponent = 1;
+
+                while (num_tmp % prime) == 0 {
+                    exponent += 1;
+                    num_tmp /= prime;
+                }
+                num_div *= exponent;
+            }
+            if num_tmp == 1 { break; }
+        }
+
+        if num_div > 500 {
+            println!("num: {}", num);
+            return;
+        }
+    }
+}
+{% endhighlight %}
+
+Again we'll trim down to the interesting parts, since we've seen the prime iterator before, but you can read the [full file](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex12.rs).
+
+This looks pretty familiar.  On **line 5**, we run our primes iterator, take enough to use later, and turn that into a ```Vec<u64>``` we can use a bunch of times.
+
+The other interesting line is **line 13**.  If you've played with vectors in Rust before, you know that you can iterate over them, like this:
+
+{% highlight rust %}
+fn main() {
+    let x: Vec<u32> = (1..10).collect();
+
+    for i in x {
+        println!("{}", i);
+    }
+}
+{% endhighlight %}
+
+But if we try to do this in our Euler problem, we get a new error:
+
+```
+error: use of moved value: `first_primes`
+```
+
+What is a *moved value*?  
+
+It turns out that a moved value is part of Rust's ownership system.  Just like the first time a programmer sees a pointer in C or a monad in Haskell, ownership in Rust is one of those things that's so uniquely Rust that it takes getting used to.  Once you begin to understand it, you'll be able to see how the type system is trying to help you describe your intentions a bit more clearly.
+
+If you're scratching your head, here's an example: imagine malloc'ing an array in C and then passing that malloc'ed array into a function.  Who is responsible for cleaning up that memory, the function you called or the function that created the array?  In C, you don't know by looking at the code, you only know as the writer of the code what your intention was.  Maybe the function is called 'cleanup' at which case, yes, you do want it to free that memory.  Or maybe the function is called 'inspect' and you decidedly *don't* want it to free the memory.  This is why Rust makes this very explicit.  By looking at the code, you can follow who is responsible for what.  The set of checks that do this make up Rust's ownership system.
+
+There are a lot of [resources](https://doc.rust-lang.org/book/references-and-borrowing.html) to understand ownership,which do a good job of explaining ownership in detail.  For us, ownership is like trying to answer questions like "who is responsible for this thing?" and "when does this thing get removed?"  Ownership can be passed from variable to variable, and its strictly checked by the compiler.  
+
+When you first encounter the above error, if you haven't already read about ownership, you might be in for a few hours of reading to get caught up.  But we have some hints here that we can get started with to help figure out what's happening.
+
+In our small example, we could iterate over a vector and all was well.  When did things start to go wrong in the Euler problem?
+
+On **line 13**, we want to loop over a vector, and when we look out to **line 7**, we see this is actually an inner loop being used by an outer loop.  That means that if the inner loop takes control of our vector, the next time around the outer loop we've lost the ownership.  
+
+We don't want the inner loop to take ownership and then lose the ability to use the vector again in the next iteration of the loop, so we have to 'borrow' ownership.  As the name implies, by borrowing, we're only taking temporary ownership for a time, and we have to follow all the rules stated when we borrow.  With that in mind, let's look at **line 13** again:
+
+{% highlight rust %}
+for &x in &first_primes
+{% endhighlight %}
+
+We borrow ```first_primes``` instead of taking permanent ownership using the ```&``` operator.  This operator says "I would like to borrow first_primes, and I can not edit the contents".  The compiler will then be able to check that we're using what we've borrowed correctly.  You might be curious borrowing and also being able to mutate.  To do that, we could've used the ```&mut``` operator assuming the original vector was mutable.
+
+Finally, we use the same destructure trick we did earlier to get at the values of ```x```.
+
+**PS:** In this example, since all we were doing was iterating, we could have used the ```.iter()``` rather than borrowing, though that won't always be the case in other examples that need more direct interaction with the vector.
+
+# Cargo
+
+After I got enough of these problems together that I got tired of building them by hand, I moved over to using Cargo.  Cargo is Rust's build/package tool that is quite handy.  
+
+```
+[package]
+
+name = "eulerinrust"
+version = "0.1.0"
+
+[[bin]]
+name = "ex1"
+path = "src/ex1.rs"
+```
+*An example of Cargo.toml*
+
+Cargo lets you describe dependencies that your project needs, which it fetches from crates.io.  You can also control whether you're doing a release or debug build, and quite a bit more.  I'll no doubt start directly with Cargo for any future Rust projects.
+
+# Summary
+
+These are just tiny examples created while playing around in a fairly simple set of problems, and yet there's actually quite a lot of Rust's richness shining through.  Rust has a powerful iterator story that feels composable and clear.  Rust's error checking is keeping us vigilant about handling error cases, matching types, and remembering who is responsible for values in the system.  Overall, it feels like a very well thought-out language that holds together well.
