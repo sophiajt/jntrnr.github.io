@@ -114,7 +114,9 @@ The ```|&x| x < 4000000``` is a simple function that takes in a reference to eac
 
 Speaking of performance, it may look like .take_while is going to be exceedingly expensive.  Is it consuming all of our fibonacci sequence until we have all the items we need to get to 4,000,000?  Luckily, it isn't.  Instead, ```.take_while``` itself returns an iterator that you can continue your fluent calls on.  I think of it like a series of machines in a factory:
 
+```
 -> [  ] -> [  ] -> [  ] ->
+```
 
 If I start the conveyor up and I pull from the right hand, I'm moving whatever was on the far left all the way through the system.  In our case, we're starting up the fibonacci iterator and getting that machine running.  It spits out a single fibonacci-shaped number for us.  This number chugs along and enters the next machine, which is our machine that checks if it's too big.  If it's not, the conveyor chugs along and out drops a single fibonacci-shaped number of the acceptable size.  
 
