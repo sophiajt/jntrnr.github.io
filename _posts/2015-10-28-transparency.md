@@ -13,11 +13,11 @@ For this post, transparency helps us answer a few questions:
 * What does this function require?
 * What does this function return?
 * What is this function going to do with what I give it?  
-    * Can it modify it?
-    * Can it delete it?
+  * Can it modify it?
+  * Can it delete it?
 * Can this function fail?  If so, how?
 * Does this function do anything besides use its value?  
-    * ie) does this function "change the world" in some way?
+  * ie) does this function "change the world" in some way?
 
 # Why is transparency important?
 
@@ -43,7 +43,7 @@ Things we don't know:
 * Does it return anything?
 * Does it throw any exceptions?
 * Does it have any permanent effect on our system
-    * eg) send files over the network, add to a database, launch the missiles?
+  * eg) send files over the network, add to a database, launch the missiles?
 
 Without this knowledge, we resort to aggressively testing, commenting, and using naming and coding conventions to get the idea across.
 
@@ -62,7 +62,9 @@ We are starting to see into what the function can do, but there's still quite a 
 * Can this function change our system?
 * Can the ```name``` value be deleted? 
 * Can the function raise a signal (a C-flavored way of exceptions/events)?  
-* And what about those error codes?  How do we know the ```int``` is for error codes, and not returning the length of data written? If it is for error codes, how do we know which ones it supports?
+* And what about those error codes?  
+  * How do we know the ```int``` is for error codes, and not returning the length of data written? 
+  * If it is for error codes, how do we know which ones it supports?
 
 We've improved some, but we still lean heavily on conventions, code comments, and testing to ensure that this function behaves correctly.  As an aside: one interesting point of C is that it doesn't have exceptions, like many languages, so you're almost encouraged to have a more value-based programming style, though it lacks many common features that help fill out the value-based story (pattern matching, algebraic data types, etc).
 
