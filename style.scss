@@ -43,7 +43,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: .7rem;
   font-weight: 600;
   line-height: 1.1;
   color: #333;
@@ -84,9 +84,7 @@ dd {
 }
 
 ul {
-  list-style: inside circle;
-  padding-left: 0;
-  
+
   li {
     margin-bottom: .25rem;
   }
@@ -99,9 +97,7 @@ ul {
 }
 
 ol {
-  list-style: inside decimal;
-  padding-left: 0;
-  
+
   li {
     margin-bottom: .25rem;
   }
