@@ -12,9 +12,12 @@ For this post, transparency helps us answer a few questions:
 
 * What does this function require?
 * What does this function return?
-* What is this function going to do with what I give it?  Can it modify it?  Can it delete it?
+* What is this function going to do with what I give it?  
+    * Can it modify it?
+    * Can it delete it?
 * Can this function fail?  If so, how?
-* Does this function do anything besides use its value?  Ie, does this function "change the world" in some way?
+* Does this function do anything besides use its value?  
+    * ie) does this function "change the world" in some way?
 
 # Why is transparency important?
 
@@ -39,7 +42,8 @@ Things we don't know:
 * Can it delete what we give it?
 * Does it return anything?
 * Does it throw any exceptions?
-* Does it have any permanent effect on our system (eg, send files over the network, add to a database, launch the missiles?)
+* Does it have any permanent effect on our system
+    * eg) send files over the network, add to a database, launch the missiles?
 
 Without this knowledge, we resort to aggressively testing, commenting, and using naming and coding conventions to get the idea across.
 
@@ -75,7 +79,9 @@ Above is a simple Rust version.  If you've never seen Rust before, let's quickly
 * The ```fn``` keyword creates our function
 * Next, we give the function a name: writeToFile
 * Our function gets one argument called 'name' which has the type ```&str```
-  * ```&str``` is a type in two parts: ```str``` being a simple string type, and ```&``` meaning that this value is being borrowed and is owned by someone else (aka you're not allowed to delete it)
+  * ```&str``` is a type in two parts: 
+    * ```str``` is the simple string type
+    * ```&``` meaning that this value is being borrowed and is owned by someone else (aka you're not allowed to delete it)
 * Finally, we return something of type ```Result<()>```
   * ```Result<()>``` is the Rust way of saying I can return either:
     * a) successfully, without a value (the () above)
