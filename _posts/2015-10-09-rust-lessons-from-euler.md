@@ -228,3 +228,157 @@ There's one fun trick in this solution on **line 3**.  We need to check if the n
 That's exactly what we do.  Here, I use ```.zip(s.chars().rev())``` to combine the iterator that goes forward over the characters with one that goes in reverse.  The ```.zip()``` call brings both iterators together and iterates over both iterators for us, returning a pair (or tuple) of values.  Think of it running both machines side by side, and with each turn of the crank one value pops out of each and zip returns both values tied together with a bow.
 
 Now that we have a single pair, we immediately use it.  At the beginning of line 3, you can see the for ```(i1, i2)``` in part of the line.  Just as before ```for..in``` will run over the iterator.  We know that the iterator is going to be outputting pairs of values.  We could have just grabbed the pair as a single value and used it later, but here I go one step further by taking the pair the iterator gives me and pulling it apart so I can use it.  This pulling apart, called destructuring, is a handy way of working with structured data when you're interested in its constituent parts rather than the structure itself.  In this case, this lets me more easily compare the left side to the right side, so I destructure the pair into two values: ```i1``` and ```i2```.
+
+# Problems 5 through 7
+
+Problems [#5](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex5.rs), [#6](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex6.rs), and [#7](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex7.rs) are all straightforward and don't show off anything new in the language.  Let's jump ahead to the next interesting one.
+
+# Problem 8
+
+"largest product of 13 adjacent digits"
+
+{% highlight rust linenos %}
+fn main() {
+    let input = 
+        "73167176531330624919225119674426574742355349194934\
+        96983520312774506326239578318016984801869478851843\
+        85861560789112949495459501737958331952853208805511\
+        12540698747158523863050715693290963295227443043557\
+        66896648950445244523161731856403098711121722383113\
+        62229893423380308135336276614282806444486645238749\
+        30358907296290491560440772390713810515859307960866\
+        70172427121883998797908792274921901699720888093776\
+        65727333001053367881220235421809751254540594752243\
+        52584907711670556013604839586446706324415722155397\
+        53697817977846174064955149290862569321978468622482\
+        83972241375657056057490261407972968652414535100474\
+        82166370484403199890008895243450658541227588666881\
+        16427171479924442928230863465674813919123162824586\
+        17866458359124566529476545682848912883142607690042\
+        24219022671055626321111109370544217506941658960408\
+        07198403850962455444362981230987879927244284909188\
+        84580156166097919133875499200524063689912560717606\
+        05886116467109405077541002256983155200055935729725\
+        71636269561882670428252483600823257530420752963450";
+
+    let mut largest = 0;
+    let input_bytes = input.as_bytes();
+    let mut largest_string: &[u8] = &input_bytes[0..1];
+
+    let span_width = 13;
+
+    for i in 0..(input_bytes.len() - span_width + 1) {
+        let mut sum = 1u64;
+        for j in 0..(span_width) {
+            sum *= (input_bytes[i + j] - 48) as u64;
+        }
+        if sum > largest {
+            largest = sum;
+            largest_string = &input_bytes[i..(i+span_width)];
+        }
+    }
+
+    println!("Largest: {} is {:?}", largest, std::str::from_utf8(largest_string));
+}
+{% endhighlight %}
+
+In Problem #8, we see an example of working with strings, this time using a new feature called a 'slice'.  We start with the block from **line 3** to **line 22** that gives us this giant input string.  Notice that I use the backslash '\' to continue the line to the next line.  Rust is smart enough to let us indent without introducing new whitespace into the string. 
+
+Now that we have our string, on **line 25** we turn it into a array of bytes we can search through.  Notice we didn't use ```.chars()``` this time.  Recall that ```.chars()``` gave us an iterator.  Rather than iterating over one value at a time here, we want the flexibility to look across spans in our string.  To do that, we use ```.as_bytes()``` to get an array (technically, a byte slice).
+
+**Line 26** introduces the slice we'll use.  A slice is a window into values in memory.  Since we want to look at a span of values, we create a holder for this slice.  We'll later set it to spans of our 13 adjacent digits.  PS: you'll notice I set it to a dummy default value, which I later throw away.  This is to get around the compiler warning about uninitialized values.
+
+The rest of the search follows fairly naturally.  We do an iterator over the indices in our input, stopping short of the length of the span.  We use that index to calculate the product at that span (**line 32** to **line 34**).  Once we find a match, we save it off, using a slice to save off the winning span (**line 37**).
+
+Finally, we use another format string ```{:?}```, which can print out our winning span for us using the debug formatter.  The ```{:?}``` format is a handy builtin which can handle a wider range of types with a default formatter.
+
+# Problem 9
+
+Problem [#9](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex9.rs) is another solution that's simple and doesn't show off any new features.  Moving on.
+
+# Problem 10
+
+"sum of all primes below 2 million"
+
+{% highlight rust linenos %}
+fn main() {
+    let mut sum = 0;
+    const SIZE: usize = 2000000;
+    let mut slots: [bool; SIZE] = [true; SIZE];
+    slots[0] = false;
+    slots[1] = false;
+    
+    // We calculate the primes using a simple stride and marking off multiples 
+    for stride in 2..(SIZE/2) {
+        let mut pos = stride;
+        while pos < (SIZE - stride) {
+            pos += stride;
+            slots[pos] = false;
+        }
+    }
+    
+    for (idx, pr) in slots.into_iter().enumerate() {
+        if *pr { sum += idx; }
+    }
+
+    println!("Sum: {}", sum);
+}
+{% endhighlight %}
+
+Reading the problem description, you might have guessed that I would use the iterator solution from earlier.  The astute reader probably already noticed that doing so would be. very. slow.  Especially, as we look at primes above a million, where each step is itself taking hundreds of thousands, if not millions, of calculations.  While I could let it run and heat up my apartment, it's better to do a more direct approach.
+
+We trade space for time. 
+
+On **line 4**, I create my first fixed size array that will hold whether or not the number in that position is prime.  Once we have the variable, it's initialized using another cool shorthand: ```[true; SIZE]```.  This creates an array of boolean true values of the size given on the right of the ';', here the SIZE constant I defined.  For example, you can create a 500-element array of zeros using ```[0; 500]```.  Neat.
+
+Once we have our slots, we loop over them using any possible multiple and check that off the list by setting that position to false.  Once we're done, we have an array that tells us where the primes are. 
+
+The only trick remaining is how to get the numbers back out again.  To do this, we use the iterator on **line 17**.  Similar to our fluent iterators before, this time we turn our array of slots into an iterator, and then call ```.enumerate()```.  The ```.enumerate()``` call is a special kind of zip that gives us the index at that point in the iteration paired with the actual value.  Just as before, we destructure the index and the boolean that indicates if it's a prime number separately.
+
+On **line 18**, we check if the number is prime, and if so we add it to our sum.  You'll notice the ```*pr``` call here.  Just as in C, this lets me dereference and get at the value at that location in memory.  I could have instead written for ```(idx, &pr)``` in and just gotten to the value that way, using destructuring instead of dereferencing.  With that change, the line would have been ```if pr { ... }```, and I could get at the value ```pr``` without needing to dereference.
+
+# Problem 11
+
+"find the largest product in a grid"
+
+{% highlight rust linenos %}
+let input = "\
+    08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 \
+    49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00 \
+    81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65 \
+    52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91 \
+    22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80 \
+    24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50 \
+    32 98 81 28 64 23 67 10 26 38 40 67 59 54 70 66 18 38 64 70 \
+    67 26 20 68 02 62 12 20 95 63 94 39 63 08 40 91 66 49 94 21 \
+    24 55 58 05 66 73 99 26 97 17 78 78 96 83 14 88 34 89 63 72 \
+    21 36 23 09 75 00 76 44 20 45 35 14 00 61 33 97 34 31 33 95 \
+    78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92 \
+    16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57 \
+    86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58 \
+    19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40 \
+    04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66 \
+    88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69 \
+    04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36 \
+    20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16 \
+    20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54 \
+    01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48";
+    
+let input_split = input.split_whitespace();
+let input_as_num: Vec<i32> = input_split.map(|x| 
+    match i32::from_str_radix(x, 10) {
+        Ok(v) => v,
+        Err(u) => { println!("Garbage in input: {}", u); 0 }
+    }
+).collect();
+{% endhighlight %}
+
+I'm only showing the interesting part of the solution since it's a bit long, but you can read the [whole solution](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex11.rs).
+
+Here we do a bit more string manipulation using some new methods.  The ```.split_whitespace()``` method on **line 23** lets us turn our input string into an iterator of strings, splitting at any whitespace. 
+
+Once we have this iterator, **line 24** takes this iterator and maps a function over it.  This function attempts to convert each substring to a signed 32-bit integer ```i32``` using the ```.from_str_radix(x, 10)``` call.  This call returns a ```Result```, a way of handling either a success or failure condition of an action that might fail.  As is the case with converting from strings to numbers, if you happen to pass in something that can't be converted to a number, there needs to be a way to signal back out that the conversion failed.  Some languages do this through exceptions, which break out of normal execution and give you an error you can handle.  Rust uses a simpler, more functional approach and treats errors as just any other value.  With this method, the type system encourages us to be vigilant and always have code available to handle errors.
+
+To see which of success/failure is returned, we use the match keyword.  Just as in other languages with pattern matching, the match keyword lets us ask which of the possible values is in the Result: ```Ok``` or ```Err```.  Pattern matching lets us destructure and find the success value or error message.
+
+Finally, on **line 29**, we use the ```.collect()``` method to run through the iterator and create a vector of ```i32```.
