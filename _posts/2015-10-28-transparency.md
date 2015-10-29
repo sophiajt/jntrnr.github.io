@@ -51,9 +51,9 @@ int writeToFile(char *name) {
 }
 {% endhighlight %}
 
-Moving into C, we start to see a bit more information popping out.  We know that it takes in a ```char*``` for the name.  Since this also isn't const, we know that it's allowed to change the contents of the string we pass in.  We also know it returns an int, likely for error codes.   
+Moving into C, we start to see a bit more information popping out.  We know that it takes in a ```char*``` for the name.  Since this also isn't ```const```, we know that it's allowed to change the contents of the string we pass in.  We also know it returns an ```int```, likely for error codes.   
 
-We are starting to see into what the function can do, but there's still quite a bit we don't know.  Can this function change our system?  Can the name value be deleted? Can the function raise a signal (a C-flavored way of exceptions/events)?  And what about those error codes?  How do we know the int is for error codes, and not returning the length of data written? If it is for error codes, how do we know which ones it supports?
+We are starting to see into what the function can do, but there's still quite a bit we don't know.  Can this function change our system?  Can the name value be deleted? Can the function raise a signal (a C-flavored way of exceptions/events)?  And what about those error codes?  How do we know the ```int``` is for error codes, and not returning the length of data written? If it is for error codes, how do we know which ones it supports?
 
 We've improved some, but we still lean heavily on conventions, code comments, and testing to ensure that this function behaves correctly.  As an aside: one interesting point of C is that it doesn't have exceptions, like many languages, so you're almost encouraged to have a more value-based programming style, though it lacks many common features that help fill out the value-based story (pattern matching, algebraic data types, etc).
 
@@ -67,12 +67,12 @@ fn writeToFile (name: &str) -> Result<()> {
 
 Above is a simple Rust version.  If you've never seen Rust before, let's quickly break down it says:
 
-* The 'fn' keyword creates our function
+* The ```fn``` keyword creates our function
 * Next, we give the function a name: writeToFile
-* Our function gets one argument called 'name' which has the type &str
-  * &str is a type in two parts: str being a simple string type, and & meaning that this value is being borrowed and is owned by someone else (aka you're not allowed to delete it)
-* Finally, we return something of type Result<()>
-  * Result<()> is the Rust way of saying I can either a) return successfully without a value (the () above) or b) I can return an error
+* Our function gets one argument called 'name' which has the type ```&str```
+  * ```&str``` is a type in two parts: ```str``` being a simple string type, and ```&``` meaning that this value is being borrowed and is owned by someone else (aka you're not allowed to delete it)
+* Finally, we return something of type ```Result<()>```
+  * ```Result<()>``` is the Rust way of saying I can either a) return successfully without a value (the () above) or b) I can return an error
 
 The Rust example tells a bit more of the story than the C version.  In Rust, everything is immutable by default, so we know from looking at the signature that what we pass in can't be changed.  It also won't be deleted, because what is passed is 'borrowed' rather than us giving ownership over to this function.  Rust is similar to C in that we don't have exceptions and instead use return values to denote success or failure (read more in Rust Error Handling).  Rust encodes the success or failure in the return value, requiring the caller to code defensively around possible errors.  This has the effect of encouraging code to be more robust by handling both success and failure where they can occur.
 
@@ -90,24 +90,25 @@ Since this might be unfamiliar let's take a second to breakdown what we're seein
 * We start by declaring the type (which isn't terribly dissimilar from a forward declaration in C)
 * The type has two parts:
   * We take one argument that has a type String
-  * We return an IO () [see below]
+  * We return an ```IO ()``` [see below]
 * After the type, we write out the actual implementation of the function
 * Just as in Rust, Haskell is immutable by default.  When we say we pass in a String, we're also implying that this string can't be changed or deleted.  
 
-Also similar to Rust, in Haskell there are no exceptions, so you must handle all possible values when you call the function.  By saying IO (), this might at first seem similar to the Result<()>.  In some sense, it is, in that IO carries along any possible errors.  
+Also similar to Rust, in Haskell there are no exceptions, so you must handle all possible values when you call the function.  By saying ```IO ()```, this might at first seem similar to the Result<()>.  In some sense, it is, in that IO carries along any possible errors.  
 
 It also goes a bit further.  In essence, it says: "I'm going to go change the world, and when I come back you need to carry that truth on."  In Haskell, if you call a function that performs I/O like our writeToFile function, you must also carry on that fact in your own return type.  You have to be fully transparent all the way through the call stack of who is changing the world, even indirectly.  This lets you clearly document who is modifying the world and who isn't.
 
 # Dark side of transparency
 
 But, it can't be all roses, right?  Let's look at what I see as the dark side of transparency: encapsulation (or its lack thereof).
+
 As good software engineers, we know an important piece of building a system is having good encapsulation.  Any module or object worth its weight exposes only necessary functionality to the world and hides the rest.  This encourages loose coupling, so that components don't depend on each others' implementation details.
 
 In a way, transparency in the type runs counter to information hiding in that it encourages more coupling in the code.  Some of this is natural.  For example, in the C code, we have to remember what the return values are.  If we add a new one, we may have to change the code handling the call as well.  Likewise, in Python, if we change the types of parameters we allow, we may have to go update the callers.
 
 On the other hand, knowing that a function may fail may be sufficient.  In the Rust case, code that handles the call may need to be updated if you change how the function fails, even if it only cares about if it fails.
 
-Likewise, in Haskell you may want to drop some probe into your system to catch the result of a function while you're debugging.  Such changes can have a ripple effect in your codebase as this probe may change a series of function calls to reflect that I/O has been performed.  (Not withstanding workarounds with fun names like unsafePerformIO)
+Likewise, in Haskell you may want to drop some probe into your system to catch the result of a function while you're debugging.  Such changes can have a ripple effect in your codebase as this probe may change a series of function calls to reflect that I/O has been performed.  (Not withstanding workarounds with fun names like ```unsafePerformIO```)
 
 # All a balance
 
