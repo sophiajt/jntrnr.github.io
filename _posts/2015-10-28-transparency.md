@@ -77,7 +77,9 @@ Above is a simple Rust version.  If you've never seen Rust before, let's quickly
 * Our function gets one argument called 'name' which has the type ```&str```
   * ```&str``` is a type in two parts: ```str``` being a simple string type, and ```&``` meaning that this value is being borrowed and is owned by someone else (aka you're not allowed to delete it)
 * Finally, we return something of type ```Result<()>```
-  * ```Result<()>``` is the Rust way of saying I can either a) return successfully without a value (the () above) or b) I can return an error
+  * ```Result<()>``` is the Rust way of saying I can return either:
+    * a) successfully, without a value (the () above)
+    * b) an error
 
 The Rust example tells a bit more of the story than the C version.  In Rust, everything is immutable by default, so we know from looking at the signature that what we pass in can't be changed.  It also won't be deleted, because what is passed is 'borrowed' rather than us giving ownership over to this function.  Rust is similar to C in that we don't have exceptions and instead use return values to denote success or failure (read more in Rust Error Handling).  Rust encodes the success or failure in the return value, requiring the caller to code defensively around possible errors.  This has the effect of encouraging code to be more robust by handling both success and failure where they can occur.
 
