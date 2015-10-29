@@ -7,7 +7,7 @@ name:               "Jonathan Turner"
 
 # URL
 baseurl:            "" #For Root Domain
-permalink:          /:year/:month/:day/:title.html
+permalink:          /:year/:month/:title.html
 
 # Markdown
 markdown:           rdiscount
