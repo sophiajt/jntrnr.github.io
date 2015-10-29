@@ -104,7 +104,7 @@ Since this might be unfamiliar let's take a second to breakdown what we're seein
 
 * We start by declaring the type (which isn't terribly dissimilar from a forward declaration in C)
 * The type has two parts:
-  * We take one argument that has a type String
+  * We take one argument that has a type ```String```
   * We return an ```IO ()``` [see below]
 * After the type, we write out the actual implementation of the function
 * Just as in Rust, Haskell is immutable by default.  When we say we pass in a String, we're also implying that this string can't be changed or deleted.  
