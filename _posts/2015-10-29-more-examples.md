@@ -4,7 +4,7 @@ title: More examples
 
 This is an example of some code:
 
-```Rust
+{% highlight rust %}
 struct Foo {
     x: i32
 }
@@ -20,4 +20,4 @@ fn main() {
     let foo = Foo { x: 10 };
     println!("Result: {}", &foo.add_to(20));   
 }
-```
+{% endhighlight %}
