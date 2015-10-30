@@ -15,7 +15,7 @@ markdown:           rdiscount
 # Navigation
 nav:
   - name:           "About"
-    href:           "//jonathandturner.github.io/about"
+    href:           "//jonathanturner.org/about"
 
 # Sass
 sass:

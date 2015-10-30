@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telling the truth in code, function signatures and transparency</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600">
+  <link rel="stylesheet" href="/style.css">
+  </head>
+<body>
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title--small">
+    <a href="/">Jonathan Turner</a>
+  </h1>
+</header>      
+<div class="content post">
+  <h1 class="post-title">Telling the truth in code, function signatures and transparency</h1>
+  <div class="post-date">
+    <time>28 Oct 2015</time>
+  </div>
+  <p>When people talk about reasons to use a type system, there are always a couple usual suspects: error checking, documentation, and if you're an IDE person like me, tooling/editor tricks that use type information, like auto-complete.</p>
+
+<p>But there's another aspect to the types of function signatures that's related to documentation but is perhaps stands on its own: transparency.</p>
+
+<h1>What is transparency?</h1>
+
+<p>For this post, transparency helps us answer a few questions:</p>
+
+<ul>
+<li>What does this function require?</li>
+<li>What does this function return?</li>
+<li>What is this function going to do with what I give it?
+
+<ul>
+<li>Can it modify it?</li>
+<li>Can it delete it?</li>
+</ul>
+</li>
+<li>Can this function fail?  If so, how?</li>
+<li>Does this function do anything besides use its value?
+
+<ul>
+<li>ie) does this function "change the world" in some way?</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>Why is transparency important?</h1>
+
+<p>A way most of us can relate to transparency is in the relationships you have in your life.  When you're not transparent with another person -- keeping all of your thoughts to yourself, never saying when you're angry, etc -- how does the other person ever know how to react to you?</p>
+
+<p>Transparency in code works similarly.  When a function is transparent, you know what you need to do when the function is called, and you know how to react when the function is called.  Let's look at a few examples.  In each example, we're going to talk about a function that takes in an employee name and writes that name to a file.
+Examples</p>
+
+<h2>Python</h2>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="c"># write out to the file</span></code></pre></div>
+
+
+<p>We'll start with the simplest form of transparency: minimal transparency.  Looking at what we have it's tempting to say we don't know anything at all, but that's not quite true.  We do know the function name and that it takes a single parameter.</p>
+
+<p>Things we don't know:</p>
+
+<ul>
+<li>What kind of thing does it take?</li>
+<li>Can it modify the thing we give it?</li>
+<li>Can it delete what we give it?</li>
+<li>Does it return anything?</li>
+<li>Does it throw any exceptions?</li>
+<li>Does it have any permanent effect on our system
+
+<ul>
+<li>eg) send files over the network, add to a database, launch the missiles?</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Without this knowledge, we resort to aggressively testing, commenting, and using naming and coding conventions to get the idea across.</p>
+
+<h2>C</h2>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">writeToFile</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="cm">/* write out to the file */</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Moving into C, we start to see a bit more information popping out.  We know that it takes in a <code>char*</code> for the name.  Since this also isn't <code>const</code>, we know that it's allowed to change the contents of the string we pass in.  We also know it returns an <code>int</code>, likely for error codes.</p>
+
+<p>We are starting to see into what the function can do, but there's still quite a bit we don't know:</p>
+
+<ul>
+<li>Can this function change our system?</li>
+<li>Can the <code>name</code> value be deleted?</li>
+<li>Can the function raise a signal (a C-flavored way of exceptions/events)?</li>
+<li>And what about those error codes?
+
+<ul>
+<li>How do we know the <code>int</code> is for error codes, and not returning the length of data written?</li>
+<li>If it is for error codes, how do we know which ones it supports?</li>
+</ul>
+</li>
+</ul>
+
+
+<p>We've improved some, but we still lean heavily on conventions, code comments, and testing to ensure that this function behaves correctly.  As an aside: one interesting point of C is that it doesn't have exceptions, like many languages, so you're almost encouraged to have a more value-based programming style, though it lacks many common features that help fill out the value-based story (pattern matching, algebraic data types, etc).</p>
+
+<h2>Rust</h2>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span> <span class="n">writeToFile</span> <span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="o">&amp;</span><span class="kt">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="c1">// write out to the file</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Above is a simple Rust version.  If you've never seen Rust before, let's quickly break down it says:</p>
+
+<ul>
+<li>The <code>fn</code> keyword creates our function</li>
+<li>Next, we give the function a name: writeToFile</li>
+<li>Our function gets one argument called 'name' which has the type <code>&amp;str</code>
+
+<ul>
+<li><code>&amp;str</code> is a type in two parts:
+
+<ul>
+<li><code>str</code> is the simple string type</li>
+<li><code>&amp;</code> meaning that this value is being borrowed and is owned by someone else (aka you're not allowed to delete it)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Finally, we return something of type <code>Result&lt;()&gt;</code>
+
+<ul>
+<li><code>Result&lt;()&gt;</code> is the Rust way of saying I can return either:
+
+<ul>
+<li>a) successfully, without a value (the () above)</li>
+<li>b) an error</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>The Rust example tells a bit more of the story than the C version.  In Rust, everything is immutable by default, so we know from looking at the signature that what we pass in can't be changed.  It also won't be deleted, because what is passed is 'borrowed' rather than us giving ownership over to this function.  Rust is similar to C in that we don't have exceptions and instead use return values to denote success or failure (read more in Rust Error Handling).  Rust encodes the success or failure in the return value, requiring the caller to code defensively around possible errors.  This has the effect of encouraging code to be more robust by handling both success and failure where they can occur.</p>
+
+<p>An improvement over where we were in C, but we still have a lingering question: does this function have any permanent effect on the system?  To be able to answer that question, we go one example deeper down the rabbit hole.</p>
+
+<h2>Haskell</h2>
+
+<div class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="nf">writeToFile</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
+<span class="nf">writeToFile</span> <span class="n">name</span> <span class="ow">=</span> <span class="kr">do</span></code></pre></div>
+
+
+<p>Since this might be unfamiliar let's take a second to breakdown what we're seeing:</p>
+
+<ul>
+<li>We start by declaring the type (which isn't terribly dissimilar from a forward declaration in C)</li>
+<li>The type has two parts:
+
+<ul>
+<li>We take one argument that has a type <code>String</code></li>
+<li>We return an <code>IO ()</code> [see below]</li>
+</ul>
+</li>
+<li>After the type, we write out the actual implementation of the function</li>
+<li>Just as in Rust, Haskell is immutable by default.  When we say we pass in a String, we're also implying that this string can't be changed or deleted.</li>
+</ul>
+
+
+<p>Also similar to Rust, in Haskell there are no exceptions, so you must handle all possible values when you call the function.  By saying <code>IO ()</code>, this might at first seem similar to the <code>Result&lt;()&gt;</code>.  In some sense, it is, in that IO carries along any possible errors.</p>
+
+<p>It also goes a bit further.  In essence, it says: "I'm going to go change the world, and when I come back you need to carry that truth on."  In Haskell, if you call a function that performs I/O like our writeToFile function, you must also carry on that fact in your own return type.  You have to be fully transparent all the way through the call stack of who is changing the world, even indirectly.  This lets you clearly document who is modifying the world and who isn't.</p>
+
+<h1>Dark side of transparency</h1>
+
+<p>But, it can't be all roses, right?  Let's look at what I see as the dark side of transparency: encapsulation (or its lack thereof).</p>
+
+<p>As good software engineers, we know an important piece of building a system is having good encapsulation.  Any module or object worth its weight exposes only necessary functionality to the world and hides the rest.  This encourages loose coupling, so that components don't depend on each others' implementation details.</p>
+
+<p>In a way, transparency in the type runs counter to information hiding in that it encourages more coupling in the code.  Some of this is natural.  For example, in the C code, we have to remember what the return values are.  If we add a new one, we may have to change the code handling the call as well.  Likewise, in Python, if we change the types of parameters we allow, we may have to go update the callers.</p>
+
+<p>On the other hand, knowing that a function may fail may be sufficient.  In the Rust case, code that handles the call may need to be updated if you change how the function fails, even if it only cares about if it fails.</p>
+
+<p>Likewise, in Haskell you may want to drop some probe into your system to catch the result of a function while you're debugging.  Such changes can have a ripple effect in your codebase as this probe may change a series of function calls to reflect that I/O has been performed.  (Not withstanding workarounds with fun names like <code>unsafePerformIO</code>)</p>
+
+<h1>All a balance</h1>
+
+<p>Types are there to help.  Leaning on them not enough means encoding more information in your tests and code comments.  Leaning on them too much may mean tightly coupling parts of your system.  What the right balance is may change from project to project, or developer to developer.</p>
+
+<p>Just as in our relationships with other people, it makes sense to not tell everyone we meet everything about us.  It's a balance.  Finding the right amount of transparency that encourages flexible, resilient systems is an art.</p>
+
+<p>In the last few weeks, in playing with Rust more I've grown to appreciate its pragmatic set of trade-offs.  Yes, you don't get to know if the system was changed, but if something can impact the rest of the program, you're encouraged to handle it.  Not that there aren't workarounds or ways to easily opt-out, but just as in life, it's all a balance.</p>
+
+</div>
+ <div class="notepad-author-info">
+  <div class="row">
+      <section class="notepad-post-author small-12 columns">          
+              <img src="/images/jonathanturner.png" class="notepad-post-author-avatar" alt="Jonathan Turner's photo">
+              <span class="author-label">Author</span>
+              <h1>Jonathan Turner</h1>
+              <p><a href="https://twitter.com/jntrnr" class="author-website">@jntrnr</a></p>
+      </section>
+  </div>
+ </div>
+   
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69474134-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </div>
+</body>
+</html>

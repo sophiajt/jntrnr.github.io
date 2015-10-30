@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lessons from the first 12 Euler problems in Rust</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600">
+  <link rel="stylesheet" href="/style.css">
+  </head>
+<body>
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title--small">
+    <a href="/">Jonathan Turner</a>
+  </h1>
+</header>      
+<div class="content post">
+  <h1 class="post-title">Lessons from the first 12 Euler problems in Rust</h1>
+  <div class="post-date">
+    <time>09 Oct 2015</time>
+  </div>
+  <p><strong>!! Spoiler Alert !!</strong></p>
+
+<p><em>I'm going to be talking about solutions to select problems from the first 12 Euler problems.  If you haven't solved these for yourself yet, I highly recommend taking the time to solve them on your own first.</em></p>
+
+<h1>Background</h1>
+
+<p>Before I went to Microsoft for a <a href="http://www.typescriptlang.org/">stint in JavaScript</a>, I did my fair share of systems programming in C++.  I've built compilers, head-tracking software, signal processing software, and emulators and even did some of my first programming language projects in it and <a href="http://chaiscript.com/">for it</a>.</p>
+
+<p>So when word got out four years ago about a new systems language called <a href="https://www.rust-lang.org/">Rust</a>, I was intrigued.  I mean, it was <em>new</em> and it was called <em>rust</em>.  Obviously there was some cheekiness involved :)</p>
+
+<p>While I've dabbled with it before, this week was the first time I really gave it some dedicated time to learn it.  <strong>TL;DR:</strong> hey, this is kinda neat!</p>
+
+<p>In this post I talk through solving some of the Euler problems in Rust, both de-rusting my programming skills and learning what this Rust thing was all about.</p>
+
+<p>If you're interested, you can grab the <a href="https://github.com/jonathandturner/rustnewbie">source code to my solutions</a>.</p>
+
+<h1>Problem 1</h1>
+
+<p>"sum of all multiples of 3 or 5 below 1000"</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="lineno"> 1</span> <span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 3</span>  
+<span class="lineno"> 4</span>     <span class="k">for</span> <span class="n">x</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="mi">1000</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+<span class="lineno"> 6</span>             <span class="n">answer</span> <span class="o">+=</span> <span class="n">x</span><span class="p">;</span>
+<span class="lineno"> 7</span>         <span class="p">}</span>
+<span class="lineno"> 8</span>         <span class="k">else</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+<span class="lineno"> 9</span>             <span class="n">answer</span> <span class="o">+=</span> <span class="n">x</span><span class="p">;</span>
+<span class="lineno">10</span>         <span class="p">}</span>
+<span class="lineno">11</span>     <span class="p">}</span>
+<span class="lineno">12</span>  
+<span class="lineno">13</span>     <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span> <span class="n">answer</span><span class="p">);</span>
+<span class="lineno">14</span> <span class="p">}</span></code></pre></div>
+
+
+<p>My solution to problem 1 is pretty straightforward, but you can already start to see some of the characteristic earmarks of Rust.  On <strong>line 2</strong>, there's a let keyword which creates a variable.  After that is the mut keyword for saying that the variable we're creating is mutable, as variables are immutable by default.</p>
+
+<p><strong>Line 4</strong> shows off using an iterator.  Rust's iterators are lazy, meaning they generate values only as needed.  This gives them some cool properties, which we'll see later, but it has the property of being relatively cheap to iterate over them, since we don't generate a full range before iteration starts.</p>
+
+<p><strong>Line 5</strong> reminds us that we're not in C.  The if doesn't require parens around its condition.  Indeed, if you put them there, the compiler warns you that you don't need them.</p>
+
+<p><strong>Line 13</strong> shows how to print out a value.  Note the '!' after println.  If you're like me, you're bound to leave this off once or twice and get an incomprehensible error message.  Similar to C and many other languages, you pass println! a format string.  Here, we just use "{}".  The {} part means to use a default output of the argument we pass in, which in our case just writes out the number.</p>
+
+<h1>Problem 2</h1>
+
+<p>"sum of even fibonacci below 4,000,000"</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Fibonacci</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">curr</span><span class="o">:</span> <span class="kt">u64</span><span class="p">,</span>
+<span class="lineno"> 3</span>     <span class="n">next</span><span class="o">:</span> <span class="kt">u64</span><span class="p">,</span>
+<span class="lineno"> 4</span> <span class="p">}</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c1">// Implement &#39;Iterator&#39; for &#39;Fibonacci&#39;</span>
+<span class="lineno"> 7</span> <span class="k">impl</span> <span class="nb">Iterator</span> <span class="k">for</span> <span class="n">Fibonacci</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="k">type</span> <span class="n">Item</span> <span class="o">=</span> <span class="kt">u64</span><span class="p">;</span>
+<span class="lineno"> 9</span>     <span class="c1">// The &#39;Iterator&#39; trait only requires the &#39;next&#39; method to be defined. The</span>
+<span class="lineno">10</span>     <span class="c1">// return type is &#39;Option&lt;T&gt;&#39;, &#39;None&#39; is returned when the &#39;Iterator&#39; is</span>
+<span class="lineno">11</span>     <span class="c1">// over, otherwise the next value is returned wrapped in &#39;Some&#39;</span>
+<span class="lineno">12</span>     <span class="k">fn</span> <span class="n">next</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="kt">u64</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="lineno">13</span>         <span class="kd">let</span> <span class="n">new_next</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">curr</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
+<span class="lineno">14</span>         
+<span class="lineno">15</span>         <span class="bp">self</span><span class="p">.</span><span class="n">curr</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
+<span class="lineno">16</span>         <span class="bp">self</span><span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">new_next</span><span class="p">;</span>
+<span class="lineno">17</span>         
+<span class="lineno">18</span>         <span class="c1">// &#39;Some&#39; is always returned, this is an infinite value generator</span>
+<span class="lineno">19</span>         <span class="nb">Some</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">curr</span><span class="p">)</span>
+<span class="lineno">20</span>     <span class="p">}</span>
+<span class="lineno">21</span> <span class="p">}</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="c1">// Returns a fibonacci sequence generator</span>
+<span class="lineno">24</span> <span class="k">fn</span> <span class="n">fibonacci</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Fibonacci</span> <span class="p">{</span>
+<span class="lineno">25</span>     <span class="n">Fibonacci</span> <span class="p">{</span> <span class="n">curr</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">next</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="lineno">26</span> <span class="p">}</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">29</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">sum</span><span class="o">:</span><span class="kt">u64</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">30</span>     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">fibonacci</span><span class="p">().</span><span class="n">take_while</span><span class="p">(</span><span class="o">|&amp;</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">4000000</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="o">|&amp;</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">31</span>         <span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+<span class="lineno">32</span>     <span class="p">}</span>
+<span class="lineno">33</span>     <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;sum: {}&quot;</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
+<span class="lineno">34</span> <span class="p">}</span></code></pre></div>
+
+
+<p>Lest you think that I somehow jumped from beginner level to advanced in a few minutes, rest assured that I used the tried and true method of the <a href="http://rustbyexample.com/trait/iter.html">copy/paste</a>.  In trying to find out how to make an iterator so I could iterate over a fibonacci sequence, I found the source to do just that.  Ah, the internet.</p>
+
+<p>There's a fair bit going on here, so let's break it down by line.</p>
+
+<p><strong>Lines 1-4:</strong> Create a simple struct to hold the current value to be returned as well as the next value.  Fibonacci needs at least these two values to continue to calculate each iteration.</p>
+
+<p><strong>Line 7:</strong> Now Rust is showing off the fancy.  What is going on here?  In Rust, a type, like our Fibonacci struct from lines 1-4, can implement a trait.  What's a trait?  Think of it as a small contract with the compiler.  If you can show how your type satisfies all the requirements of the contract, then wherever that trait is required, the compiler knows how to use your type.  In this example, we want to use our type in the <code>for..in</code> language feature.  In some languages, this wouldn't be possible.  In Rust, if we can satisfy the Iterator trait, the compiler has enough information to allow that type to be used in the <code>for..in</code> feature.</p>
+
+<p><strong>Line 8:</strong> Ah the problem with copy/paste.  As I started writing this blog post, I had no idea what that line was doing.  Docs to the rescue.  It turns out that this line is saying what the 'associated type' is.  With some traits, there's going to be both a) the type that is implementing the trait (here: our Fibonacci struct) and b) an additional type that needs to be known to get the rest of the story.  For us, since we're creating an iterator over the fibonacci sequence, we need to let Rust know what the type of each "turn of the crank" on the iterator will output.  Each fibonacci number will be a 64-bit unsigned integer, so we use the Rust short-hand type <code>u64</code>.</p>
+
+<p><strong>Lines 12-20:</strong> Here's where we describe how to turn the crank for each step of our iterator.  We calculate what the next turn will output and then return the current value.  This allows us to keep one in reserve ready to be used to calculate the next value, and so on.  You can see on line 19 that instead of just returning a <code>u64</code> directly, we instead say that it's optionally a <code>u64</code>.  While in our case we iterate forever, using <code>Option</code> here gives us a way to shut off the valve and finish the iterator if we ever wanted to.</p>
+
+<p>Notice, too, on <strong>line 19</strong> the value is said last and the return statement is elided.  This is just shorthand for returning a value from the function.</p>
+
+<p><strong>Lines 24-26:</strong> Create a simple function to give us our starting value to begin our fibonacci sequence.  You can see a couple Rust-isms here, too.  As before, a value by itself is an implied return value.  It also shows how to create an instance of the struct without a constructor.</p>
+
+<p><strong>Line 30:</strong> We're finally in the main!  I've forgotten what problem we were solving by now.  Ah right, "find the sum of even fibonacci numbers less than 4,000,000".  Let's look at the solution.  Since there's a lot going on in this fluent-style approach, let's break it up into steps:</p>
+
+<p><code>fibonacci()</code> - we call our function and get out the default value to start iterating with.  Since we already told Rust how to use values of this type as iterators, it gets all the capabilities that iterators have.</p>
+
+<p><code>.take_while(|&amp;x| x &lt; 4000000)</code> - that didn't take long, we're already jumping in and using the functionality of the iterator to check each turn of the crank, and if we exceed 4,000,000 stop.</p>
+
+<p>The <code>|&amp;x| x &lt; 4000000</code> is a simple function that takes in a reference to each element we bind to x, and then we check the value we're handed in the body of our function.  If you're coming from C++, this reference style might look a little strange.  Aren't you risking someone updating the value?  Turns out Rust's references are <a href="http://doc.rust-lang.org/book/references-and-borrowing.html#borrowing">immutable by default</a>.  The reference here also shows us the performance characteristics of <code>.take_while</code>.  By this I mean, when we look at the <code>.take_while</code> call, we see it will only pass references, so know ahead of time if we're iterating over big structures, we're not paying the price of copying each one with each step of the iterator.</p>
+
+<p>Speaking of performance, it may look like .take_while is going to be exceedingly expensive.  Is it consuming all of our fibonacci sequence until we have all the items we need to get to 4,000,000?  Luckily, it isn't.  Instead, <code>.take_while</code> itself returns an iterator that you can continue your fluent calls on.  I think of it like a series of machines in a factory:</p>
+
+<pre><code>-&gt; [  ] -&gt; [  ] -&gt; [  ] -&gt;
+</code></pre>
+
+<p>If I start the conveyor up and I pull from the right hand, I'm moving whatever was on the far left all the way through the system.  In our case, we're starting up the fibonacci iterator and getting that machine running.  It spits out a single fibonacci-shaped number for us.  This number chugs along and enters the next machine, which is our machine that checks if it's too big.  If it's not, the conveyor chugs along and out drops a single fibonacci-shaped number of the acceptable size.</p>
+
+<p>As these machines work in lock-step, we're getting just what we need when we need it rather than trying to run ahead and doing a bunch of work in advance.  This allows you compose a lot of steps together and still stay efficient.</p>
+
+<p><code>.filter(|&amp;x| x % 2 == 0)</code> -  Just like <code>.take_while</code> above, this one checks each number as it passes through.  This time, it only lets the number through if it's divisible by 2, and hence even.</p>
+
+<p>Now we have all the steps in place, each time we turn the crank of the whole iterator, only fibonacci numbers that are less than 4,000,000 and even will pop out.</p>
+
+<p><strong>Line 31:</strong> We've already done all the hard work.  Now we just have to sum those numbers together.</p>
+
+<p>With that, we're done.  While it was quite a mouthful, we can see the compositional nature of Rust, a bit of the type system, and how iterators work in more detail.</p>
+
+<h1>Problem 3</h1>
+
+<p>"highest prime factor of 600851475143"</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="lineno"> 1</span> <span class="k">fn</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">num</span><span class="o">:</span><span class="kt">u64</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">2.</span><span class="p">.(</span><span class="n">num</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+<span class="lineno"> 4</span>             <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno"> 5</span>         <span class="p">}</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="k">return</span> <span class="k">true</span><span class="p">;</span> 
+<span class="lineno"> 8</span> <span class="p">}</span>    
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">struct</span> <span class="n">Prime</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="n">curr</span><span class="o">:</span> <span class="kt">u64</span><span class="p">,</span>
+<span class="lineno">12</span> <span class="p">}</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="k">impl</span> <span class="nb">Iterator</span> <span class="k">for</span> <span class="n">Prime</span> <span class="p">{</span>
+<span class="lineno">15</span>     <span class="k">type</span> <span class="n">Item</span> <span class="o">=</span> <span class="kt">u64</span><span class="p">;</span>
+<span class="lineno">16</span>     <span class="k">fn</span> <span class="n">next</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="kt">u64</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="lineno">17</span>         <span class="kd">let</span> <span class="k">mut</span> <span class="n">new_next</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">curr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">18</span>         <span class="k">while</span> <span class="o">!</span><span class="n">is_prime</span><span class="p">(</span><span class="n">new_next</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">19</span>             <span class="n">new_next</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">20</span>         <span class="p">}</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span>         <span class="bp">self</span><span class="p">.</span><span class="n">curr</span> <span class="o">=</span> <span class="n">new_next</span><span class="p">;</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span>         <span class="nb">Some</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">curr</span><span class="p">)</span>
+<span class="lineno">25</span>     <span class="p">}</span>
+<span class="lineno">26</span> <span class="p">}</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> 
+<span class="lineno">29</span> <span class="c1">// Returns the primes</span>
+<span class="lineno">30</span> <span class="k">fn</span> <span class="n">primes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Prime</span> <span class="p">{</span>
+<span class="lineno">31</span>     <span class="n">Prime</span> <span class="p">{</span> <span class="n">curr</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="lineno">32</span> <span class="p">}</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span> <span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">35</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">num</span><span class="o">:</span><span class="kt">u64</span> <span class="o">=</span> <span class="mi">600851475143</span><span class="p">;</span>
+<span class="lineno">36</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">highest_prime_factor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">37</span>     
+<span class="lineno">38</span>     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">primes</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">39</span>         <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+<span class="lineno">40</span>             <span class="n">highest_prime_factor</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+<span class="lineno">41</span>         <span class="p">}</span>
+<span class="lineno">42</span>         <span class="k">while</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">43</span>             <span class="n">num</span> <span class="o">/=</span> <span class="n">i</span><span class="p">;</span>
+<span class="lineno">44</span>         <span class="p">}</span>
+<span class="lineno">45</span>         <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+<span class="lineno">46</span>             <span class="k">break</span><span class="p">;</span>
+<span class="lineno">47</span>         <span class="p">}</span>
+<span class="lineno">48</span>     <span class="p">}</span>
+<span class="lineno">49</span>     <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;num: {}&quot;</span><span class="p">,</span> <span class="n">highest_prime_factor</span><span class="p">);</span>
+<span class="lineno">50</span> <span class="p">}</span></code></pre></div>
+
+
+<p>Very similar to Problem #2 above, I create an implementation of Iterator, so I can use it later.  This time, rather than creating a stream of fibonacci values, I create a stream of prime numbers.</p>
+
+<p>Just like we had a struct for Fibonacci in Problem #2, I create one here for Prime numbers.  Since we don't need the previous one to calculate the next one, I only keep the current value around and then start with that number + 1 when trying to find the next prime.</p>
+
+<p>Once we have our iterator, we take each prime, and then try to divide out all its multiples from our give number.  What's left should be our highest prime factor.  Easy peasy.</p>
+
+<p>PS: I know it's probably already too late, but I should have warned you to avert your eyes from my inefficient prime number skills :)</p>
+
+<h1>Problem 4</h1>
+
+<p>"largest palindrome product of two 3-digit numbers"</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="lineno"> 1</span> <span class="k">fn</span> <span class="n">is_palindrome</span><span class="p">(</span><span class="n">num</span><span class="o">:</span> <span class="kt">u64</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kd">let</span> <span class="n">s</span> <span class="o">=</span> <span class="n">num</span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span>
+<span class="lineno"> 3</span>     <span class="k">for</span> <span class="p">(</span><span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">)</span> <span class="k">in</span> <span class="n">s</span><span class="p">.</span><span class="n">chars</span><span class="p">().</span><span class="n">zip</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">chars</span><span class="p">().</span><span class="n">rev</span><span class="p">())</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="k">if</span> <span class="n">i1</span> <span class="o">!=</span> <span class="n">i2</span> <span class="p">{</span>
+<span class="lineno"> 5</span>             <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno"> 6</span>         <span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span>     <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">12</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">largest</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">13</span>     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">100.</span><span class="p">.</span><span class="mi">999</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mf">100.</span><span class="p">.</span><span class="mi">999</span> <span class="p">{</span>
+<span class="lineno">15</span>             <span class="k">if</span> <span class="n">is_palindrome</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">largest</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>                 <span class="n">largest</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">;</span>
+<span class="lineno">17</span>                 <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Largest: {}, {} x {}&quot;</span><span class="p">,</span> <span class="n">largest</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+<span class="lineno">18</span>             <span class="p">}</span>
+<span class="lineno">19</span>         <span class="p">}</span>
+<span class="lineno">20</span>     <span class="p">}</span>
+<span class="lineno">21</span> <span class="p">}</span></code></pre></div>
+
+
+<p>Problem #4 also uses some iterators to find the palindrome product (<strong>line 13</strong> and <strong>line 14</strong>).  If it finds a palindrome product, and that new product is larger than what it saw before, it replaces it with the new one.</p>
+
+<p>There's one fun trick in this solution on <strong>line 3</strong>.  We need to check if the number is a palindrome.  While you can do this <a href="http://stackoverflow.com/questions/199184/how-do-i-check-if-a-number-is-a-palindrome">numerically</a>, I couldn't help but use some more iterators.  This time, after converting the number to a string, we create an iterator over the characters in the string (using <code>.chars()</code>).  We want to see if the number is a palindrome, so one way to test this is that if we reverse the string and if still get the same value, we know we've got one.</p>
+
+<p>That's exactly what we do.  Here, I use <code>.zip(s.chars().rev())</code> to combine the iterator that goes forward over the characters with one that goes in reverse.  The <code>.zip()</code> call brings both iterators together and iterates over both iterators for us, returning a pair (or tuple) of values.  Think of it running both machines side by side, and with each turn of the crank one value pops out of each and zip returns both values tied together with a bow.</p>
+
+<p>Now that we have a single pair, we immediately use it.  At the beginning of line 3, you can see the for <code>(i1, i2)</code> in part of the line.  Just as before <code>for..in</code> will run over the iterator.  We know that the iterator is going to be outputting pairs of values.  We could have just grabbed the pair as a single value and used it later, but here I go one step further by taking the pair the iterator gives me and pulling it apart so I can use it.  This pulling apart, called destructuring, is a handy way of working with structured data when you're interested in its constituent parts rather than the structure itself.  In this case, this lets me more easily compare the left side to the right side, so I destructure the pair into two values: <code>i1</code> and <code>i2</code>.</p>
+
+<h1>Problems 5 through 7</h1>
+
+<p>Problems <a href="https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex5.rs">#5</a>, <a href="https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex6.rs">#6</a>, and <a href="https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex7.rs">#7</a> are all straightforward and don't show off anything new in the language.  Let's jump ahead to the next interesting one.</p>
+
+<h1>Problem 8</h1>
+
+<p>"largest product of 13 adjacent digits"</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="lineno"> 1</span> <span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kd">let</span> <span class="n">input</span> <span class="o">=</span> 
+<span class="lineno"> 3</span>         <span class="s">&quot;73167176531330624919225119674426574742355349194934\</span>
+<span class="lineno"> 4</span> <span class="s">        96983520312774506326239578318016984801869478851843\</span>
+<span class="lineno"> 5</span> <span class="s">        85861560789112949495459501737958331952853208805511\</span>
+<span class="lineno"> 6</span> <span class="s">        12540698747158523863050715693290963295227443043557\</span>
+<span class="lineno"> 7</span> <span class="s">        66896648950445244523161731856403098711121722383113\</span>
+<span class="lineno"> 8</span> <span class="s">        62229893423380308135336276614282806444486645238749\</span>
+<span class="lineno"> 9</span> <span class="s">        30358907296290491560440772390713810515859307960866\</span>
+<span class="lineno">10</span> <span class="s">        70172427121883998797908792274921901699720888093776\</span>
+<span class="lineno">11</span> <span class="s">        65727333001053367881220235421809751254540594752243\</span>
+<span class="lineno">12</span> <span class="s">        52584907711670556013604839586446706324415722155397\</span>
+<span class="lineno">13</span> <span class="s">        53697817977846174064955149290862569321978468622482\</span>
+<span class="lineno">14</span> <span class="s">        83972241375657056057490261407972968652414535100474\</span>
+<span class="lineno">15</span> <span class="s">        82166370484403199890008895243450658541227588666881\</span>
+<span class="lineno">16</span> <span class="s">        16427171479924442928230863465674813919123162824586\</span>
+<span class="lineno">17</span> <span class="s">        17866458359124566529476545682848912883142607690042\</span>
+<span class="lineno">18</span> <span class="s">        24219022671055626321111109370544217506941658960408\</span>
+<span class="lineno">19</span> <span class="s">        07198403850962455444362981230987879927244284909188\</span>
+<span class="lineno">20</span> <span class="s">        84580156166097919133875499200524063689912560717606\</span>
+<span class="lineno">21</span> <span class="s">        05886116467109405077541002256983155200055935729725\</span>
+<span class="lineno">22</span> <span class="s">        71636269561882670428252483600823257530420752963450&quot;</span><span class="p">;</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">largest</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">25</span>     <span class="kd">let</span> <span class="n">input_bytes</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="n">as_bytes</span><span class="p">();</span>
+<span class="lineno">26</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">largest_string</span><span class="o">:</span> <span class="o">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">input_bytes</span><span class="p">[</span><span class="mf">0.</span><span class="p">.</span><span class="mi">1</span><span class="p">];</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span>     <span class="kd">let</span> <span class="n">span_width</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+<span class="lineno">29</span> 
+<span class="lineno">30</span>     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.(</span><span class="n">input_bytes</span><span class="p">.</span><span class="n">len</span><span class="p">()</span> <span class="o">-</span> <span class="n">span_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">31</span>         <span class="kd">let</span> <span class="k">mut</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">1</span><span class="k">u64</span><span class="p">;</span>
+<span class="lineno">32</span>         <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.(</span><span class="n">span_width</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">33</span>             <span class="n">sum</span> <span class="o">*=</span> <span class="p">(</span><span class="n">input_bytes</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">48</span><span class="p">)</span> <span class="k">as</span> <span class="kt">u64</span><span class="p">;</span>
+<span class="lineno">34</span>         <span class="p">}</span>
+<span class="lineno">35</span>         <span class="k">if</span> <span class="n">sum</span> <span class="o">&gt;</span> <span class="n">largest</span> <span class="p">{</span>
+<span class="lineno">36</span>             <span class="n">largest</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
+<span class="lineno">37</span>             <span class="n">largest_string</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">input_bytes</span><span class="p">[</span><span class="n">i</span><span class="p">..(</span><span class="n">i</span><span class="o">+</span><span class="n">span_width</span><span class="p">)];</span>
+<span class="lineno">38</span>         <span class="p">}</span>
+<span class="lineno">39</span>     <span class="p">}</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span>     <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Largest: {} is {:?}&quot;</span><span class="p">,</span> <span class="n">largest</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">str</span><span class="o">::</span><span class="n">from_utf8</span><span class="p">(</span><span class="n">largest_string</span><span class="p">));</span>
+<span class="lineno">42</span> <span class="p">}</span></code></pre></div>
+
+
+<p>In Problem #8, we see an example of working with strings, this time using a new feature called a 'slice'.  We start with the block from <strong>line 3</strong> to <strong>line 22</strong> that gives us this giant input string.  Notice that I use the backslash '\' to continue the line to the next line.  Rust is smart enough to let us indent without introducing new whitespace into the string.</p>
+
+<p>Now that we have our string, on <strong>line 25</strong> we turn it into a array of bytes we can search through.  Notice we didn't use <code>.chars()</code> this time.  Recall that <code>.chars()</code> gave us an iterator.  Rather than iterating over one value at a time here, we want the flexibility to look across spans in our string.  To do that, we use <code>.as_bytes()</code> to get an array (technically, a byte slice).</p>
+
+<p><strong>Line 26</strong> introduces the slice we'll use.  A slice is a window into values in memory.  Since we want to look at a span of values, we create a holder for this slice.  We'll later set it to spans of our 13 adjacent digits.  PS: you'll notice I set it to a dummy default value, which I later throw away.  This is to get around the compiler warning about uninitialized values.</p>
+
+<p>The rest of the search follows fairly naturally.  We do an iterator over the indices in our input, stopping short of the length of the span.  We use that index to calculate the product at that span (<strong>line 32</strong> to <strong>line 34</strong>).  Once we find a match, we save it off, using a slice to save off the winning span (<strong>line 37</strong>).</p>
+
+<p>Finally, we use another format string <code>{:?}</code>, which can print out our winning span for us using the debug formatter.  The <code>{:?}</code> format is a handy builtin which can handle a wider range of types with a default formatter.</p>
+
+<h1>Problem 9</h1>
+
+<p>Problem <a href="https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex9.rs">#9</a> is another solution that's simple and doesn't show off any new features.  Moving on.</p>
+
+<h1>Problem 10</h1>
+
+<p>"sum of all primes below 2 million"</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="lineno"> 1</span> <span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 3</span>     <span class="kr">const</span> <span class="n">SIZE</span><span class="o">:</span> <span class="n">usize</span> <span class="o">=</span> <span class="mi">2000000</span><span class="p">;</span>
+<span class="lineno"> 4</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">slots</span><span class="o">:</span> <span class="p">[</span><span class="kt">bool</span><span class="p">;</span> <span class="n">SIZE</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="k">true</span><span class="p">;</span> <span class="n">SIZE</span><span class="p">];</span>
+<span class="lineno"> 5</span>     <span class="n">slots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno"> 6</span>     <span class="n">slots</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno"> 7</span>     
+<span class="lineno"> 8</span>     <span class="c1">// We calculate the primes using a simple stride and marking off multiples </span>
+<span class="lineno"> 9</span>     <span class="k">for</span> <span class="n">stride</span> <span class="k">in</span> <span class="mf">2.</span><span class="p">.(</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">10</span>         <span class="kd">let</span> <span class="k">mut</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">stride</span><span class="p">;</span>
+<span class="lineno">11</span>         <span class="k">while</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">SIZE</span> <span class="o">-</span> <span class="n">stride</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12</span>             <span class="n">pos</span> <span class="o">+=</span> <span class="n">stride</span><span class="p">;</span>
+<span class="lineno">13</span>             <span class="n">slots</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno">14</span>         <span class="p">}</span>
+<span class="lineno">15</span>     <span class="p">}</span>
+<span class="lineno">16</span>     
+<span class="lineno">17</span>     <span class="k">for</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">pr</span><span class="p">)</span> <span class="k">in</span> <span class="n">slots</span><span class="p">.</span><span class="n">into_iter</span><span class="p">().</span><span class="n">enumerate</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">18</span>         <span class="k">if</span> <span class="o">*</span><span class="n">pr</span> <span class="p">{</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">idx</span><span class="p">;</span> <span class="p">}</span>
+<span class="lineno">19</span>     <span class="p">}</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span>     <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Sum: {}&quot;</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
+<span class="lineno">22</span> <span class="p">}</span></code></pre></div>
+
+
+<p>Reading the problem description, you might have guessed that I would use the iterator solution from earlier.  The astute reader probably already noticed that doing so would be. very. slow.  Especially, as we look at primes above a million, where each step is itself taking hundreds of thousands, if not millions, of calculations.  While I could let it run and heat up my apartment, it's better to do a more direct approach.</p>
+
+<p>We trade space for time.</p>
+
+<p>On <strong>line 4</strong>, I create my first fixed size array that will hold whether or not the number in that position is prime.  Once we have the variable, it's initialized using another cool shorthand: <code>[true; SIZE]</code>.  This creates an array of boolean true values of the size given on the right of the ';', here the SIZE constant I defined.  For example, you can create a 500-element array of zeros using <code>[0; 500]</code>.  Neat.</p>
+
+<p>Once we have our slots, we loop over them using any possible multiple and check that off the list by setting that position to false.  Once we're done, we have an array that tells us where the primes are.</p>
+
+<p>The only trick remaining is how to get the numbers back out again.  To do this, we use the iterator on <strong>line 17</strong>.  Similar to our fluent iterators before, this time we turn our array of slots into an iterator, and then call <code>.enumerate()</code>.  The <code>.enumerate()</code> call is a special kind of zip that gives us the index at that point in the iteration paired with the actual value.  Just as before, we destructure the index and the boolean that indicates if it's a prime number separately.</p>
+
+<p>On <strong>line 18</strong>, we check if the number is prime, and if so we add it to our sum.  You'll notice the <code>*pr</code> call here.  Just as in C, this lets me dereference and get at the value at that location in memory.  I could have instead written for <code>(idx, &amp;pr)</code> in and just gotten to the value that way, using destructuring instead of dereferencing.  With that change, the line would have been <code>if pr { ... }</code>, and I could get at the value <code>pr</code> without needing to dereference.</p>
+
+<h1>Problem 11</h1>
+
+<p>"find the largest product in a grid"</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="lineno"> 1</span> <span class="kd">let</span> <span class="n">input</span> <span class="o">=</span> <span class="s">&quot;\</span>
+<span class="lineno"> 2</span> <span class="s">    08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 \</span>
+<span class="lineno"> 3</span> <span class="s">    49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00 \</span>
+<span class="lineno"> 4</span> <span class="s">    81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65 \</span>
+<span class="lineno"> 5</span> <span class="s">    52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91 \</span>
+<span class="lineno"> 6</span> <span class="s">    22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80 \</span>
+<span class="lineno"> 7</span> <span class="s">    24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50 \</span>
+<span class="lineno"> 8</span> <span class="s">    32 98 81 28 64 23 67 10 26 38 40 67 59 54 70 66 18 38 64 70 \</span>
+<span class="lineno"> 9</span> <span class="s">    67 26 20 68 02 62 12 20 95 63 94 39 63 08 40 91 66 49 94 21 \</span>
+<span class="lineno">10</span> <span class="s">    24 55 58 05 66 73 99 26 97 17 78 78 96 83 14 88 34 89 63 72 \</span>
+<span class="lineno">11</span> <span class="s">    21 36 23 09 75 00 76 44 20 45 35 14 00 61 33 97 34 31 33 95 \</span>
+<span class="lineno">12</span> <span class="s">    78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92 \</span>
+<span class="lineno">13</span> <span class="s">    16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57 \</span>
+<span class="lineno">14</span> <span class="s">    86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58 \</span>
+<span class="lineno">15</span> <span class="s">    19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40 \</span>
+<span class="lineno">16</span> <span class="s">    04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66 \</span>
+<span class="lineno">17</span> <span class="s">    88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69 \</span>
+<span class="lineno">18</span> <span class="s">    04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36 \</span>
+<span class="lineno">19</span> <span class="s">    20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16 \</span>
+<span class="lineno">20</span> <span class="s">    20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54 \</span>
+<span class="lineno">21</span> <span class="s">    01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48&quot;</span><span class="p">;</span>
+<span class="lineno">22</span>     
+<span class="lineno">23</span> <span class="kd">let</span> <span class="n">input_split</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="n">split_whitespace</span><span class="p">();</span>
+<span class="lineno">24</span> <span class="kd">let</span> <span class="n">input_as_num</span><span class="o">:</span> <span class="n">Vec</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">input_split</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> 
+<span class="lineno">25</span>     <span class="k">match</span> <span class="kt">i32</span><span class="o">::</span><span class="n">from_str_radix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">26</span>         <span class="nb">Ok</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">v</span><span class="p">,</span>
+<span class="lineno">27</span>         <span class="nb">Err</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Garbage in input: {}&quot;</span><span class="p">,</span> <span class="n">u</span><span class="p">);</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="lineno">28</span>     <span class="p">}</span>
+<span class="lineno">29</span> <span class="p">).</span><span class="n">collect</span><span class="p">();</span></code></pre></div>
+
+
+<p>I'm only showing the interesting part of the solution since it's a bit long, but you can read the <a href="https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex11.rs">whole solution</a>.</p>
+
+<p>Here we do a bit more string manipulation using some new methods.  The <code>.split_whitespace()</code> method on <strong>line 23</strong> lets us turn our input string into an iterator of strings, splitting at any whitespace.</p>
+
+<p>Once we have this iterator, <strong>line 24</strong> takes this iterator and maps a function over it.  This function attempts to convert each substring to a signed 32-bit integer <code>i32</code> using the <code>.from_str_radix(x, 10)</code> call.  This call returns a <code>Result</code>, a way of handling either a success or failure condition of an action that might fail.  As is the case with converting from strings to numbers, if you happen to pass in something that can't be converted to a number, there needs to be a way to signal back out that the conversion failed.  Some languages do this through exceptions, which break out of normal execution and give you an error you can handle.  Rust uses a simpler, more functional approach and treats errors as just any other value.  With this method, the type system encourages us to be vigilant and always have code available to handle errors.</p>
+
+<p>To see which of success/failure is returned, we use the match keyword.  Just as in other languages with pattern matching, the match keyword lets us ask which of the possible values is in the Result: <code>Ok</code> or <code>Err</code>.  Pattern matching lets us destructure and find the success value or error message.</p>
+
+<p>Finally, on <strong>line 29</strong>, we use the <code>.collect()</code> method to run through the iterator and create a vector of <code>i32</code>.</p>
+
+<h1>Problem 12</h1>
+
+<p>"triangle number with over 500 divisors"</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="lineno"> 1</span> <span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kd">let</span> <span class="k">mut</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="k">u64</span><span class="p">;</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>     <span class="c1">// Cache the primes we&#39;ll be using</span>
+<span class="lineno"> 5</span>     <span class="kd">let</span> <span class="n">first_primes</span><span class="o">:</span> <span class="n">Vec</span><span class="o">&lt;</span><span class="kt">u64</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">primes</span><span class="p">().</span><span class="n">take</span><span class="p">(</span><span class="mi">1000</span><span class="p">).</span><span class="n">collect</span><span class="p">();</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mi">1000000</span><span class="k">u64</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="n">num</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span>         <span class="kd">let</span> <span class="k">mut</span> <span class="n">num_div</span> <span class="o">=</span> <span class="mi">1</span><span class="k">u64</span><span class="p">;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span>         <span class="kd">let</span> <span class="k">mut</span> <span class="n">num_tmp</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+<span class="lineno">13</span>         <span class="k">for</span> <span class="o">&amp;</span><span class="n">x</span> <span class="k">in</span> <span class="o">&amp;</span><span class="n">first_primes</span> <span class="p">{</span>
+<span class="lineno">14</span>             <span class="kd">let</span> <span class="n">prime</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="lineno">15</span>             <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">prime</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+<span class="lineno">16</span>                 <span class="kd">let</span> <span class="k">mut</span> <span class="n">exponent</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span>                 <span class="k">while</span> <span class="p">(</span><span class="n">num_tmp</span> <span class="o">%</span> <span class="n">prime</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+<span class="lineno">19</span>                     <span class="n">exponent</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">20</span>                     <span class="n">num_tmp</span> <span class="o">/=</span> <span class="n">prime</span><span class="p">;</span>
+<span class="lineno">21</span>                 <span class="p">}</span>
+<span class="lineno">22</span>                 <span class="n">num_div</span> <span class="o">*=</span> <span class="n">exponent</span><span class="p">;</span>
+<span class="lineno">23</span>             <span class="p">}</span>
+<span class="lineno">24</span>             <span class="k">if</span> <span class="n">num_tmp</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span> <span class="k">break</span><span class="p">;</span> <span class="p">}</span>
+<span class="lineno">25</span>         <span class="p">}</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span>         <span class="k">if</span> <span class="n">num_div</span> <span class="o">&gt;</span> <span class="mi">500</span> <span class="p">{</span>
+<span class="lineno">28</span>             <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;num: {}&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+<span class="lineno">29</span>             <span class="k">return</span><span class="p">;</span>
+<span class="lineno">30</span>         <span class="p">}</span>
+<span class="lineno">31</span>     <span class="p">}</span>
+<span class="lineno">32</span> <span class="p">}</span></code></pre></div>
+
+
+<p>Again we'll trim down to the interesting parts, since we've seen the prime iterator before, but you can read the <a href="https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex12.rs">full file</a>.</p>
+
+<p>This looks pretty familiar.  On <strong>line 5</strong>, we run our primes iterator, take enough to use later, and turn that into a <code>Vec&lt;u64&gt;</code> we can use a bunch of times.</p>
+
+<p>The other interesting line is <strong>line 13</strong>.  If you've played with vectors in Rust before, you know that you can iterate over them, like this:</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="n">x</span><span class="o">:</span> <span class="n">Vec</span><span class="o">&lt;</span><span class="kt">u32</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="p">.</span><span class="mi">10</span><span class="p">).</span><span class="n">collect</span><span class="p">();</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">x</span> <span class="p">{</span>
+        <span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>But if we try to do this in our Euler problem, we get a new error:</p>
+
+<pre><code>error: use of moved value: `first_primes`
+</code></pre>
+
+<p>What is a <em>moved value</em>?</p>
+
+<p>It turns out that a moved value is part of Rust's ownership system.  Just like the first time a programmer sees a pointer in C or a monad in Haskell, ownership in Rust is one of those things that's so uniquely Rust that it takes getting used to.  Once you begin to understand it, you'll be able to see how the type system is trying to help you describe your intentions a bit more clearly.</p>
+
+<p>If you're scratching your head, here's an example: imagine malloc'ing an array in C and then passing that malloc'ed array into a function.  Who is responsible for cleaning up that memory, the function you called or the function that created the array?  In C, you don't know by looking at the code, you only know as the writer of the code what your intention was.  Maybe the function is called 'cleanup' at which case, yes, you do want it to free that memory.  Or maybe the function is called 'inspect' and you decidedly <em>don't</em> want it to free the memory.  This is why Rust makes this very explicit.  By looking at the code, you can follow who is responsible for what.  The set of checks that do this make up Rust's ownership system.</p>
+
+<p>There are a lot of <a href="https://doc.rust-lang.org/book/references-and-borrowing.html">resources</a> to understand ownership,which do a good job of explaining ownership in detail.  For us, ownership is like trying to answer questions like "who is responsible for this thing?" and "when does this thing get removed?"  Ownership can be passed from variable to variable, and its strictly checked by the compiler.</p>
+
+<p>When you first encounter the above error, if you haven't already read about ownership, you might be in for a few hours of reading to get caught up.  But we have some hints here that we can get started with to help figure out what's happening.</p>
+
+<p>In our small example, we could iterate over a vector and all was well.  When did things start to go wrong in the Euler problem?</p>
+
+<p>On <strong>line 13</strong>, we want to loop over a vector, and when we look out to <strong>line 7</strong>, we see this is actually an inner loop being used by an outer loop.  That means that if the inner loop takes control of our vector, the next time around the outer loop we've lost the ownership.</p>
+
+<p>We don't want the inner loop to take ownership and then lose the ability to use the vector again in the next iteration of the loop, so we have to 'borrow' ownership.  As the name implies, by borrowing, we're only taking temporary ownership for a time, and we have to follow all the rules stated when we borrow.  With that in mind, let's look at <strong>line 13</strong> again:</p>
+
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">for</span> <span class="o">&amp;</span><span class="n">x</span> <span class="k">in</span> <span class="o">&amp;</span><span class="n">first_primes</span></code></pre></div>
+
+
+<p>We borrow <code>first_primes</code> instead of taking permanent ownership using the <code>&amp;</code> operator.  This operator says "I would like to borrow first_primes, and I can not edit the contents".  The compiler will then be able to check that we're using what we've borrowed correctly.  You might be curious borrowing and also being able to mutate.  To do that, we could've used the <code>&amp;mut</code> operator assuming the original vector was mutable.</p>
+
+<p>Finally, we use the same destructure trick we did earlier to get at the values of <code>x</code>.</p>
+
+<p><strong>PS:</strong> In this example, since all we were doing was iterating, we could have used the <code>.iter()</code> rather than borrowing, though that won't always be the case in other examples that need more direct interaction with the vector.</p>
+
+<h1>Cargo</h1>
+
+<p>After I got enough of these problems together that I got tired of building them by hand, I moved over to using Cargo.  Cargo is Rust's build/package tool that is quite handy.</p>
+
+<pre><code>[package]
+
+name = "eulerinrust"
+version = "0.1.0"
+
+[[bin]]
+name = "ex1"
+path = "src/ex1.rs"
+</code></pre>
+
+<p><em>An example of Cargo.toml</em></p>
+
+<p>Cargo lets you describe dependencies that your project needs, which it fetches from crates.io.  You can also control whether you're doing a release or debug build, and quite a bit more.  I'll no doubt start directly with Cargo for any future Rust projects.</p>
+
+<h1>Summary</h1>
+
+<p>These are just tiny examples created while playing around in a fairly simple set of problems, and yet there's actually quite a lot of Rust's richness shining through.  Rust has a powerful iterator story that feels composable and clear.  Rust's error checking is keeping us vigilant about handling error cases, matching types, and remembering who is responsible for values in the system.  Overall, it feels like a very well thought-out language that holds together well.</p>
+
+</div>
+ <div class="notepad-author-info">
+  <div class="row">
+      <section class="notepad-post-author small-12 columns">          
+              <img src="/images/jonathanturner.png" class="notepad-post-author-avatar" alt="Jonathan Turner's photo">
+              <span class="author-label">Author</span>
+              <h1>Jonathan Turner</h1>
+              <p><a href="https://twitter.com/jntrnr" class="author-website">@jntrnr</a></p>
+      </section>
+  </div>
+ </div>
+   
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69474134-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </div>
+</body>
+</html>
