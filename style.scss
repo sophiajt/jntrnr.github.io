@@ -371,26 +371,27 @@ tbody tr:nth-child(odd) th {
 .notepad-author-info {
   padding: 0;
   padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
+  padding-bottom: 0.0rem;
   background: #f2f2f2; }
   @media only screen and (min-width: 40.063em) {
     .notepad-author-info {
       padding-top: 1rem;
-      padding-bottom: 5rem; } }
+      padding-bottom: 4rem; } }
   @media only screen and (min-width: 70em) {
     .notepad-author-info {
       padding-top: 1.875rem;
-      padding-bottom: 6.875rem; } }
+      padding-bottom: 5.875rem; } }
   @media only screen and (min-width: 90em) {
     .notepad-author-info {
       padding-top: 1.5rem;
-      padding-bottom: 7.5rem; } }
+      padding-bottom: 6.5rem; } }
   .notepad-author-info .notepad-post-author {
     padding-left: 1.875rem;
     padding-right: 1.875rem;
     text-align: center; }
     .notepad-author-info .notepad-post-author .author-label {
       display: block;
+      padding-top: 2.5rem;
       font-size: 1rem;
       color: gray;
       font-style: italic; }
