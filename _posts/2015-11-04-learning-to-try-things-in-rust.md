@@ -154,7 +154,7 @@ The end result is that we have precise syntax that is transparent about errors a
 
 # Trade-offs
 
-Of course, there are trade-offs.  We end up repeating try!() in places we might have just wrapped in one big try/catch block.  For example, the fix to our earlier use case might look like this:
+Of course, there are trade-offs.  We end up repeating ```try!()``` in places we might have just wrapped in one big try/catch block.  For example, the fix to our earlier use case might look like this:
 
 {% highlight rust %}
 let num_chans = try!(read_u16_le(&mut f));
@@ -166,4 +166,4 @@ let bits_per_sample = try!(read_u16_le(&mut f));
 
 Personally, I'm happy making the trade-off for the added precision.  
 
-We also saw another trade-off earlier.  If you use ```try!``` in a function that doesn't return a Result, you get an incomprehensible error message.  But once you know what's going on, you can use it with confidence.
+We also saw another trade-off earlier.  If you use ```try!()``` in a function that doesn't return a Result, you get an incomprehensible error message.  But once you know what's going on, you can use it with confidence.
