@@ -13,7 +13,7 @@ fn foo_maker() -> Result<Foo, io::Error> { ...}
 I recognized this style, having come from playing with languages like Haskell, but despite doing some functional programming before I wasn't entirely sure how to approach it.  At first blush, the Result value seems pretty straightforward, it either returns something of Foo or an io::Error.  We know which one it returns by pattern matching out the value:
 
 {% highlight rust %}
-var result = foo_maker();
+let result = foo_maker();
 match result {
   Ok(foo) -> foo,
   Err(err) -> println!("Error: {:?}", err) // Ooops, we hit an error, tell the user
