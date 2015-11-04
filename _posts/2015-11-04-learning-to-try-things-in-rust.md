@@ -42,7 +42,7 @@ let block_align = read_u16_le(&mut f).unwrap();
 let bits_per_sample = read_u16_le(&mut f).unwrap();
 {% endhighlight %}
 
-If you felt a cold shiver run down your spine looking at that, good on you :).  Now let's talk about how we actually fix this code.
+If you felt a cold shiver run down your spine looking at that, good on you :).  Now, let's talk about how we actually fix this code.
 
 # Do or do not. There is a try!
 
