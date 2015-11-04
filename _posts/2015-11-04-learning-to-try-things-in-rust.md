@@ -122,7 +122,7 @@ fn load_data(fname: &String) -> Result<Data, io::Error> {
 }
 {% endhighlight %}
 
-It may take your eyes a minute to adjust to the new syntax, but knowing what we know, we can look at the code above and know exactly which functions might give us errors.  The try!() call even works on calls that are part of an expression, like ```try!(f.read_u8()) * 4```.  
+It may take your eyes a minute to adjust to the new syntax, but knowing what we know, we can look at the code above and know exactly which functions might give us errors.  The ```try!()``` call even works on calls that are part of an expression, like ```try!(f.read_u8()) * 4```.  
 
 Compare this to traditional try/catch blocks and how they tend to get put around whole sections of code when in reality only parts of the code blocks may throw exceptions.  The end result is code that's very clear and doesn't muddy exceptional code and value-based code together.
 
