@@ -46,7 +46,7 @@ If you felt a cold shiver run down your spine looking at that, good on you :).  
 
 # Do or do not. There is a try!
 
-Looking a bit further in Rust docs, I learned about another way to call functions using the ```try!``` macro.  Maybe, I thought, ```try!``` would save us.  So I tried it out:
+Looking a bit further in Rust examples, I learned about another way to call functions using the ```try!``` macro.  Maybe, I thought, ```try!``` would save us.  So I tried it out:
 
 {% highlight rust %}
 use std::io;
