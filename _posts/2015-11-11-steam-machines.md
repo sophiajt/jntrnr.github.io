@@ -18,6 +18,7 @@ The Steam Controller is a gamepad with two round touchpads and a set of traditio
 The Steam Link is something of a gaming bridge between the PC and your TV, allowing you to stream games from your PC over to your TV.  At around $50, it's pretty inexpensive.  
 
 ![Image of Steam Machine](http://cdn.akamai.steamstatic.com/steam/apps/353390/header.jpg?t=1447197276)
+
 _Alienware Steam Machine_
 
 Lastly, the Steam Machine.  The Steam Machine itself isn't actually a thing.  Rather, it's a PC specification that hardware vendors can build to.  Out of the gate, three hardware vendors have already produced a Steam Machine: Alienware (pictured above), Zotac, and Syber.  Steam Machines also come with a new operating system called [SteamOS](http://store.steampowered.com/steamos/), a form of Linux that's been optimized for gaming.  
@@ -48,8 +49,7 @@ It's still a risky play, and, I'd argue, one that's potentially riskier than par
 
 As an aside, you might think that being third-party would help you create the Steam Machine of your dreams, but as of the time of this writing, you can't even configure an Alienware machine to use SSD.  For a gaming machine.  No SSD.  What?  If you're like me, that's the first thing you'll want to upgrade.  I asked the Alienware rep over Twitter about it and got:
 
-Alienware @Alienware  1h1 hour ago
-@jntrnr it is something we are investigating but my guess right now is just a matter of SKU complexity and cost. _DC1
+![Image of Alienware blaming lack of consumer choice on SKU complexity]({{ site.baseurl }}/images/alienware.png)
 
 Again, likely something that will be fixed in time, but not the best initial experience and one that will turn-off some gamers from the Steam Machine idea.
 
