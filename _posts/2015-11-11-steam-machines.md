@@ -27,7 +27,7 @@ Lastly, the Steam Machine.  The Steam Machine itself isn't actually a thing.  Ra
 
 Now that we know the plan, is that plan the right plan?  Specifically, does the Steam Machine have a home?
 
-It's clear to me that a device like the Steam Machine has value in the market.  It's smaller than a gaming console, more flexible, and just as powerful.  I've spent countless hours gaming, reading news, watching movies, and even programming on mine.  I've even stopped using my Playstation 4 for gaming, opting instead to do all my gaming on the Alpha.
+It's clear to me that a device like the Steam Machine has value in the market.  It's smaller than a gaming console, more flexible, and just as powerful.  I've spent countless hours gaming, reading news, watching movies, and even programming on mine.  I've even stopped using my Playstation 4, opting instead to do all my gaming on the Alpha.
 
 But as I look at the Steam Machine release this week, I have some concerns.  
 
