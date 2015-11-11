@@ -43,9 +43,9 @@ That might look good on paper for Valve.  Since they're new into the hardware ga
 
 It's still a risky play, and, I'd argue, one that's potentially riskier than partnering with one vendor to create a Steam-branded first-party machine.  Some reasons why:
 
-* Third-party vendors can't afford to sell loss leader machines.  This means the machines will necessarily be lower-powered than they could be.  This narrows the performance per $ gap between this batch of Steam Machines and established consoles like Playstation 4 and Xbox One.  Which, in turn, hits customers in the wallet.  While the Steam Machines are cool pieces of technology, they are also spendy pieces of technology.  For example, the Zotac machine is $900 at the time of writing.  At that price, I could buy **3 WiiUs** -or- **an Xbox One *and* a Playstation 4**, with money left over for games.
+**Third-party vendors can't afford to sell loss leader machines.**  This means the machines will necessarily be lower-powered than they could be.  This narrows the performance per $ gap between this batch of Steam Machines and established consoles like Playstation 4 and Xbox One.  Which, in turn, hits customers in the wallet.  While the Steam Machines are cool pieces of technology, they are also spendy pieces of technology.  For example, the Zotac machine is $900 at the time of writing.  At that price, I could buy **3 WiiUs** -or- **an Xbox One *and* a Playstation 4**, with money left over for games.
 
-* Third-party purchase experience is going to be whatever that vendor makes available.  For example, this morning when looking at the new Alienware machine I got website errors on the Dell.com site.  Of course, some of this will get better over time, but it's difficult to see how both a higher price tag and a worse purchasing experience is going to help the Steam Machine brand.
+**Third-party purchase experience is going to be whatever that vendor makes available.**  For example, this morning when looking at the new Alienware machine I got website errors on the Dell.com site.  Of course, some of this will get better over time, but it's difficult to see how both a higher price tag and a worse purchasing experience is going to help the Steam Machine brand.
 
 As an aside, you might think that being third-party would help you create the Steam Machine of your dreams, but as of the time of this writing, you can't even configure an Alienware machine to use SSD.  For a gaming machine.  No SSD.  What?  If you're like me, that's the first thing you'll want to upgrade.  I asked the Alienware rep over Twitter about it and got:
 
@@ -53,7 +53,7 @@ As an aside, you might think that being third-party would help you create the St
 
 Again, likely something that will be fixed in time, but not the best initial experience and one that will turn-off some gamers from the Steam Machine idea.
 
-* Valve's Steam brand is already better than the third-party vendor brands.  Steam is **the** major name in PC gaming today.  Period.  Who is Zotac or Syber?  I honestly have never heard of them.  Why play second fiddle to brands that aren't as strong as your own?
+Lastly, **Valve's Steam brand is already better than the third-party vendor brands**.  Steam is **the** major name in PC gaming today.  Period.  Who is Zotac or Syber?  I honestly have never heard of them.  Why play second fiddle to brands that aren't as strong as your own?
 
 ## Concern 2: SteamOS
 
