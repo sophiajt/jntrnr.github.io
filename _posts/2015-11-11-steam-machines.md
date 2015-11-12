@@ -11,7 +11,7 @@ To get there, Valve has started with three initial devices.
 
 ![Image of Steam Controller](http://cdn.akamai.steamstatic.com/steam/apps/353370/header.jpg?t=1447180995)
 
-The Steam Controller is a gamepad with two round touchpads and a set of traditional gamepad buttons.  It can be configured to work as a normal gamepad for games with gamepad support.  Alternatively, the touchpads can be as touchpads to play games that work with a mouse instead of gamepad.
+The Steam Controller is a gamepad with two round touchpads and a set of traditional gamepad buttons.  It can be configured to work as a normal gamepad for games with gamepad support.  Alternatively, the touchpads can be used just as touchpads to play games that work with a mouse instead of gamepad.
 
 ![Image of Steam Link](http://cdn.akamai.steamstatic.com/steam/apps/353380/header.jpg?t=1447183971)
 
