@@ -55,8 +55,6 @@ for _ in 0..(num_prg_pages*4) {
 
 There may be a more Rust-native way of doing it.  Personally, I think it'd be nice to be able to read directly into a Vec, so you could elide that step.
 
-With that, the file is loaded.  At first, I followed the C# exactly, and return a struct that would represent the cartridge.  Later on, I would refactor this as I tried to improve my program structure and simplify ownership, as we'll see later.
-
 ## Side-by-side porting
 
 One of the first things I did after I had file loading in place was to start porting over the CPU emulation.  Because I wanted the code to be fairy clean, I opted to not do a literal port.  Instead, I opened two separate editor windows: one for the original C# source, and one for the new Rust source.  Tedious, but I hoped that a port focused on what would fit better with Rust would be less error-prone.
