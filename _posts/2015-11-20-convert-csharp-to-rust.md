@@ -166,7 +166,7 @@ Just as in the C# and JavaScript versions of the emulator, I didn't worry about 
 
 After I got the emulator working, I let it rip.  The result was something unplayably fast.  Not bad for a first try.  
 
-In hindsight, this too isn't suprising.  The CPU gets to work directly with the MMU.  Ditto with the MMU and the PPU.  The systems can call functions in each other without any abstraction, VM, or GC.  By default, the core structs sit on the stack.  
+In hindsight, this isn't too surprising.  The CPU gets to work directly with the MMU.  Ditto with the MMU and the PPU.  The systems can call functions in each other without any abstraction, VM, or GC.  By default, the core structs sit on the stack.  
 
 Using Rust had nudged me into doing what would have made sense for a decent C-based approach, without the risks.  Of course, it's not like Rust prevents you from adding in a hefty abstraction layer, but the defaults seem to push you in the right direction. 
 
