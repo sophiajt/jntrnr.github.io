@@ -144,7 +144,7 @@ let foo = Foo { x: 10 }
 println!("{:?}", foo);
 {% endhighlight %}
 
-By deriving debug, you have the ability to output a debug format of that structure, which is output using {:?}.
+By deriving Debug, you have the ability to output a debug format of that structure, which is output using {:?}.
 
 This is very handy to help bootstrap a project, which you quickly want to look at the contents of what is working so far.  After a while, I found I ended up removing these helpers and put in my own, customized Debug implementations.
 
