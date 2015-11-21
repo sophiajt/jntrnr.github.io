@@ -61,7 +61,7 @@ One of the first things I did after I had file loading in place was to start por
 
 There's another reason not to do copy/pasting of code when porting: too many little things needed to be changed to the Rust style. For example, Rust-friendly names often differ from the C# equivalent (eg the ReadChrRom method would need to be read_chr_rom to match Rust naming conventions).  Like-wise, little things that help readability in Rust, like the "no parens around if guards" means that copy/pasted code would need to be touched up.  All told, a minor frustration, but it gave ample time to make the code look a bit cleaner in the transfer so likely a net win.
 
-Feeling more comfortable with Rust's use of expressions, I could write code in a more dense way.  For example, here is some code from the ROR or Rotate Right opcode:
+Feeling more comfortable with Rust's use of expressions, I could write code in a more dense way.  For example, here is some code from the ROR or Rotate Right opcode in C#:
 
 {% highlight csharp %}
 if ((valueholder & 0x1) == 0x1)
@@ -87,7 +87,7 @@ else
 	sign_flag = 0;
 {% endhighlight %}
 
-became:
+became this in Rust:
 
 {% highlight rust %}
 let bit = (value & 0x1) == 0x1;
