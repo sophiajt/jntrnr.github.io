@@ -146,7 +146,7 @@ println!("{:?}", foo);
 
 By deriving Debug, you have the ability to output a debug format of that structure, which is output using {:?}.
 
-This is very handy to help bootstrap a project, which you quickly want to look at the contents of what is working so far.  After a while, I found I ended up removing these helpers and put in my own, customized Debug implementations.
+This is very handy to help bootstrap a project, when you quickly want to look at the contents of what is working so far.  After a while, I found I ended up removing these helpers and putting in my own, customized implementations.
 
 ## SDL
 
