@@ -1,5 +1,5 @@
 ---
-title: Converting a C# app to Rust
+title: Porting a C# NES emualator to Rust
 ---
 
 Many years ago, I created a [simple NES emulator in C#](http://jturner.tapetrade.net/sharpnes/index.html) using SDL and Mono.  For fun, I wanted to see what it would be like to port that emulator to Rust.  A couple weeks later, after poking on it on and off between packing for a move, I was able to [get it working](https://github.com/jonathandturner/rustynes).
