@@ -184,3 +184,10 @@ In Patrick's [video about his emulator](https://air.mozilla.org/sprocketnes-prac
 
 The never-ending rabbit hole for any emulation project is to see just how precisely you can emulate the hardware.  There's plenty of work here.
 
+# What I've learned
+
+I'm getting a little more comfortable with Rust.  Thinking through an ownership refactoring can still take a while, but it's starting to feel like the hurdle you take on so that you can worry less about safety and performance.  I still have a ways to go before it becomes second nature.
+
+Cargo shines again, and the SDL bindings were easy to put in place and worked as expected.  No complaints there.  
+
+Feels like I'm still scratching the surface.  There are likely some slick spots to use traits and macros to cut down on the redundancy and coupling, repectively.  But I'm happy with the progress.
