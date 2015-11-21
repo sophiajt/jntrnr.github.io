@@ -182,5 +182,5 @@ In Patrick's [video about his emulator](https://air.mozilla.org/sprocketnes-prac
 
 ## Precisely emulate the machine
 
-The never-ending rabbit whole for any emulation project is to see just how precisely you can emulate the hardware.  There's plenty of work here.
+The never-ending rabbit hole for any emulation project is to see just how precisely you can emulate the hardware.  There's plenty of work here.
 
