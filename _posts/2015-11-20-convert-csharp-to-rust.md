@@ -158,7 +158,7 @@ I'd never used SDL2 before, but after looking through the [examples directory](h
 
 ## Chase crashing bugs
 
-After wrestling a few ownership errors, I largely spent my time on correctness.  I ended up having a few hard-to-find issues where I flipped the boolean logic on a check or forgot to implement a piece of the machine I hadn't realized was required.  After many hours pouring over the code side by side, or looking at the output log, I finally managed to get the outputs similar.
+After wrestling a few ownership errors, I largely spent my time on correctness.  I ended up having a few hard-to-find issues where I flipped the boolean logic on a check or discovering I forgot to implement a piece of the machine that was required.  After many hours pouring over the code side by side, or looking at the output log, I finally managed to get the outputs similar.
 
 Just as in the C# and JavaScript versions of the emulator, I didn't worry about any crashes.  A few times I had an arithmetic overflow or error accessing a vector out of bounds, but those were easy to fix.  
 
