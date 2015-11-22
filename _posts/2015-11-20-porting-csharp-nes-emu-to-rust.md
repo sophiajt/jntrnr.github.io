@@ -87,7 +87,7 @@ else
 	sign_flag = 0;
 {% endhighlight %}
 
-became this in Rust:
+and here's what it became in Rust:
 
 {% highlight rust %}
 let bit = (value & 0x1) == 0x1;
