@@ -12,7 +12,7 @@ Many years ago, I created a [simple NES emulator in C#](http://jturner.tapetrade
 
 Loading the types of files commonly used in emulators requires us to work with binary files.  To do so, we need a way of loading the raw data both as just plain bytes and also as numbers.  Rust, by default, comes with a [fairly slim API](https://doc.rust-lang.org/std/fs/struct.File.html) for dealing with binary data.  No matter, Rust is also very flexible and allows you to build on additional parts to the API to suit your needs.
 
-I started there, and built out a few functions that would let me read in the numbers from the file both using big-ending and little-ending.
+I started there, and built out a few functions that would let me read in the numbers from the file both using big-endian and little-endian.
 
 {% highlight rust %}
 pub trait BitReader {
