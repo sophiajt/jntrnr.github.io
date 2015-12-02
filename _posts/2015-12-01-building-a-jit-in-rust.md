@@ -2,7 +2,7 @@
 title: Building a JIT in Rust
 ---
 
-The other day I threw together a simple JIT, and I thought it'd be fun to show the steps I did.  With this, it should be possible to create a page of executable memory, write some machine code into it, and then treat it like a function call from Rust.
+The other day I threw together a simple Just-In-Time compiler (or JIT, for short), and I thought it'd be fun to show the steps I did.  With this, it should be possible to create a page of executable memory, write some machine code into it, and then treat it like a function call from Rust.
 
 Let's get started!  You can grab my [JIT project](https://github.com/jonathandturner/rustyjit), if you want to follow along.  I've only tested this in OS X, but it should adaptable for other platforms.  
 
