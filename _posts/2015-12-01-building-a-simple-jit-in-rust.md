@@ -6,6 +6,8 @@ The other day I threw together a simple Just-In-Time compiler (or JIT, for short
 
 Let's get started!  You can grab my [JIT project](https://github.com/jonathandturner/rustyjit), if you want to follow along.  I've only tested this in OS X, but it should adaptable for other platforms.  
 
+**Updated 12/2/2015:** Thanks to some reader comments, I've updated the code below to not use malloc and instead use posix_memalign directly as the allocation step, which avoids leaking memory.
+
 # Creating executable memory
 
 For our JIT, we'll need to first allocate the memory that will hold our JIT'ted code.  The most important thing here is to create a block of memory that's executable so that we can later jump into it, run code, and then return back out.
@@ -21,15 +23,7 @@ libc = "0.2.2"
 extern crate libc;
 {% endhighlight %}
 
-Once we've pulled in libc, we need to ```malloc``` some memory.  This will give us a chunk of memory we can work with at the size we want.  Notice that we get back a raw pointer to ```c_void```.  In C, we might write this ```void *```.  We'll work with it in this form for a bit, but later move it into a form that's easier to work with in Rust.
-
-{% highlight rust %}
-unsafe {
-  let mut page : *mut libc::c_void = libc::malloc(size);
-}
-{% endhighlight %}
-
-With our memory allocated, we next need to align the memory.  Some operating systems, like OS X, require that executable code memory starts at a particular alignment.  For example, that it starts at an address that is exactly a multiple of 0x1000.
+Once we've pulled in libc, we need to allocated aligned memory.  Some operating systems, like OS X, require that executable code memory starts at a particular alignment.  For example, that it starts at an address that is exactly a multiple of 0x1000.
 
 {% highlight rust %}
 const PAGE_SIZE: usize = 4096;
@@ -60,6 +54,8 @@ unsafe {
 {% endhighlight %}
 
 We've allocated our JIT memory, aligned it, set it as executable, and then filled it with the ```RET``` instruction.  We're ready to write some code into it.
+
+*Note:* You'll notice we don't explicitly call libc::free() after we allocate.  For simplicity, we treat the JIT'ed functions we create as long-lived, but a full-blown JIT would likely use better memory hygiene.
 
 # Getting ready to write our first program
 
@@ -117,7 +113,7 @@ impl JitMemory {
     let contents : *mut u8;
     unsafe {
       let size = num_pages * PAGE_SIZE;
-      let mut _contents : *mut libc::c_void = libc::malloc(size);
+      let mut _contents : *mut libc::c_void = mem::uninitialized(); // avoid uninitalized warning
       libc::posix_memalign(&mut _contents, PAGE_SIZE, size);
       libc::mprotect(_contents, size, libc::PROT_EXEC | libc::PROT_READ | libc::PROT_WRITE);
 
@@ -236,4 +232,5 @@ Finally, we can continue with the program:
 # Lots ahead
 
 Now that we have a tiny JIT and a way to debug it, the sky is the limit.  Turning source code into machine code is the heart of any compiler, and with these few additional steps that compiler could be made to output code that we can run directly.
+
 
