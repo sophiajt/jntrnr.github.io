@@ -8,9 +8,9 @@ Let's get started!  You can grab my [JIT project](https://github.com/jonathandtu
 
 # Creating executable memory
 
-For our JIT, we'll need to allocate the memory that will hold our JIT'ted code.  The most important thing here is to create a block of memory that's executable so that we can later jump into it, run code, and then return back out.
+For our JIT, we'll need to first allocate the memory that will hold our JIT'ted code.  The most important thing here is to create a block of memory that's executable so that we can later jump into it, run code, and then return back out.
 
-To do this, we need a few functions from the standard C library.  
+To do this, we need a few functions from the standard C library, which we can access through the ```libc``` external module.
 
 {% highlight rust %}
 // added to Cargo.toml
@@ -19,16 +19,17 @@ libc = "0.2.2"
 
 // main.rs
 extern crate libc;
+{% endhighlight %}
 
-// ...
+Once we've pulled in libc, we need to ```malloc``` some memory.  This will give us a chunk of memory we can work with at the size we want.  Notice that we get back a raw pointer to ```c_void```.  In C, we might write this ```void *```.  We'll work with it in this form for a bit, but later move it into a form that's easier to work with in Rust.
+
+{% highlight rust %}
 unsafe {
   let mut page : *mut libc::c_void = libc::malloc(size);
 }
 {% endhighlight %}
 
-Once we've pulled in libc, we need to ```malloc``` some memory.  This will give us a chunk of memory we can work with at the size we want.  Notice also, that we get back a raw pointer to ```c_void```.  In C, we might write this ```void *```.  We'll work with it in this form for a bit, but later move it into a form that's a bit easier to work with in Rust.
-
-Next, we need to align the memory.  Some operating systems, like OS X, require that executable code memory starts at a particular alignment.  For example, that it starts at an address that is exactly a multiple of 0x1000.
+With our memory allocated, we next need to align the memory.  Some operating systems, like OS X, require that executable code memory starts at a particular alignment.  For example, that it starts at an address that is exactly a multiple of 0x1000.
 
 {% highlight rust %}
 const PAGE_SIZE: usize = 4096;
@@ -38,7 +39,7 @@ unsafe {
 }
 {% endhighlight %}
 
-Once aligned, we now have memory we can safely jump to.  Well, almost.  Our last required step is to actually enable the ability to execute code in this area of memory.
+Once aligned, we now have memory we can safely jump to.  Well, almost.  The last required step is to enable executing code in this area of memory.
 
 {% highlight rust %}
 unsafe {
@@ -46,7 +47,7 @@ unsafe {
 }
 {% endhighlight %}
 
-Now we're ready.  We have something we can write into and then jump into.  Since running JIT code is basically no-mans-land, it's easy to get yourself in trouble.  One step that I add is to also write in the machine code for the ```RET``` instruction, which will let us return from our function even if we happen to accidentally run other memory in this block.
+Now we're ready.  We have something we can write into and then jump into.  Since running JIT code is basically "no man's land" without any safeguards, it's easy to get yourself in trouble.  One step that I add is to also fill the memory block with the ```RET``` instruction, which will let us return from our function even if we happen to accidentally run other memory in the block.
 
 {% highlight rust %}
 extern {
@@ -54,7 +55,7 @@ extern {
 }
 // ...
 unsafe {
-  memset(page, 0xc3, size);  // for now, prepopulate with 'RET'
+  memset(page, 0xc3, size);  // prepopulate with 'RET' calls (0xc3)
 }
 {% endhighlight %}
 
@@ -76,7 +77,9 @@ struct JitMemory {
 fn alloc() -> JitMemory {
   let contents: mut* u8;
   unsafe {
-    //allocate 'page' as before
+    //note: allocate 'page' as before
+    
+    //then, transmute
     contents = mem::transmute(page);
   }
   
@@ -106,7 +109,7 @@ impl IndexMut<usize> for JitMemory {
 }
 {% endhighlight %}
 
-With these in place, we can now allocate and start writing our instructions into memory.  Before we do so, let's put everything we'd done so far into a constructor for our struct:
+With these in place, we can now more easily write instructions into memory.  Before we do, let's put everything we'd done so far into a constructor for our struct:
 
 {% highlight rust %}
 impl JitMemory {
@@ -130,26 +133,26 @@ impl JitMemory {
 
 # Writing our first JIT program
 
-With our new constructor and indexing functions in place, let's write our first JIT program.  The simplest "hello world" that I use when doing JIT is a function that takes no parameters and returns a simple value.
+With our new constructor and indexing functions in place, we can write our first JIT program.  The simplest "hello world" that I use when doing JIT is a function that takes no parameters and returns a simple value.
 
 We can do this with two assembly instructions:
 
 {% highlight nasm %}
 MOV RAX, 0x3  ; move our return value (0x3) into RAX, 
-              ; the register in 64-bit used for return values
+              ; the register in x64 used for return values
 RET           ; return from the funcation call
 {% endhighlight %}
 
 Great, now we just need to write this program into our JIT memory.  But wait, we don't have an assembler :)
 
-Not to fear, there are plenty of assemblers for us to get us started.  There are even [online assemblers](https://defuse.ca/online-x86-assembler.htm) that you can use.  Let's plug the first line ```MOV RAX, 0x3``` in the online assembler.
+Not to fear, there are plenty of assemblers to get us started.  There are even [online assemblers](https://defuse.ca/online-x86-assembler.htm) you can use.  Let's plug the first line ```MOV RAX, 0x3``` into our online assembler.
 
-The top line of the result is the raw hex.  This is what we want.  The actual bits we'll be writing into memory for our function: 48C7C003000000
+The top line of the result is the raw hex.  This is what we want.  These are the actual bits we'll be writing into memory for our function: 48C7C003000000
 
 With these bytes, and the RET instruction we already filled our memory with, we now have our full function.  We can use our indexing functions to write this out:
 
 {% highlight rust %}
-let mut jit : JitMemory = JitMemory::new(1);  // allocate a page of memory, like we did earlier
+let mut jit : JitMemory = JitMemory::new(1);  // allocate a page of memory
 
 jit[0] = 0x48;  // mov RAX, 0x3
 jit[1] = 0xc7;
@@ -180,7 +183,7 @@ fn run_jit() -> (fn() -> i64) {
 }
 {% endhighlight %}
 
-And with that, after a few handfuls of unsafe calls and transmutes, we have our function.  The only thing that's left is to call it:
+And with that, after a few handfuls of unsafe calls and transmutes, we have our function.  The only thing left is to call it:
 
 {% highlight rust %}
 fn main() {
@@ -191,29 +194,33 @@ fn main() {
 
 # Debugging
 
-When working with a JIT, it's inevitable at some point something will go wrong and we'll need to dive into the debugger.  Luckily, Rust works with LLDB, so we can do just that.
+When working with a JIT, it's inevitable at some point something will go wrong, and we'll need to dive into the debugger.  Luckily, Rust works with LLDB out of the box.
 
 Here are some helpful LLDB commands to get you started:
 
+Start the JIT in LLDB:
+
 ```lldb target/debug/rustyjit```
 
-Start the JIT in LLDB.
+Set a breakpoint for the line that contains the call into our JIT code:
 
 ```> br set -line 64```
 
-Set a breakpoint for the line that contains the call to jump into our JIT code
+Run to our breakpoint:
 
 ```> run```
 
-Run to our breakpoint.  Now that we're about to run the code, there are a few things we can do:
+Now that we're about to run our JIT code, there are a few things we can do.
+
+The first one is to verify the address of our code:
 
 ```> p fun```
 
-Show the pointer address of our function ```fun```.  Unfortunately, that's not the most helpful thing in the world.  What we actually want is look at the memory behind the function.
+Unfortunately, that's not the most helpful thing in the world.  What we often want is look at the memory behind the function:
 
 ```> mem read fun```
 
-Which gives us back something like this:
+This gives us back something like this:
 
 {% highlight nasm %}
 0x100804000: 48 c7 c0 03 00 00 00 c3 c3 c3 c3 c3 c3 c3 c3 c3  H??....?????????
