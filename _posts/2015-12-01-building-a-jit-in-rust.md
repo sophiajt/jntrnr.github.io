@@ -215,8 +215,10 @@ Show the pointer address of our function ```fun```.  Unfortunately, that's not t
 
 Which gives us back something like this:
 
-```0x100804000: 48 c7 c0 03 00 00 00 c3 c3 c3 c3 c3 c3 c3 c3 c3  H??....?????????
-0x100804010: c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3  ????????????????```
+{% highlight nasm %}
+0x100804000: 48 c7 c0 03 00 00 00 c3 c3 c3 c3 c3 c3 c3 c3 c3  H??....?????????
+0x100804010: c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3  ????????????????
+{% endhighlight %}
 
 That's better.  Now we can see if the bytes we expect to be there are in fact there.  If we wanted to, we could update memory here using ```mem write``` if something was out of place.
 
