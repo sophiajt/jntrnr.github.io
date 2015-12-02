@@ -195,7 +195,36 @@ When working with a JIT, it's inevitable at some point something will go wrong a
 
 Here are some helpful LLDB commands to get you started:
 
-```> lldb target/debug/rustyjit```
+```lldb target/debug/rustyjit```
 
 Start the JIT in LLDB.
+
+```> br set -line 64```
+
+Set a breakpoint for the line that contains the call to jump into our JIT code
+
+```> run```
+
+Run to our breakpoint.  Now that we're about to run the code, there are a few things we can do:
+
+```> p fun```
+
+Show the pointer address of our function ```fun```.  Unfortunately, that's not the most helpful thing in the world.  What we actually want is look at the memory behind the function.
+
+```> mem read fun```
+
+Which gives us back something like this:
+
+```0x100804000: 48 c7 c0 03 00 00 00 c3 c3 c3 c3 c3 c3 c3 c3 c3  H??....?????????
+0x100804010: c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3  ????????????????```
+
+That's better.  Now we can see if the bytes we expect to be there are in fact there.  If we wanted to, we could update memory here using ```mem write``` if something was out of place.
+
+Finally, we can continue with the program:
+
+```> cont```
+
+# Lots ahead
+
+Now that we have a tiny JIT and a way to debug it, the sky is the limit.  Turning source code into machine code that we can run is the heart of any compiler, and with these few additional steps that compiler could be made to output code that we can run directly.
 
