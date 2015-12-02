@@ -190,3 +190,11 @@ fn main() {
 
 # Debugging
 
+When working with a JIT, it's inevitable at some point something will go wrong and we'll need to dive into the debugger.  Luckily, Rust works with LLDB, so we can do just that.
+
+Here are some helpful LLDB commands to get you started:
+
+> lldb target/debug/rustyjit
+
+Start the JIT in LLDB.
+
