@@ -195,7 +195,7 @@ When working with a JIT, it's inevitable at some point something will go wrong a
 
 Here are some helpful LLDB commands to get you started:
 
-> lldb target/debug/rustyjit
+```> lldb target/debug/rustyjit```
 
 Start the JIT in LLDB.
 
