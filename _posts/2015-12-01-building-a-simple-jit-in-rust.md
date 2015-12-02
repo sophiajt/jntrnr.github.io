@@ -140,7 +140,7 @@ We can do this with two assembly instructions:
 {% highlight nasm %}
 MOV RAX, 0x3  ; move our return value (0x3) into RAX, 
               ; the register in x64 used for return values
-RET           ; return from the funcation call
+RET           ; return from the function call
 {% endhighlight %}
 
 Great, now we just need to write this program into our JIT memory.  But wait, we don't have an assembler :)
