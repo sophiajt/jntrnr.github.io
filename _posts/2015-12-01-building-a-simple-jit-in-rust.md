@@ -34,7 +34,7 @@ unsafe {
 }
 {% endhighlight %}
 
-Once allocated, we now have memory we can safely jump to.  Well, almost.  The last required step is to enable executing code in this area of memory.
+Once allocated, we now have memory we can safely jump to.  Well, almost.  Before we can run code in our newly-allocated memory, we need to enable executing code in this area of memory.
 
 {% highlight rust %}
 unsafe {
