@@ -226,6 +226,10 @@ This gives us back something like this:
 
 That's better.  Now we can see if the bytes we expect to be there are in fact there.  If we wanted, we could update memory using ```mem write``` if something was out of place.
 
+We can also use the built in disassembler to read back out what the asm instructions are for our function:
+
+```> dis -A x64 -s fun```
+
 Finally, we can continue with the program:
 
 ```> cont```
