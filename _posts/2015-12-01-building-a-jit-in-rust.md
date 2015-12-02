@@ -134,8 +134,9 @@ With our new constructor and indexing functions in place, let's write our first 
 
 We can do this with two assembly instructions:
 
-{% highlight assembly %}
-MOV RAX, 0x3  ; move our return value (0x3) into RAX, the register in 64-bit used for return values
+{% highlight nasm %}
+MOV RAX, 0x3  ; move our return value (0x3) into RAX, 
+              ; the register in 64-bit used for return values
 RET           ; return from the funcation call
 {% endhighlight %}
 
