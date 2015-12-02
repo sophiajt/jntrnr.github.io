@@ -55,7 +55,7 @@ unsafe {
 
 We've allocated our JIT memory, aligned it, set it as executable, and then filled it with the ```RET``` instruction.  We're ready to write some code into it.
 
-*Note:* You'll notice we don't explicitly call libc::free() after we allocate.  For simplicity, we treat the JIT'ed functions we create as long-lived, but a full-blown JIT would likely use better memory hygiene.
+*Note:* You'll notice we don't explicitly call ```libc::free()``` after we allocate.  For simplicity, we treat the JIT'ed functions we create as long-lived, but a full-blown JIT would likely use better memory hygiene.
 
 # Getting ready to write our first program
 
