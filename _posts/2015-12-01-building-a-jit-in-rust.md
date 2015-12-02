@@ -227,7 +227,7 @@ This gives us back something like this:
 0x100804010: c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3  ????????????????
 {% endhighlight %}
 
-That's better.  Now we can see if the bytes we expect to be there are in fact there.  If we wanted to, we could update memory here using ```mem write``` if something was out of place.
+That's better.  Now we can see if the bytes we expect to be there are in fact there.  If we wanted, we could update memory using ```mem write``` if something was out of place.
 
 Finally, we can continue with the program:
 
