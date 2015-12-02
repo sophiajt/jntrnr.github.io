@@ -29,6 +29,7 @@ Once we've pulled in libc, we need to allocated aligned memory.  Some operating 
 const PAGE_SIZE: usize = 4096;
 // ...
 unsafe {
+  let mut page : *mut libc::c_void = mem::uninitialized();
   libc::posix_memalign(&mut page, PAGE_SIZE, size);
 }
 {% endhighlight %}
