@@ -16,6 +16,8 @@ markdown:           rdiscount
 nav:
   - name:           "About"
     href:           "//jonathanturner.org/about"
+  - name:           "RSS"
+    href:           "//jonathanturner.org/feed.xml"
 
 # Sass
 sass:
