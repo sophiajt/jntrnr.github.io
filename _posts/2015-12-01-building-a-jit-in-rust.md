@@ -222,7 +222,7 @@ Unfortunately, that's not the most helpful thing in the world.  What we often wa
 
 This gives us back something like this:
 
-{% highlight nasm %}
+{% highlight c-objdump %}
 0x100804000: 48 c7 c0 03 00 00 00 c3 c3 c3 c3 c3 c3 c3 c3 c3  H??....?????????
 0x100804010: c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3  ????????????????
 {% endhighlight %}
