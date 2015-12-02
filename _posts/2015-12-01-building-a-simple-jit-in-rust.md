@@ -23,7 +23,7 @@ libc = "0.2.2"
 extern crate libc;
 {% endhighlight %}
 
-Once we've pulled in libc, we need to allocated aligned memory.  Some operating systems, like OS X, require that executable code memory starts at a particular alignment.  For example, that it starts at an address that is exactly a multiple of 0x1000.
+Once we've pulled in libc, we need to allocated memory.  Not just any memory, we need to allocate _aligned_ memory.  Some operating systems, like OS X, require that executable code memory starts at a particular alignment.  For example, that the address is exactly a multiple of 0x1000.
 
 {% highlight rust %}
 const PAGE_SIZE: usize = 4096;
@@ -34,7 +34,7 @@ unsafe {
 }
 {% endhighlight %}
 
-Once aligned, we now have memory we can safely jump to.  Well, almost.  The last required step is to enable executing code in this area of memory.
+Once allocated, we now have memory we can safely jump to.  Well, almost.  The last required step is to enable executing code in this area of memory.
 
 {% highlight rust %}
 unsafe {
