@@ -235,5 +235,5 @@ Finally, we can continue with the program:
 
 # Lots ahead
 
-Now that we have a tiny JIT and a way to debug it, the sky is the limit.  Turning source code into machine code that we can run is the heart of any compiler, and with these few additional steps that compiler could be made to output code that we can run directly.
+Now that we have a tiny JIT and a way to debug it, the sky is the limit.  Turning source code into machine code is the heart of any compiler, and with these few additional steps that compiler could be made to output code that we can run directly.
 
