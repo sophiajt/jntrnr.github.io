@@ -251,3 +251,4 @@ But you don't have to take my word on it.  Like any fix for the Blub Paradox, it
 
 It's natural to think that some features are ornamental when you're first coming to them.  Time and exposure are the real test.
 
+*Special thanks to Yehuda Katz and Jason Turner for reviewing this post and sending me their feedback*
