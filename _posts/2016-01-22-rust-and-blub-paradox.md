@@ -8,7 +8,7 @@ A few weeks ago, I read an [analysis of Rust, D, and Go](https://www.quora.com/W
 
 Having met Andrei and seen a few of his talks, I know that he likes to poke fun.  Still, let's take the bait.  Is his observation funny because it's a funny image or is it funny because there's an underlying truth to what he's saying?
 
-**EDIT:** thanks to all the responses to this post, I've also written a [follow-up on the Blub Paradox](http://www.jonathanturner.org/2016/01/rethinking-the-blub-paradox.html) on where its wrong and where its helpful.
+**EDIT:** thanks to all the responses to this post, I've written a follow-up on [where the Blub Paradox is wrong and where it's helpful](http://www.jonathanturner.org/2016/01/rethinking-the-blub-paradox.html).
 
 # Blub paradox
 
