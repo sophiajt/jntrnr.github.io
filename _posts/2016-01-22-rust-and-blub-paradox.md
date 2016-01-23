@@ -8,6 +8,8 @@ A few weeks ago, I read an [analysis of Rust, D, and Go](https://www.quora.com/W
 
 Having met Andrei and seen a few of his talks, I know that he likes to poke fun.  Still, let's take the bait.  Is his observation funny because it's a funny image or is it funny because there's an underlying truth to what he's saying?
 
+**EDIT:** thanks to all the responses to this post, I've also written a [follow-up on the Blub Paradox](http://www.jonathanturner.org/2016/01/rethinking-the-blub-paradox.html) on where its wrong and where its helpful.
+
 # Blub paradox
 
 Whenever I think about how useful certain language features are, I almost always come back to Paul Graham's essay ["Beating the Averages"](http://www.paulgraham.com/avg.html).  In it, he observes an interesting phenomenon among programmers he calls "the Blub Paradox".  To recap for those who haven't heard of it, the paradox goes something like this: let's say there's a programmer using a language called Blub.  Blub falls somewhere in the middle of the programming language pack in terms of capability.  It's not the lowest, most minimal language nor is it the most powerful.
