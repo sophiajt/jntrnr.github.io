@@ -6,7 +6,7 @@ I got a lot of great feedback on my previous post ["Rust and the Blub Paradox"](
 
 In its original formulation, the [Blub Paradox](http://www.paulgraham.com/avg.html) is something of a tool for people to feel smug about their favorite language.  I heard a lot of feedback that it feels condescending.  I hadn't realized that in my mind the Blub Paradox had morphed from its original form into something different.
 
-In this post, I'd like to break down the Blub Paradox down to what I see as its fundamental observation: that we, as programmers, can have a form of unconscious bias.  I'll call this *Feature Bias* so that we don't confuse it with Paul's original idea.
+In this post, I'd like to break down the Blub Paradox into to what I see as its fundamental observation: that we, as programmers, can have a form of unconscious bias.  I'll call this *Feature Bias* so that we don't confuse it with Paul's original idea.
 
 # There are no universally better languages
 
