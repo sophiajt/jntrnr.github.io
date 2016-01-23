@@ -10,6 +10,8 @@ Having met Andrei and seen a few of his talks, I know that he likes to poke fun.
 
 **EDIT:** thanks to all the responses to this post, I've written a follow-up on [where the Blub Paradox is wrong and where it's helpful](http://www.jonathanturner.org/2016/01/rethinking-the-blub-paradox.html).
 
+**EDIT #2:** Wow, some people also seem to be taking this article as an attack on Andrei.  Not at all!  Like I said, I've chatted with him in person and he's very much the type that likes to say funny things, whether about himself or the wide array of programming languages.  I just took one of his quotes about Rust as a starting point and had fun with it and looked at what might be weird about Rust coming from other languages.
+
 # Blub paradox
 
 Whenever I think about how useful certain language features are, I almost always come back to Paul Graham's essay ["Beating the Averages"](http://www.paulgraham.com/avg.html).  In it, he observes an interesting phenomenon among programmers he calls "the Blub Paradox".  To recap for those who haven't heard of it, the paradox goes something like this: let's say there's a programmer using a language called Blub.  Blub falls somewhere in the middle of the programming language pack in terms of capability.  It's not the lowest, most minimal language nor is it the most powerful.
