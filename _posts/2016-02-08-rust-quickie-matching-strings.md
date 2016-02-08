@@ -8,9 +8,9 @@ As a concrete example, let's say you're working with commandline args and want t
 
 {% highlight rust %}
 match args().nth(1) {
-    Some("-") => println!("Input is stdin"),
+    Some("-")     => println!("Input is stdin"),
     Some(ref x)   => println!("Open file: {}", x),
-    None      => println!("Open default file /foo/bar")
+    None          => println!("Open default file /foo/bar")
 }
 {% endhighlight %}
 
@@ -31,8 +31,8 @@ Luckily, Rust pattern matching has a way to help us.  We can approximate the abo
 {% highlight rust %}
 match args().nth(1) {
     Some(ref x) if x == "-" => println!("Input is stdin"),
-    Some(ref x)   => println!("Open file: {}", x),
-    None      => println!("Open default file /foo/bar")
+    Some(ref x) => println!("Open file: {}", x),
+    None        => println!("Open default file /foo/bar")
 }
 {% endhighlight %}
 
