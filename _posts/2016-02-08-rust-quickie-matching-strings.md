@@ -26,7 +26,7 @@ error: mismatched types:
 
 Bummer! At least on the surface, it looks like we don't have an easy way to use a string constant like "-" in our pattern match when what we're matching against a String.
 
-Luckily, Rust pattern matching has a way to help us.  We can approximate the above by using ```match guards```.  Match guards allow us to put an additional ```if``` expression on the pattern.
+Luckily, Rust pattern matching has a way to help us.  We can approximate the above by using [match guards](https://doc.rust-lang.org/book/patterns.html#guards).  Match guards allow us to put an additional ```if``` expression on the pattern.
 
 {% highlight rust %}
 match args().nth(1) {
