@@ -1,5 +1,5 @@
 ---
-title: Rust quickie: matching Strings
+title: Rust quickie - matching Strings
 ---
 
 In case you find yourself trying to match a ```String``` (perhaps as part of an ```Option``` or ```Result```), here's a little trick.
