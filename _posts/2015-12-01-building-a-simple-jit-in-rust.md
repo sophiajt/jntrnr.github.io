@@ -14,37 +14,37 @@ For our JIT, we'll need to first allocate the memory that will hold our JIT'ted 
 
 To do this, we need a few functions from the standard C library, which we can access through the ```libc``` external module.
 
-{% highlight rust %}
+```rust
 // added to Cargo.toml
 [dependencies]
 libc = "0.2.2"
 
 // main.rs
 extern crate libc;
-{% endhighlight %}
+```
 
 Once we've pulled in libc, we need to allocated memory.  Not just any memory, we need to allocate _aligned_ memory.  Some operating systems, like OS X, require that executable code memory starts at a particular alignment.  For example, that the address is exactly a multiple of 0x1000.
 
-{% highlight rust %}
+```rust
 const PAGE_SIZE: usize = 4096;
 // ...
 unsafe {
   let mut page : *mut libc::c_void = mem::uninitialized();
   libc::posix_memalign(&mut page, PAGE_SIZE, size);
 }
-{% endhighlight %}
+```
 
 Once allocated, we now have memory we can safely jump to.  Well, almost.  Before we can run code in our newly-allocated memory, we need to enable executing code in this area of memory.
 
-{% highlight rust %}
+```rust
 unsafe {
   libc::mprotect(page, size, libc::PROT_EXEC | libc::PROT_READ | libc::PROT_WRITE);
 }
-{% endhighlight %}
+```
 
 Now we're ready.  We have something we can write into and then jump into.  Since running JIT code is basically "no man's land" without any safeguards, it's easy to get yourself in trouble.  One step that I add is to also fill the memory block with the ```RET``` instruction, which will let us return from our function even if we happen to accidentally run other memory in the block.
 
-{% highlight rust %}
+```rust
 extern {
     fn memset(s: *mut libc::c_void, c: libc::uint32_t, n: libc::size_t) -> *mut libc::c_void;
 }
@@ -52,7 +52,7 @@ extern {
 unsafe {
   memset(page, 0xc3, size);  // prepopulate with 'RET' calls (0xc3)
 }
-{% endhighlight %}
+```
 
 We've allocated our JIT memory, aligned it, set it as executable, and then filled it with the ```RET``` instruction.  We're ready to write some code into it.
 
@@ -64,7 +64,7 @@ To write our first JIT program, let's first make a way to more easily work with 
 
 Let's create the struct we'll use:
 
-{% highlight rust %}
+```rust
 use std::mem;
 
 struct JitMemory {
@@ -82,13 +82,13 @@ fn alloc() -> JitMemory {
   
   JitMemory { contents: contents }
 }
-{% endhighlight %}
+```
 
 We've got the JitMemory struct which will hold the memory we've allocated, and we use the ```mem::transmute``` call to convert our raw void pointer to a raw u8 pointer, which will be easier to work with in our next step.
 
 Now that we have the struct, let's create some indexing functions.
 
-{% highlight rust %}
+```rust
 use std::ops::{Index, IndexMut};
 
 impl Index<usize> for JitMemory {
@@ -104,11 +104,11 @@ impl IndexMut<usize> for JitMemory {
         unsafe {&mut *self.contents.offset(_index as isize) }
     }
 }
-{% endhighlight %}
+```
 
 With these in place, we can now more easily write instructions into memory.  Before we do, let's put everything we'd done so far into a constructor for our struct:
 
-{% highlight rust %}
+```rust
 impl JitMemory {
   fn new(num_pages: usize) -> JitMemory {
     let contents : *mut u8;
@@ -126,7 +126,7 @@ impl JitMemory {
     JitMemory { contents: contents }        
   }
 }
-{% endhighlight %}
+```
 
 # Writing our first JIT program
 
@@ -134,11 +134,11 @@ With our new constructor and indexing functions in place, we can write our first
 
 We can do this with two assembly instructions:
 
-{% highlight nasm %}
+```
 MOV RAX, 0x3  ; move our return value (0x3) into RAX, 
               ; the register in x64 used for return values
 RET           ; return from the function call
-{% endhighlight %}
+```
 
 Great, now we just need to write this program into our JIT memory.  But wait, we don't have an assembler :)
 
@@ -148,7 +148,7 @@ The top line of the result is the raw hex.  This is what we want.  These are the
 
 With these bytes, and the RET instruction we already filled our memory with, we now have our full function.  We can use our indexing functions to write this out:
 
-{% highlight rust %}
+```rust
 let mut jit : JitMemory = JitMemory::new(1);  // allocate a page of memory
 
 jit[0] = 0x48;  // mov RAX, 0x3
@@ -158,13 +158,13 @@ jit[3] = 0x03;
 jit[4] = 0x00;
 jit[5] = 0x00;
 jit[6] = 0x00;
-{% endhighlight %}
+```
 
 # Turning our memory into a function
 
 We have an executable block of memory with the code for our function filled in.  The last step is to turn this into a Rust function we can call.  We do this by doing another mem::transmute:
 
-{% highlight rust %}
+```rust
 fn run_jit() -> (fn() -> i64) {
   let mut jit : JitMemory = JitMemory::new(1);
 
@@ -178,16 +178,16 @@ fn run_jit() -> (fn() -> i64) {
 
   unsafe { mem::transmute(jit.contents) }
 }
-{% endhighlight %}
+```
 
 And with that, after a few handfuls of unsafe calls and transmutes, we have our function.  The only thing left is to call it:
 
-{% highlight rust %}
+```rust
 fn main() {
   let fun = run_jit();
   println!("{}", fun());
 }
-{% endhighlight %}
+```
 
 # Debugging
 
@@ -219,10 +219,10 @@ Unfortunately, that's not the most helpful thing in the world.  What we often wa
 
 This gives us back something like this:
 
-{% highlight c-objdump %}
+```
 0x100804000: 48 c7 c0 03 00 00 00 c3 c3 c3 c3 c3 c3 c3 c3 c3  H??....?????????
 0x100804010: c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3  ????????????????
-{% endhighlight %}
+```
 
 That's better.  Now we can see if the bytes we expect to be there are in fact there.  If we wanted, we could update memory using ```mem write``` if something was out of place.
 

@@ -14,7 +14,7 @@ Loading the types of files commonly used in emulators requires us to work with b
 
 I started there, and built out a few functions that would let me read in the numbers from the file both using big-endian and little-endian.
 
-{% highlight rust %}
+```rust
 pub trait BitReader {
     fn read_u32_be(&mut self) -> Result<u32, io::Error>;
     fn read_u32_le(&mut self) -> Result<u32, io::Error>;
@@ -37,7 +37,7 @@ impl BitReader for File {
             ((buffer[2] as u32) << 16) + ((buffer[3] as u32) << 24))    
     }
 }
-{% endhighlight %}
+```
 
 Once I had the trait, I could import it where I wanted to use these extra read capabilities on File.
 
@@ -45,13 +45,13 @@ With these extra methods in place, I could plow through the binary file loading 
 
 I did notice I used the odd concoction ```buffer.iter().cloned().collect()``` to convert from an array to a Vec of the same contained type:
 
-{% highlight rust %}
+```rust
 for _ in 0..(num_prg_pages*4) {
     let mut buffer = [0; 4096];
     try!(f.read(&mut buffer));
     prg_rom.push(buffer.iter().cloned().collect());
 }
-{% endhighlight %}
+```
 
 There may be a more Rust-native way of doing it.  Personally, I think it'd be nice to be able to read directly into a Vec, so you could elide that step.
 
@@ -63,7 +63,7 @@ There's another reason not to do copy/pasting of code when porting: too many lit
 
 Feeling more comfortable with Rust's use of expressions, I could write code in a more dense way.  For example, here is some code from the ROR or Rotate Right opcode in C#:
 
-{% highlight csharp %}
+```csharp
 if ((valueholder & 0x1) == 0x1)
 	bitholder = 1;
 else
@@ -85,18 +85,18 @@ if ((valueholder & 0x80) == 0x80)
 	sign_flag = 1;
 else
 	sign_flag = 0;
-{% endhighlight %}
+```
 
 and here's what it became in Rust:
 
-{% highlight rust %}
+```rust
 let bit = (value & 0x1) == 0x1;
 value = (value >> 1) & 0x7f;
 value += if self.carry {0x80} else {0};
 self.carry = bit;
 self.zero = value == 0;
 self.sign = (value & 0x80) == 0x80;  
-{% endhighlight %}
+```
 
 Some of these changes could have been done in the original C#, but I didn't notice them at the time.  Still, I think the result Rust is still pretty readable, even though it's more compact.
 
@@ -121,9 +121,9 @@ All the subsystems, in essence, need to be able to talk to each other at some le
 
 But in Rust, ownership needs to be clear.  If you call a method, you can't also pass something you own to that method, like so:
 
-{% highlight rust %}
+```rust
 foo.x.y(foo.x.z)
-{% endhighlight %}
+```
 
 The net result is that I went back to the drawing board and thought long and hard about what was *actually* necessary for each component.  After a couple of refactorings, I think I landed on a solution that's both cleaner and clearer.  Every object has one owner, and I don't do any ref cells or ref counting.
 
@@ -133,7 +133,7 @@ There are a few tricks that I loved in Haskell that I wished other languages wou
 
 In Rust, you can do this using the 'derive' command:
 
-{% highlight rust %}
+```rust
 #[derive(Debug)]
 struct Foo {
   x: u32
@@ -142,7 +142,7 @@ struct Foo {
 
 let foo = Foo { x: 10 }
 println!("{:?}", foo);
-{% endhighlight %}
+```
 
 By deriving Debug, you have the ability to output a debug format of that structure, which is output using {:?}.
 

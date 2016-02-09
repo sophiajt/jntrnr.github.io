@@ -4,7 +4,7 @@ title: Going down the rabbit hole with Rust traits
 
 One of the first things you might notice about Rust, if you come to it from other OOP-style languages, is that Rust separates methods from the data they work on.  You create your ```struct```, then you ```impl``` a few methods on it later.
 
-{% highlight rust %}
+```rust
 struct Rect {
     height: i32,
     width: i32
@@ -18,7 +18,7 @@ fn main() {
     let r = Rect { height: 10, width: 5 };
     println!("area: {}", r.area());
 }
-{% endhighlight %}
+```
 
 Which, to me, seemed slightly awkward at first.  But, as I dug in a little futher, I started asking questions like "Can I do that to existing types?  Even basic types like the String type?"  Indeed you can.  In this post we'll see some of what's possible.
 
@@ -28,7 +28,7 @@ Which, to me, seemed slightly awkward at first.  But, as I dug in a little futhe
 
 We've talked a little about the basics already.  In Rust, ```impl``` gives us a way to "add" methods onto types.  But, when we try to do the same thing to ```String```, we hit a snag:
 
-{% highlight rust %}
+```rust
 impl String {
     fn my_len(&self) -> usize { self.len() }
 }
@@ -38,7 +38,7 @@ fn main() {
 
     println!("my length: {}", name.my_len());
 }
-{% endhighlight %}
+```
 
 When we try to compile this, the compiler gives us back an error:
 
@@ -53,7 +53,7 @@ So we can't ```impl``` for a type outside of... oh wait.  We can do it, so long 
 
 Try #2:
 
-{% highlight rust %}
+```rust
 trait MyLen {
     fn my_len(&self) -> usize;
 }
@@ -67,7 +67,7 @@ fn main() {
 
     println!("my length: {}", name.my_len());
 }
-{% endhighlight %}
+```
 
 Woah, that worked!  With that, we peek into the rabbit hole.
 
@@ -75,7 +75,7 @@ Woah, that worked!  With that, we peek into the rabbit hole.
 
 To kick off our explorations, let's give ourselves an example to use.  Let's say we want to read in the contents of some file, and we get the filename for that file from the commandline.
 
-{% highlight rust %}
+```rust
 use std::io::Error;
 
 fn read_all(fname: String) -> Result<String, Error> {
@@ -97,13 +97,13 @@ fn main() {
         }
     }
 } 
-{% endhighlight %}
+```
 
 Wouldn't it be nice to not mix and match helper functions and methods?  Wouldn't it read a little nicer to have```fname.read_all()```?
 
 Using the same pattern we used before, this is pretty easy to do. 
 
-{% highlight rust %}
+```rust
 use std::io::Error;
 
 trait FileReader {
@@ -131,7 +131,7 @@ fn main() {
         }
     }
 }    
-{% endhighlight %}
+```
 
 That's not bad!  Go get my nth argument, check if we're good, then read the contents.
 
@@ -141,7 +141,7 @@ If we could stop ourselves there, we'd be mostly okay.  Our example is still pre
 
 The Bad Idea Bears call us deeper!  Can we play a little [code "golf"](https://en.wikipedia.org/wiki/Code_golf) and squeeze out using ```Option``` in our main?  Sure!  All we need to do is create another ```impl``` for our ```FileReader``` trait, this time for ```Option``` (specifically those that contain Strings):
 
-{% highlight rust %}
+```rust
 use std::io::Error;
 
 trait FileReader {
@@ -178,7 +178,7 @@ fn main() {
         println!("{}", contents);
     }
 }
-{% endhighlight %}
+```
 
 Yay!  Our main is smaller, and we've still managed to maintain at least a *little* of our decency.  I mean, we could have used ```unwrap```, and thrown care to the wind!  Instead, we're still doing error-checking on our contents. Albeit, our error-checking is kinda smooshed into one place.
 
@@ -192,7 +192,7 @@ If we poke around in the docs, we find out that args() returns its own type, [Ar
 
 That gives us a couple choices.  We can implement a new trait on Args:
 
-{% highlight rust %}
+```rust
 trait FileReaderIter {
     fn read_nth(&mut self, pos: usize) -> Result<String, Error>;
 }
@@ -202,11 +202,11 @@ impl FileReaderIter for Args {
         self.nth(pos).read_all()
     }    
 }
-{% endhighlight %}
+```
 
 Or, we can work with Iterator:
 
-{% highlight rust %}
+```rust
 trait FileReaderIter : Iterator<Item=String> + Sized {
     fn read_nth(&mut self, pos: usize) -> Result<String, Error> {
         self.nth(pos).read_all()
@@ -214,7 +214,7 @@ trait FileReaderIter : Iterator<Item=String> + Sized {
 }
 
 impl FileReaderIter for Args {}
-{% endhighlight %}
+```
 
 Let's actually stop here for a minute and look at this one.  We can't extend Iterator itself.  This is a Good Thing(tm), because if we could, we would end up having to extend countless implementors of Iterator.  Instead, we need to create a new trait that extends from Iterator.  
 
@@ -228,7 +228,7 @@ Phew, okay, that's it.  What have we gotten for our effort?
 
 Both approaches give us this simple main:
 
-{% highlight rust %}
+```rust
 fn main() {
     use std::env::args;
 
@@ -236,7 +236,7 @@ fn main() {
         println!("{}", contents);    
     }
 }
-{% endhighlight %}
+```
 
 At this point we're far enough down in the rabbit hole that there's only a pinpoint of light from the entrance. 
 

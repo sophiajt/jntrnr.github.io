@@ -34,7 +34,7 @@ Let's do just that.  Let's look at a few stand-out Rust features and assume thes
 
 Let's make a Rust program that uses a bit of polymorphism to print out two different structs.  I'll show you the code first, then break it down.
 
-{% highlight rust %}
+```rust
 use std::fmt;
 
 struct Foo {
@@ -68,7 +68,7 @@ fn main() {
     print_me(foo);
     print_me(bar);
 }
-{% endhighlight %}
+```
 
 What an eye-full!  There's polymorphism there, but it doesn't look anything like OO.  It's generic, and not only generic, but it has constraints.  And what's this ```impl``` stuff?
 
@@ -84,8 +84,7 @@ Phew... that seemed like a bit of work.  And really, that's how polymorphism sta
 
 Now, let's switch to C++ for a minute.  Someone using C++, especially a beginner, might not go the generic route at first and might instead opt to use OO-style polymorphism:
 
-{% highlight cpp %}
-
+```cpp
 #include <iostream>
 
 class Foo {
@@ -129,7 +128,7 @@ int main() {
     print2(bar);
     print3(&bar);
 }
-{% endhighlight %}
+```
 
 Pretty easy, right?  Okay, here's a quick quiz for you.  What does the C++ code print?
 
@@ -159,7 +158,7 @@ Next you'll be saying I have to learn monads.
 
 Actually... no, just kidding, you don't need to learn monads.  Rust's exception-less programming is a lot more straight-forward.  Here's an example of what this looks like in practice.  First, examples of what the functions look like:  
 
-{% highlight rust %}
+```rust
 impl SystemTime {
   /// Returns the system time corresponding to "now".
   pub fn now() -> SystemTime;
@@ -167,7 +166,7 @@ impl SystemTime {
   /// Returns an `Err` if `earlier` is later
   pub fn duration_from_earlier(&self, earlier: SystemTime) -> Result<Duration, SystemTimeError>;
 }
-{% endhighlight %}
+```
 
 Notice the ```now``` function returns a SystemTime and doesn't have any error cases, while ```duration_from_earlier``` does have a Result that can be either a Duration or the error SystemTimeError.  At a glance, you know a function's success and possible failure cases.
 
@@ -175,7 +174,7 @@ But all those failure cases are bound to stack up.  Who wants to see them all ov
 
 Rust lets you do that, too.
 
-{% highlight rust %}
+```rust
 fn load_header(file: &mut File) -> Result<Header, io::Error> {
   Ok(Header { header_block: try!(file.read_u32()) })
 }
@@ -189,7 +188,7 @@ fn load_audio(file: &mut File) -> Result<Audio, io::Error> {
   let metadata = try!(load_metadata(file));
   Ok(Audio { header: header, metadata: metadata })
 }
-{% endhighlight %}
+```
 
 While it may not look like it at first, the above example uses the "bubbling" style of exceptions.  The trick is in a Rust macro called ```try!```.  What it does is pretty simple.  It will call a function for you.  If that call returns with a success value, it will hand that to you.  If it instead returns an error, ```try!``` will return from the containing function with that error.
 

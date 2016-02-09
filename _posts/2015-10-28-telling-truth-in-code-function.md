@@ -28,10 +28,10 @@ Examples
 
 ## Python
 
-{% highlight python %}
+```python
 def writeToFile(name):
     # write out to the file
-{% endhighlight %}
+```
 
 We'll start with the simplest form of transparency: minimal transparency.  Looking at what we have it's tempting to say we don't know anything at all, but that's not quite true.  We do know the function name and that it takes a single parameter.
 
@@ -49,11 +49,11 @@ Without this knowledge, we resort to aggressively testing, commenting, and using
 
 ## C
 
-{% highlight c %}
+```c
 int writeToFile(char *name) { 
     /* write out to the file */
 }
-{% endhighlight %}
+```
 
 Moving into C, we start to see a bit more information popping out.  We know that it takes in a ```char*``` for the name.  Since this also isn't ```const```, we know that it's allowed to change the contents of the string we pass in.  We also know it returns an ```int```, likely for error codes.   
 
@@ -70,11 +70,11 @@ We've improved some, but we still lean heavily on conventions, code comments, an
 
 ## Rust
 
-{% highlight rust %}
+```rust
 fn writeToFile (name: &str) -> Result<()> {
   // write out to the file
 }
-{% endhighlight %}
+```
 
 Above is a simple Rust version.  If you've never seen Rust before, let's quickly break down it says:
 
@@ -95,10 +95,10 @@ An improvement over where we were in C, but we still have a lingering question: 
 
 ## Haskell
 
-{% highlight haskell %}
+```haskell
 writeToFile :: String -> IO ()
 writeToFile name = do 
-{% endhighlight %}
+```
 
 Since this might be unfamiliar let's take a second to breakdown what we're seeing:
 

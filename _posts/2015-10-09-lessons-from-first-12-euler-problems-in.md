@@ -22,7 +22,7 @@ If you're interested, you can grab the [source code to my solutions](https://git
 
 "sum of all multiples of 3 or 5 below 1000"
 
-{% highlight rust linenos %}
+```rust
 fn main() {
     let mut answer = 0;
  
@@ -37,7 +37,7 @@ fn main() {
  
     println!("{}", answer);
 }
-{% endhighlight %}
+```
 
 My solution to problem 1 is pretty straightforward, but you can already start to see some of the characteristic earmarks of Rust.  On **line 2**, there's a let keyword which creates a variable.  After that is the mut keyword for saying that the variable we're creating is mutable, as variables are immutable by default.
 
@@ -51,7 +51,7 @@ My solution to problem 1 is pretty straightforward, but you can already start to
 
 "sum of even fibonacci below 4,000,000"
 
-{% highlight rust linenos %}
+```rust
 struct Fibonacci {
     curr: u64,
     next: u64,
@@ -86,7 +86,7 @@ fn main() {
     }
     println!("sum: {}", sum);
 }
-{% endhighlight %}
+```
 
 Lest you think that I somehow jumped from beginner level to advanced in a few minutes, rest assured that I used the tried and true method of the [copy/paste](http://rustbyexample.com/trait/iter.html).  In trying to find out how to make an iterator so I could iterate over a fibonacci sequence, I found the source to do just that.  Ah, the internet.
 
@@ -134,7 +134,7 @@ With that, we're done.  While it was quite a mouthful, we can see the compositio
 
 "highest prime factor of 600851475143"
 
-{% highlight rust linenos %}
+```rust
 fn is_prime(num:u64) -> bool {
     for i in 2..(num / 2 + 1) {
         if num % i == 0 {
@@ -185,7 +185,7 @@ fn main() {
     }
     println!("num: {}", highest_prime_factor);
 }
-{% endhighlight %}
+```
 
 Very similar to Problem #2 above, I create an implementation of Iterator, so I can use it later.  This time, rather than creating a stream of fibonacci values, I create a stream of prime numbers.
 
@@ -199,7 +199,7 @@ PS: I know it's probably already too late, but I should have warned you to avert
 
 "largest palindrome product of two 3-digit numbers"
 
-{% highlight rust linenos %}
+```rust
 fn is_palindrome(num: u64) -> bool {
     let s = num.to_string();
     for (i1, i2) in s.chars().zip(s.chars().rev()) {
@@ -221,7 +221,7 @@ fn main() {
         }
     }
 }
-{% endhighlight %}
+```
 
 Problem #4 also uses some iterators to find the palindrome product (**line 13** and **line 14**).  If it finds a palindrome product, and that new product is larger than what it saw before, it replaces it with the new one.
 
@@ -239,7 +239,7 @@ Problems [#5](https://github.com/jonathandturner/rustnewbie/blob/master/euler/sr
 
 "largest product of 13 adjacent digits"
 
-{% highlight rust linenos %}
+```rust
 fn main() {
     let input = 
         "73167176531330624919225119674426574742355349194934\
@@ -282,7 +282,7 @@ fn main() {
 
     println!("Largest: {} is {:?}", largest, std::str::from_utf8(largest_string));
 }
-{% endhighlight %}
+```
 
 In Problem #8, we see an example of working with strings, this time using a new feature called a 'slice'.  We start with the block from **line 3** to **line 22** that gives us this giant input string.  Notice that I use the backslash '\' to continue the line to the next line.  Rust is smart enough to let us indent without introducing new whitespace into the string. 
 
@@ -302,7 +302,7 @@ Problem [#9](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src
 
 "sum of all primes below 2 million"
 
-{% highlight rust linenos %}
+```rust
 fn main() {
     let mut sum = 0;
     const SIZE: usize = 2000000;
@@ -325,7 +325,7 @@ fn main() {
 
     println!("Sum: {}", sum);
 }
-{% endhighlight %}
+```
 
 Reading the problem description, you might have guessed that I would use the iterator solution from earlier.  The astute reader probably already noticed that doing so would be. very. slow.  Especially, as we look at primes above a million, where each step is itself taking hundreds of thousands, if not millions, of calculations.  While I could let it run and heat up my apartment, it's better to do a more direct approach.
 
@@ -343,7 +343,7 @@ On **line 18**, we check if the number is prime, and if so we add it to our sum.
 
 "find the largest product in a grid"
 
-{% highlight rust linenos %}
+```rust
 let input = "\
     08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 \
     49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00 \
@@ -373,7 +373,7 @@ let input_as_num: Vec<i32> = input_split.map(|x|
         Err(u) => { println!("Garbage in input: {}", u); 0 }
     }
 ).collect();
-{% endhighlight %}
+```
 
 I'm only showing the interesting part of the solution since it's a bit long, but you can read the [whole solution](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex11.rs).
 
@@ -389,7 +389,7 @@ Finally, on **line 29**, we use the ```.collect()``` method to run through the i
 
 "triangle number with over 500 divisors"
 
-{% highlight rust linenos %}
+```rust
 fn main() {
     let mut num = 0u64;
 
@@ -422,7 +422,7 @@ fn main() {
         }
     }
 }
-{% endhighlight %}
+```
 
 Again we'll trim down to the interesting parts, since we've seen the prime iterator before, but you can read the [full file](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex12.rs).
 
@@ -462,9 +462,9 @@ On **line 13**, we want to loop over a vector, and when we look out to **line 7*
 
 We don't want the inner loop to take ownership and then lose the ability to use the vector again in the next iteration of the loop, so we have to 'borrow' ownership.  As the name implies, by borrowing, we're only taking temporary ownership for a time, and we have to follow all the rules stated when we borrow.  With that in mind, let's look at **line 13** again:
 
-{% highlight rust %}
+```rust
 for &x in &first_primes
-{% endhighlight %}
+```
 
 We borrow ```first_primes``` instead of taking permanent ownership using the ```&``` operator.  This operator says "I would like to borrow first_primes, and I can not edit the contents".  The compiler will then be able to check that we're using what we've borrowed correctly.  You might be curious borrowing and also being able to mutate.  To do that, we could've used the ```&mut``` operator assuming the original vector was mutable.
 

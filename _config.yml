@@ -9,8 +9,9 @@ name:               "Jonathan Turner"
 baseurl:            "" #For Root Domain
 permalink:          /:year/:month/:title.html
 
-# Markdown
-markdown:           rdiscount
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 # Navigation
 nav:
