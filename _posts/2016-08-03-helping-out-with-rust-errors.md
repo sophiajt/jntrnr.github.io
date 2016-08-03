@@ -19,7 +19,8 @@ the compiler that all fail intentionally.  You can find these in the rust-lang r
 like to make sure every error code that needs to be updated makes it onto that list so that others
 can help update them.
 
-There are a *bunch* of good examples in the `compile_fail` directory that. If you look around there
+There are a *bunch* of good examples in the `compile_fail` directory that explore various error
+codes. If you look around there
 you can also search for error messages and see if there is already a test. Running this test will
 help you see if the error has been updated to the new format.
 
