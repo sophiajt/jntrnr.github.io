@@ -287,6 +287,11 @@ if span != assign.span {
 err.emit();
 ```
 
+While we're at it, let's run a quick tidy to make sure our code conforms to the compiler coding
+standard:
+
+```python src/bootstrap/bootstrap.py --stage 1 --step check-tidy```
+
 Perfect.  Ship it!
 
 After we've finished with updating the error and the corresponding unit tests, we can create a PR.
