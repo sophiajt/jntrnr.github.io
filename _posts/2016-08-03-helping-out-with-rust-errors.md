@@ -4,7 +4,8 @@ title: "Helping with the Rust Errors"
 author: Jonathan Turner
 ---
 
-I recently did some work with Niko Matsakis on a new compiler error format. While I put together a
+I recently did some work with Niko Matsakis on a new compiler error format. You can try them out
+by setting `RUST_NEW_ERROR_FORMAT=true`. While I put together a
 blog post talking about the design for the main blog, I also wanted to open it up for people to come
 help us move to the new errors. I've split up this post based on background for testers, doc
 writers, first-time compiler hackers, and experienced compiler hackers.
