@@ -74,7 +74,7 @@ as we test our ideas as it is the minimal compiler rather than a full install.
 
 Once built, we can run this by hand using (here, I'm on OS X):
 
-```./build/x86_64-apple-darwin/stage1/bin/rustc <rust file>```
+```RUST_NEW_ERROR_FORMAT=true ./build/x86_64-apple-darwin/stage1/bin/rustc <rust file>```
 
 Let's take a look at an error that needs to be updated. You can find a lot of error tests in the
 `src/test/compile-fail` directory in the compiler source. For this example, I'll use
