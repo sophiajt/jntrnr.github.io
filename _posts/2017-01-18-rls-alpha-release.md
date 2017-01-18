@@ -37,7 +37,7 @@ git clone https://github.com/jonathandturner/rls
 ```
 git clone https://github.com/jonathandturner/rls_vscode.git
 cd rls_vscode
-npm update
+npm install
 ```
 
 **Step 3**: Set the RLS_ROOT environment variable to point to where you checked out the RLS:
