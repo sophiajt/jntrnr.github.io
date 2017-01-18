@@ -32,7 +32,7 @@ The alpha release of the RLS has been run successfully on Linux, Mac, and Window
 git clone https://github.com/jonathandturner/rls
 ```
 
-**Step 2**: Set up your editor (here we show VS Code)
+**Step 2**: Set up your editor (here we show [VS Code plugin](https://github.com/jonathandturner/rls_vscode))
 
 ```
 git clone https://github.com/jonathandturner/rls_vscode.git
