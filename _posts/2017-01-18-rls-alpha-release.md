@@ -2,7 +2,7 @@
 title: Announcing Rust Language Server Alpha Release 
 ---
 
-Today, we're announcing the first alpha release of the [Rust Language Server (aka RLS)](https://github.com/jonathandturner/rls).  With this alpha release, this is the first time we're encouraging early adopters to try on real projects and [send us feedback](https://github.com/jonathandturner/rls/issues).  The RLS has now reached a level of maturity where it should be able to run against most Cargo-based Rust project.
+Today, we're announcing the first alpha release of the [Rust Language Server (aka RLS)](https://github.com/jonathandturner/rls).  With this alpha release, this is the first time we're encouraging early adopters to try on real projects and [send us feedback](https://github.com/jonathandturner/rls/issues).  The RLS has now reached a level of maturity where it should be able to run against most Cargo-based Rust projects.
 
 But what exactly is the Rust Language Server?
 
