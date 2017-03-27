@@ -20,7 +20,7 @@ Whether you choose Nightly or Stable, you'll have commands available to you at t
 
 ## Step 3: Make sure everything is working
 
-In a source directory, you can test if Rust has been installed correctly by creating a simple projects, compiling it and running it.
+In a source directory, you can test if Rust has been installed correctly by creating a simple project, compiling it, and running it.
 
 ```
 cargo new hello_world --bin
