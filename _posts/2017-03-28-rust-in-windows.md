@@ -68,6 +68,8 @@ Rust has its own common structs, like String and Vec, that Visual Studio won't u
 C:\Users\Jonathan Turner\.multirust\toolchains\nightly-x86_64-pc-windows-msvc\lib\rustlib\src\rust\src\etc\natvis
 ```
 
+NOTE: you may need to install the `nightly` toolchain to have this directory.  You don't need to use the nightly compiler as your main compiler, though, to take advantage of them.
+
 I copy these files into:
 
 ```
