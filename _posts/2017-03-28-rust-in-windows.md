@@ -8,7 +8,7 @@ As a Rust user, I was discouraged by not having all the good tips for using Rust
 
 ## Step 1: Install Visual Studio Community edition
 
-My recommendation for working with Rust in Windows is to first get [Visual Studio 2017 Community](https://www.visualstudio.com/downloads/) installed.  The Rust compiler will use the linker that VS provides to translate our Rust code all the way to being an application.  Having VS installed pays off in more ways than one, as we'll see later.
+My recommendation for working with Rust in Windows is to first get [Visual Studio 2017 Community](https://www.visualstudio.com/downloads/) installed.  *Edit:* Make sure you check the boxes to install **C++ support** when you instal Visual Studio, this provides the linker. The Rust compiler will use the linker that VS provides to translate our Rust code all the way to being an application.  Having VS installed pays off in more ways than one, as we'll see later.
 
 ## Step 2: Install rustup
 
