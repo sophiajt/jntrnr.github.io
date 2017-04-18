@@ -12,6 +12,7 @@ First, this will make it **easier to get up and running** with the RLS. You no l
 
 ```
 rustup default nightly
+rustup update nightly
 rustup component add rls
 rustup component add rust-analysis
 rustup component add rust-src
