@@ -84,6 +84,10 @@ With that, debugging a Rust app works very similar to debugging other apps.  The
 * Run your application
 * Attach the VS debugger using the 'Attach...' feature.  You should be able to find your application in the list.  Once you attach, you can hit pause, set breakpoints, and step as normal.
 
+# Debugging with VSCode and MSVC
+
+You can also setup vscode as your development and debugging platform.  There are some good tips on how to do this in [this blog post](https://www.brycevandyk.com/debug-rust-on-windows-with-visual-studio-code-and-the-msvc-debugger/)
+
 # Conclusion
 
 There is still plenty of room for improvement, but already there's enough here that we can write, build, and debug Rust applications without too much fuss.  The Rust teams are working to continue to improve the experience of developing in Windows on Rust, but it's encouraging to see the progress and where it could go in the future.
