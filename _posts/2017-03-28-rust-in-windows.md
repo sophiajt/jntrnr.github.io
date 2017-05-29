@@ -86,7 +86,7 @@ With that, debugging a Rust app works very similar to debugging other apps.  The
 
 # Debugging with VSCode and MSVC
 
-You can also setup vscode as your development and debugging platform.  There are some good tips on how to do this in [this blog post](https://www.brycevandyk.com/debug-rust-on-windows-with-visual-studio-code-and-the-msvc-debugger/)
+You can also setup vscode as your development and debugging platform.  There are some good tips on how to do this in [this blog post](https://www.brycevandyk.com/debug-rust-on-windows-with-visual-studio-code-and-the-msvc-debugger/).
 
 # Conclusion
 
