@@ -180,7 +180,7 @@ title: Fun facts about Rust's growing popularity
 
 * Rust just isn't a lang, but a community as well, with a focus on helpfulness. [Growing this](https://medium.com/@geekytwoshoes11/once-a-rustacean-always-a-rustacean-fed0a877472f) is also important.
 
-* In addition to community, Rust-focused contractors like [Integer 32](https://twitter.com/asquera) and [Asquera](https://twitter.com/asquera) have sprung up.
+* In addition to community, Rust-focused contractors like [Integer 32](https://integer32.com/) and [Asquera](https://twitter.com/asquera) have sprung up.
 
 * Speaking of, there are a number of trainers available for Rust. The [Rust community team](https://github.com/rust-community/team) can help connect you.
 
