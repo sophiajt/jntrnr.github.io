@@ -62,9 +62,9 @@ title: Fun facts about Rust's growing popularity
 
 * Android Rust development grew [10x in 2017 (to 9.9% of devs)](https://blog.rust-lang.org/2017/09/05/Rust-2017-Survey-Results.html).
 
-* iOS Rust development grew [10x in 2017 (to 5.3% of devs)]((https://blog.rust-lang.org/2017/09/05/Rust-2017-Survey-Results.html)). 
+* iOS Rust development grew [10x in 2017 (to 5.3% of devs)](https://blog.rust-lang.org/2017/09/05/Rust-2017-Survey-Results.html). 
 
-* Rust has seen slow, steady growth in commercial usage. Now over [20% of Rust devs use it at work]((https://blog.rust-lang.org/2017/09/05/Rust-2017-Survey-Results.html)).
+* Rust has seen slow, steady growth in commercial usage. Now over [20% of Rust devs use it at work](https://blog.rust-lang.org/2017/09/05/Rust-2017-Survey-Results.html).
 
 * [More than 75% of respondents](https://blog.rust-lang.org/2017/09/05/Rust-2017-Survey-Results.html) said they feel comfortable in the Rust community, which includes even non-users of Rust.
 
