@@ -28,7 +28,7 @@ title: Fun facts about Rust's growing popularity
 
 * The popular @code, ranked 5th in this years Stack Overflow survey, [powers its code search with ripgrep](https://github.com/Microsoft/vscode/pull/22722), a search tool written in Rust.
 
-* Atlassian uses Rust in a service for analyzing terabytes of source code.
+* Atlassian uses Rust in a service for analyzing petabytes of source code.
 
 * The new O'Reilly Rust book was the [most popular on Safari](https://twitter.com/safaribot/status/919255962120318976).
 
