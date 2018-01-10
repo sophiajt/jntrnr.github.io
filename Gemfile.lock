@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/flori/json.git
+  revision: 7f4cfd853f2c919d854fb95548a19980feff17e8
+  branch: v1.8
+  specs:
+    json (1.8.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -49,7 +56,7 @@ GEM
       public_suffix (~> 1.4)
       typhoeus (~> 0.7)
     html-pipeline (2.3.0)
-      activesupport (>= 2, < 5)
+      activesupport (>= 3, < 5)
       nokogiri (>= 1.4)
     i18n (0.7.0)
     jekyll (3.0.3)
@@ -85,7 +92,6 @@ GEM
       gemoji (~> 2.0)
       html-pipeline (~> 2.2)
       jekyll (>= 2.0)
-    json (1.8.3)
     kramdown (1.9.0)
     liquid (3.0.6)
     listen (3.0.5)
@@ -124,6 +130,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  json!
 
 BUNDLED WITH
-   1.11.2
+   1.16.1
