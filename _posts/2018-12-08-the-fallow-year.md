@@ -1,5 +1,5 @@
 ---
-The Fallow Year, my Rust2019 post
+title: The Fallow Year, my Rust2019 post
 ---
 
 __Definition:__ _fallow: (of agricultural land) Ploughed but left unseeded for more than one planting season._
