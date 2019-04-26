@@ -2,8 +2,6 @@
 title: Porting the Pikachu
 ---
 
-Subtitle: Moving to crossplatform (Windows included!) Rust terminal apps
-
 ![Pikachu animation in Windows](/images/pikachu.jpg)
 
 _Pikachu animation running in Windows CMD_
