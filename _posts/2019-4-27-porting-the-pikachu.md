@@ -1,11 +1,11 @@
 ---
 title: Porting the Pikachu
 ---
-# Moving to crossplatform (Windows included!) Rust terminal apps
+# Moving to crossplatform Rust terminal apps
 
 ![Pikachu animation in Windows](/images/pikachu.jpg)
 
-_Pikachu animation running in Windows CMD_
+_Look Mom, Pikachu running in Windows CMD!_
 
 Yesterday, I discovered a new package I had wanted for at least a year: [crossterm](https://github.com/TimonPost/crossterm), a cross-platform terminal crate for Rust. 
 
