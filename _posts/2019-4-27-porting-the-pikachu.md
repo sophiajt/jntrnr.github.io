@@ -1,19 +1,18 @@
 ---
-title: Porting the Pikachu
+title: Creating crossplatform Rust terminal apps
 ---
-# Moving to crossplatform Rust terminal apps
 
 ![Pikachu animation in Windows](/images/pikachu.jpg)
 
 _Look Mom, Pikachu running in Windows CMD!_
 
-Yesterday, I discovered a new package I had wanted for at least a year: [crossterm](https://github.com/TimonPost/crossterm), a cross-platform terminal crate for Rust. 
+I've been wanting to play around with the cool [spinning Pikachu demo](https://www.reddit.com/r/rust/comments/bf5uzr/update_on_my_3d_ascii_art_generator_termiontobj/) everyone was talking about. Sadly, it used termion to do its magic, which meant that unfortunately it wouldn't work for me.
 
-As a Windows user, it's frustrating when folks use crates like termion. Though it works well on platforms like Linux, packages that use it often don't compile in Windows.  Surely, I thought, there must be a better way.
+Termion has been a boon for Rust, with lots of folks using it to create terminal applications. Unfortunately, as a Windows user, I know there's a good chance that if the crate depends on termion that's the end of the line for me, as termion apps just don't work in Windows. Surely, I thought, there must be a better way, but I never managed to find one.
 
 # Enter crossterm
 
-Crossterm is a termion-like crate, in that the API surface feels very similar between the two crates. Often, the translation is 1:1 (or close to it).
+Yesterday, I discovered a crate I have wanted for at least a year: that holy grail of something like termion that also worked crossplatform. The crate is called [crossterm](https://github.com/TimonPost/crossterm), and it is exactly that. Rather than being an exact copy of termion, I'd call Crossterm a termion-like crate. The API surface feels very similar between the two crates, but it's not identical.  That said, often, the translation is 1:1 (or close to it).
 
 In this post, I'll detail what I had to do to port to crossterm. You can take a look at my [repo](https://github.com/jonathandturner/rust-sloth/tree/crossterm-port) and give it a spin.
 
@@ -48,7 +47,7 @@ The next step was to set up raw mode. Raw mode lets us get user input directly w
 
 Lastly, I hide the cursor so it doesn't mess up the animation.
 
-The event loop a similar, though a little more verbose in my version:
+The event loop is similar, though a little more verbose in my version:
 ```
 -        let b = stdin.next();
 -        if let Some(Ok(b'q')) = b {
@@ -72,7 +71,7 @@ Drawing colors to the screen is also very similar between termion and crossterm:
 -                        color::Bg(color::Rgb(25,25,25)),
 -                      src,
 -                      color::Fg(color::Reset))
-+                    print!(^M
++                    print!(
 +                        "{}{}{}",
 +                        Colored::Fg(Color::Rgb {
 +                            r: (pixel.1).0,
@@ -99,13 +98,13 @@ The translation is not without its own set of hiccups. The main one of which you
 +    pub frame_buffer: Vec<(char, (u8, u8, u8))>,
 ```
 
-Originally, the whole framebuffer was turned into a vector of strings. On most Unix platforms, these would include the ANSI commands to change the color or move the cursor. It's a powerful tool, and being text-based, let's you do all of it in string manipulation.
+Originally, the whole framebuffer was turned into a vector of strings. On most Unix platforms, these would include the ANSI commands to change the color or move the cursor. It's a powerful tool, and being text-based, you can prebuffer the whole frame via string manipulation.
 
 Unfortunately, assuming everything is string-based doesn't work in Windows. When crossterm outputs using println!, it's calling into the Windows Console API between each piece of the println. This allows the same code to work, assuming it doesn't buffer the string.
 
 To work around this, I stopped buffering the string and instead stored the pixel value in the buffer. When it was time, I drew the whole frame using print! statements.
 
-When I first did this, it was noticeably slower than the termion version(think 1-2 fps). This is because calling into the Console API that often (once per character) is going to pull down performance.  Luckily, I could work around this by just checking if we were already using the color I wanted to render. If we were, I didn't set the color again. 
+When I first did this, it was noticeably slower than the termion version(roughly 5-10 fps). This is because calling into the Console API that often (once per character) is going to pull down performance.  Luckily, I could work around this by just checking if we were already using the color I wanted to render. If we were, I didn't set the color again. 
 
 Performance between the termion version and the crossterm version now look the same to me, which I call good enough :)
 
