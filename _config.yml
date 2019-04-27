@@ -19,6 +19,8 @@ nav:
     href:           "//jonathanturner.org/about"
   - name:           "RSS"
     href:           "//jonathanturner.org/feed.xml"
+  - name:           "poems"
+    href:           "//jonathanturner.org/poems/waitingtogrow/index.html"
 
 # Sass
 sass:
