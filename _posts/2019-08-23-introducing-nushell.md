@@ -14,7 +14,7 @@ This release was made by Jonathan Turner (me), Yehuda Katz, and Andrés Robalino
 
 Many of us have gotten used to bash (or zsh/fish/etc), and don't understand why you would need another kind of shell. That was me, too, a few months ago before I started working on this. My friend Yehuda had discovered PowerShell and was going on and on about how amazing it was to do more with the shell, but until he actually gave me a demo, I didn't really believe him.
 
-Then he talked me into joining him on an idea he had. What if we could take the ideas of a structured shell and make it more functional? What if it worked on Windows, Linux, and macOS? What if it had great error messages? I fell in love with the project ideas, made a few new friends, and many nights and weekends later I'd like to show you what we've made.
+Then he talked me into joining him on an idea he had. What if we could take the ideas of a structured shell and make it more functional? What if, like PowerShell, it worked on Windows, Linux, and macOS? What if it had great error messages? I fell in love with the project ideas, made a few new friends, and many nights and weekends later I'd like to show you what we've made.
 
 In this post, I'll talk about how a few simple ideas drive how Nu works, what Nu can do with them, and where we hope to go in the future.
 
