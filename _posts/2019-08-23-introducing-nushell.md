@@ -6,6 +6,8 @@ Today, we're introducing a new shell, written in Rust. It draws inspiration from
 
 It's called Nushell, or just Nu for short.  We have a [book](https://book.nushell.sh/en) (¡también se habla [Español](https://book.nushell.sh/es)!). We have a [repo](https://github.com/nushell/nushell). 
 
+This release was made by Jonathan Turner (me), Yehuda Katz, and Andrés Robalino, with contributions from Odin Dutton.
+
 ![Nu in action](http://jonathanturner.org/images/nushell-autocomplete4.gif)
 
 # But why?
