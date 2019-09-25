@@ -166,7 +166,7 @@ code {
   padding: .25em .5em;
   font-size: 85%;
   font-weight: 700;
-  color: #bf616a;
+  color: #EE0000;
   background-color: #f9f9f9;
   border-radius: 3px;
 }
@@ -396,10 +396,11 @@ tbody tr:nth-child(odd) th {
       padding-top: 2.5rem;
       font-weight: 700;
       font-size: 1rem;
-      color: gray;
+      color: black;
       font-style: italic; }
     .notepad-author-info .notepad-post-author .author-website {
       font-weight: 700;
+      color: black;
       font-size: 1rem; }
     .notepad-author-info .notepad-post-author h1 {
       margin: 0;
