@@ -1,37 +1,50 @@
----
-layout: default
----
-<header class="masthead">        
-  <h1 class="masthead-title">
-    <a href="{{ site.baseurl }}/">{{ site.name }}<span>&#39;s blog</span></a>
-  </h1>
-  <nav class="masthead-nav">
-    {% for nav in site.nav %}
-    <a href="{{ nav.href }}">{{ nav.name }}</a>
-    {% endfor %}
-  </nav>
-</header>
-<div class="content list">
-{% if site.posts.size == 0 %}
-  <h2>No post found</h2>
-{% else %}
-{% for post in site.posts %}
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-    </h2>
-    <div class="list-post-date">
-      <time>{{ post.date | date_to_string }}</time>
+<html>
+
+<head>
+    <title>Jonathan Turner's blog</title>
+    <link href="/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Jonathan Turner's blog</h1>
+
+    <p>
+        <a href="/2019/11/nushell-0_5_0.html">Nushell 0.5.0</a><br />
+        05 Nov 2019
+    </p>
+    <p>
+        <a href="/2019/10/nushell-0_4_0.html">Nushell 0.4.0</a><br />
+        15 Oct 2019
+    </p>
+    <p>
+        <a href="/2019/09/nushell-0_3_0.html">Nushell 0.3.0</a><br />
+        24 Sept 2019
+    </p>
+    <p>
+        <a href="/2019/08/introducing-nushell.html">Introducing nushell</a><br />
+        23 Aug 2019
+    </p>
+    <p>
+        <a href="/2019/04/porting-the-pikachu.html">Creating crossplatform Rust terminal
+            apps</a><br />
+        27 Apr 2019
+    </p>
+    <p>
+        <a href="/2018/12/the-fallow-year.html">The Fallow Year, my Rust2019
+            post</a><br />
+        08 Dec 2018
+    </p>
+    <p>
+        <a href="/2016/10/programming-language-and-compilers-reading-list.html">Programming
+            Language and Compilers Reading List</a><br />
+        08 Oct 2016
+    </p>
+
+    <div class="footer">
+        <p>
+            Jonathan Turner | <a href="https://www.twitter.com/jntrnr">Twitter</a>
+        </p>
     </div>
-  </div>
-{% endfor %}
-{% endif %}
-</div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-69474134-1', 'auto');
-  ga('send', 'pageview');
-</script>
+</body>
+
+</html>

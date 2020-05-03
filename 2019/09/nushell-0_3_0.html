@@ -1,0 +1,192 @@
+<html>
+
+<head>
+    <title>Nushell 0.3.0</title>
+    <link href="/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Nushell 0.3.0</h1>
+
+    <p>
+        Nushell, or Nu for short, is a new shell that takes a modern, structured approach to your commandline. It works
+        seamlessly with the data from your filesystem, operating system, and a growing number of file formats to make it
+        easy to build powerful commandline pipelines.
+    </p>
+
+    <p>
+        We’re happy to announce that today we’re releasing Nushell 0.3.0. Nu has seen numerous bugfixes, performance
+        improvements, and features added since its initial public release (which was only a few weeks ago!)
+    </p>
+
+    <h2>Where to get it</h2>
+
+    <p>Nu 0.3.0 is available as <a href="https://github.com/nushell/nushell/releases/tag/0_3_0">pre-built binaries</a>
+        or from <a href="https://crates.io/crates/nu">crates.io</a>. If you have Rust installed you can install it
+        using <code>cargo +nightly install nu</code> (or if you want all the features <code>cargo +nightly install nu
+        --all-features</code>).</p>
+
+    <h2>What's new</h2>
+
+    <h3>
+        New table design (Porges, jonathandturner)
+    </h3>
+
+    <img src="/images/utf8_table.png" alt="Table with nice utf-8 lines">
+
+    <p>
+        One of the most striking differences is that Nu now uses UTF-8 box drawing to draw its tables.
+    </p>
+
+    <img src="/images/utf8_light_table.png" alt="A lighter version of utf-8 table">
+
+    <p>
+        The table is also configurable. If you feel like the table is a bit too heavy, you can also configure it to work
+        in light mode using this command:
+    </p>
+
+    <pre>> config --set [table_mode light]</pre>
+
+    <h3>
+        New file formats (pmeredit, est31, andrasio, jonathandturner)
+    </h3>
+
+    <p>
+        Nu now natively supports new file formats, including: bson, tsv, sqlite, and url-encoded strings.
+    </p>
+    <h3>
+        New commands (incrop, ramonsnir, ijt, jonathandturner, andrasio, JonnyWalker81, chhetripradeep, pka)
+    </h3>
+
+    <p>
+        Since the 0.2.0 release, Nu has gained a set of additional commands, including:
+
+        <ul>
+            <li>
+                <code>help</code> - built-in help system
+            </li>
+            <li>
+                <code>reverse</code> - reverse a table
+            </li>
+            <li>
+                <code>last</code> - like the first command, but working from the bottom of the table, return n rows
+            </li>
+            <li>
+                <code>embed</code> - create a new table using the current table as a start
+            </li>
+            <li>
+                <code>fetch</code> - get the contents of a URL (this originally lived in open)
+            </li>
+            <li>
+                <code>post</code> - post to a URL and get the results
+            </li>
+            <li>
+                <code>pwd</code> - print the working directory
+            </li>
+            <li>
+                <code>env</code> - give access to a number of important paths and environment settings
+            </li>
+            <li>
+                <code>pivot</code> - pivot a table so that rows become columns and vice-versa
+            </li>
+            <li>
+                <code>echo</code> - a built-in echo command
+            </li>
+        </ul>
+    </p>
+
+    <h3>
+        Error improvements (jonathandturner)
+    </h3>
+
+    <img src="/images/did_you_mean.png" alt="Improved error messages">
+
+    <p>
+        We’ve made steady progress on improving error messages. Recently, we added “did you mean?” errors to help when
+        you mistype the name of columns. Nu 0.3.0 also has gone through a few passes to generally polish the errors to
+        include more information when an error occurs.
+    </p>
+    <h3>
+        Shell features (pka, wycats, twe4ked, andrasio, iamcodemaker)
+    </h3>
+
+    <p>
+        Nu now supports ~ to refer to your home directory as part of a path. You can also use cd - to return to a
+        previous directory you were working in.
+    </p>
+
+    <p>
+        The shell itself also got a few updates. You can now enable ‘vi’ mode, if you’d prefer vi-like bindings (by
+        running config --set [edit_mode vi]). On non-Windows platforms, you can also use Ctrl-R to enable Sublime-style
+        history searching (we’re hoping to enable Windows support for this soon).
+    </p>
+    <h3>
+        Plugin improvements (jonathandturner, andrasio)
+    </h3>
+
+    <p>
+        Plugins have continued to mature, and it’s now possible to use plugins to extend Nu with support for new file
+        formats.
+    </p>
+
+    <p>
+        We’ve also added documentation on how to write Nu plugins in both Rust and Python, with info on Ruby coming
+        soon.
+    </p>
+    <h3>
+        Docker support (vsoch, DrSensor)
+    </h3>
+
+    <p>
+        If you’re interested in using Nu and Docker together, be sure to check out the new Docker support.
+    </p>
+    <h3>
+        Book progress
+    </h3>
+
+    <p>
+        The Nu book is now available in three languages: English, Spanish, and Japanese.
+    </p>
+
+    <p>
+        We’ve also created a Nu contributor book, which will help developers who want to contribute to Nu learn about
+        its philosophy, design, and how to create plugins.
+    </p>
+    <h2>
+        Acknowledgements
+    </h2>
+
+    <p>
+        est31, pmeredit, twe4ked, DrSensor, vsoch, pka, jankoprowski, Porges, max-sixty, ijt, djc, vthriller, taiki-e,
+        oskarskog, iamcodemaker, JonnyWalker81, yaahc, tim77, svartalf, ramonsnir, orf, lesichkovm, ineol, incrop,
+        eoinkelly, devnought, chhetripradeep, aidanharris, GuillaumeGomez, and BatmanAod for contributing to the Nu
+        codebase. Also a big thanks to our issue reporters!
+    </p>
+
+    <p>
+        ymgyt - for the Japanese version of the Nu book!
+    </p>
+
+    <p>
+        mistydemeo, romanlevin, ralvessa, pka, lord, kkalyan, jankprowski, and boisgera for helping with the book.
+    </p>
+    <h2>
+        Looking ahead
+    </h2>
+
+    <p>
+        We’re hard at work on the upcoming milestone release. If you’d like to help, feel free to jump in! We have an
+        active discord you can join for both users and contributors.
+    </p>
+
+    <div class="footer">
+        <p>
+            24 Sept 2019
+        </p>
+        <p>
+            Jonathan Turner | <a href="https://www.twitter.com/jntrnr">Twitter</a>
+        </p>
+    </div>
+</body>
+
+</html>
