@@ -4,7 +4,7 @@
 <channel>
   <title>Jonathan Turner's Blog</title>
   <link>https://www.jonathanturner.org</link>
-  <atom:link href="http://www.jonathanturner.org/feed.xml" rel="self" type="application/rss+xml"/>
+  <atom:link href="https://www.jonathanturner.org/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Blog posts by Jonathan Turner</description>
   <item>
     <title>Nushell 0.5.0</title>
