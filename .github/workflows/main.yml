@@ -1,18 +1,32 @@
-# On every push this script is executed
-on: push
-name: Build and deploy GH Pages
+name: Deploy
+
+on:
+  push:
+    branches:
+      - source
+
 jobs:
-  build:
-    name: shalzz/zola-deploy-action
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-    # Checkout
-    - uses: actions/checkout@master
-    # Build & deploy
-    - name: shalzz/zola-deploy-action
-      uses: shalzz/zola-deploy-action@v0.12.0
-      env:
-        # Target branch
-        PAGES_BRANCH: master
-        # Provide personal access token
-        TOKEN: ${{ secrets.TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install zola
+        run: |
+          wget -q -O - \
+          "https://github.com/getzola/zola/releases/download/v0.12.0/zola-v0.12.0-x86_64-unknown-linux-gnu.tar.gz" \
+          | sudo tar xzf - -C /usr/local/bin
+      - name: Build
+        run: zola build
+
+      - name: Push
+        run: |
+          cd public
+          git init
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions-bot@users.noreply.github.com"
+          git add .
+          git commit -m "Automatic deploy"
+          git push --force "https://${{ secrets.DEPLOY_TOKEN }}@github.com/jonathandturner/jonathandturner.github.io.git" master:master
