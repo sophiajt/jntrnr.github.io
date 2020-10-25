@@ -1,0 +1,48 @@
+# The URL the site will be built for
+base_url = "https://simple-dev-blog-zola-starter.netlify.app/"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+highlight_theme = "demain"
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+title = "Simple Dev Blog"
+description = "A simple dev blog theme with no javascript, prerendered linked pages and SEO tags."
+
+generate_feed = true
+
+taxonomies = [
+  { name = "tags" }
+]
+
+[extra]
+
+nav = [
+  { name = "About", path = "/about/" },
+  { name = "Blog", path = "/blog/" }
+]
+
+latest_text = "Check out my latest post:"
+
+icon = "icon.png"
+profile_small = "icon.png"
+profile_large = "profile.jpg"
+
+accent = "#05a081"
+accent_light = "#82d0c0"
+
+author = "John Doe"
+
+footer_about = """
+A simple dev-blog theme created by Bennett. You can follow him on [Github](https://github.com/bennetthardwick) (if you like).
+"""
+
+not_found_message = """
+This is not the page you're looking for... return back to [safety?](/)
+"""
