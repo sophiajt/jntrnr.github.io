@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "http://jonathandturner.github.io/"
+base_url = "https://jonathandturner.github.io/"
 theme = "simple-dev-blog"
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -14,16 +14,16 @@ build_search_index = true
 
 generate_feed = true
 
-taxonomies = [{name = "tags"}]
+taxonomies = [{ name = "tags" }]
 
 [extra]
 # Put all your custom variables here
 nav = [
-  {name = "Home", path = "/"},
-  {name = "Tags", path = "/tags"},
-  {name = "Twitter", path = "https://www.twitter.com/jntrnr"},
-  {name = "Atom/RSS", path = "/atom.xml"},
-  {name = "Poems", path = "/poems/waitingtogrow"},
+  { name = "Home", path = "/" },
+  { name = "Tags", path = "/tags" },
+  { name = "Twitter", path = "https://www.twitter.com/jntrnr" },
+  { name = "Atom/RSS", path = "/atom.xml" },
+  { name = "Poems", path = "/poems/waitingtogrow" },
 ]
 
 latest_text = "Check out my latest post:"
