@@ -47,6 +47,7 @@ Here's the current list of topics. If you see something missing, you can drop an
 * Tokio + io_uring for CLI apps
 * Filesystem + FUSE
 * Seda or actor based project
+* Wasm + wasm bindgen
 
 ## Patterns and practices
 * Like http://railstutorial.org but for Rust
