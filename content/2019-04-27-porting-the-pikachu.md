@@ -16,7 +16,7 @@ Termion has been a boon for Rust, with lots of folks using it to create terminal
 
 Yesterday, I discovered a crate I have wanted for at least a year: that holy grail of something like termion that also worked crossplatform. The crate is called [crossterm](https://github.com/TimonPost/crossterm), and it is exactly that. Rather than being an exact copy of termion, I'd call Crossterm a termion-like crate. The API surface feels very similar between the two crates, but it's not identical.  That said, often, the translation is 1:1 (or close to it).
 
-In this post, I'll detail what I had to do to port to crossterm. You can take a look at my [repo](https://github.com/jonathandturner/rust-sloth/tree/crossterm-port) and give it a spin.
+In this post, I'll detail what I had to do to port to crossterm. You can take a look at my [repo](https://github.com/jntrnr/rust-sloth/tree/crossterm-port) and give it a spin.
 
 ## Moving to crossterm
 

@@ -142,7 +142,7 @@ When I first started learning C++, I had a pretty steep hill to climb.  Luckily,
 
 Some of that cognitive load is inherent in programming a computer at a system's level.  You need to understand the stack.  You need to understand how pointers work.  What C++ adds is another layer of complexity around knowing when a value isn't fully copied and when virtual dispatch is and isn't used -- all without any warning to the user if they do something that is "probably a bad idea(tm)".
 
-This isn't to knock on C++.  Much of Rust is based on keeping the C++ philosophy of low-level efficient abstractions intact.  In fact, you can even write code that's [very similar to the Rust example](https://gist.github.com/jonathandturner/a182347b763398d8ea4f).
+This isn't to knock on C++.  Much of Rust is based on keeping the C++ philosophy of low-level efficient abstractions intact.  In fact, you can even write code that's [very similar to the Rust example](https://gist.github.com/jntrnr/a182347b763398d8ea4f).
 
 What Rust *does* do in this case is to separate inheritance from polymorphism and push you towards genericity from the start.  In doing so, it gets you thinking generically from day #1.  It might seem weird to separate inheritance from polymorphism if you're used to them being used together.  
 

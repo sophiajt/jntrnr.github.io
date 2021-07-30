@@ -6,7 +6,7 @@ tags = [ "rust" ]
 
 The other day I threw together a simple Just-In-Time compiler (or JIT, for short), and I thought it'd be fun to show the steps I did.  With this, it should be possible to create a page of executable memory, write some machine code into it, and then treat it like a function call from Rust.
 
-Let's get started!  You can grab my [JIT project](https://github.com/jonathandturner/rustyjit), if you want to follow along.  I've only tested this in OS X, but it should adaptable for other platforms.  
+Let's get started!  You can grab my [JIT project](https://github.com/jntrnr/rustyjit), if you want to follow along.  I've only tested this in OS X, but it should adaptable for other platforms.  
 
 **Updated 12/2/2015:** Thanks to some reader comments, I've updated the code below to not use malloc and instead use posix_memalign directly as the allocation step, which avoids leaking memory.
 

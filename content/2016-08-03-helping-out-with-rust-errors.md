@@ -26,7 +26,7 @@ you can also search for error messages and see if there is already a test. Runni
 help you see if the error has been updated to the new format.
 
 If you can find a test case that needs to be updated, file an issue like one of those listed in the
-"list of errors" link and cc @jonathandturner. I can help get the error updated to the new format
+"list of errors" link and cc @jntrnr. I can help get the error updated to the new format
 and tag the error so that others can find it.
 
 # I love writing docs!
@@ -295,7 +295,7 @@ standard:
 Perfect.  Ship it!
 
 After we've finished with updating the error and the corresponding unit tests, we can create a PR.
-When you file the PR, put the message "r? @jonathandturner" at the bottom of your commit
+When you file the PR, put the message "r? @jntrnr" at the bottom of your commit
 message. This will add me to do the code review.
 
 # Extra credit
@@ -397,6 +397,6 @@ with the new error style.
 # Thanks!
 
 Thanks for wanting to jump in and help! You can find me on irc.mozilla.org as jntrnr and on
-github.com as jonathandturner. If you have any questions, please ask. You can also get lots of good
+github.com as jntrnr. If you have any questions, please ask. You can also get lots of good
 help in #rust-internals and #rustc on irc.mozilla.org.
 

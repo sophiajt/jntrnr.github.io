@@ -4,7 +4,7 @@ title = "Announcing Rust Language Server Alpha Release"
 tags = [ "rust" ]
 +++
 
-Today, we're announcing the first alpha release of the [Rust Language Server (aka RLS)](https://github.com/jonathandturner/rls).  With this alpha release, this is the first time we're encouraging early adopters to try on real projects and [send us feedback](https://github.com/jonathandturner/rls/issues).  The RLS has now reached a level of maturity where it should be able to run against most Cargo-based Rust projects.
+Today, we're announcing the first alpha release of the [Rust Language Server (aka RLS)](https://github.com/jntrnr/rls).  With this alpha release, this is the first time we're encouraging early adopters to try on real projects and [send us feedback](https://github.com/jntrnr/rls/issues).  The RLS has now reached a level of maturity where it should be able to run against most Cargo-based Rust projects.
 
 But what exactly is the Rust Language Server?
 
@@ -31,13 +31,13 @@ The alpha release of the RLS has been run successfully on Linux, Mac, and Window
 **Step 1**: Check out the RLS:
 
 ```
-git clone https://github.com/jonathandturner/rls
+git clone https://github.com/jntrnr/rls
 ```
 
-**Step 2**: Set up your editor (here we show [VS Code plugin](https://github.com/jonathandturner/rls_vscode))
+**Step 2**: Set up your editor (here we show [VS Code plugin](https://github.com/jntrnr/rls_vscode))
 
 ```
-git clone https://github.com/jonathandturner/rls_vscode.git
+git clone https://github.com/jntrnr/rls_vscode.git
 cd rls_vscode
 npm install
 ```
@@ -80,7 +80,7 @@ If you see an error like this, you can run the rls by instead running the comman
 
 The RLS is still early in its life and needs to go through a stabilization period before it's ready for 1.0.  This alpha release marks the first release in this series.
 
-The next release will be a [second alpha](https://github.com/jonathandturner/rls/milestone/3) that includes another set of bugfixes and polish.  This will be followed by a [beta](https://github.com/jonathandturner/rls/milestone/4).  The beta will be the first that will be distributed as a binary and will be much closer to final 1.0 experience in terms of ease-of-install and ease-of-use.
+The next release will be a [second alpha](https://github.com/jntrnr/rls/milestone/3) that includes another set of bugfixes and polish.  This will be followed by a [beta](https://github.com/jntrnr/rls/milestone/4).  The beta will be the first that will be distributed as a binary and will be much closer to final 1.0 experience in terms of ease-of-install and ease-of-use.
 
 # I want to help
 

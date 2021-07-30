@@ -662,4 +662,4 @@ That's another 40% off the compile time.  We've now gone from 0.548s to 0.048s, 
 
 I hope you had as much fun reading this post as I had in writing it.  There are amazing benefits to all the features that cargo and rustc provide, and the Rust ecosystem builds on those benefits.  At the same time, it's fun to play around with compiler technology and see that when we get down to it, it's just another Rust program that we can tune to our heart's content.  
 
-You can see the [rabbithole source](https://github.com/jonathandturner/rabbithole) if you want to play with it yourself.  
+You can see the [rabbithole source](https://github.com/jntrnr/rabbithole) if you want to play with it yourself.  

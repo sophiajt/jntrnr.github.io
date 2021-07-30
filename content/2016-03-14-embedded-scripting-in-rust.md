@@ -4,7 +4,7 @@ title = "Embedded scripting in Rust"
 tags = [ "rust", "rhai" ]
 +++
 
-For the last few weeks, I've been working on an embedded scripting language for Rust, based loosely on [ChaiScript](http://www.chaiscript.com) called [Rhai](https://github.com/jonathandturner/rhai).  What's an embedded scripting language?  While the definition might depend on who you ask, for this post embedded scripting has a few distinct features: 
+For the last few weeks, I've been working on an embedded scripting language for Rust, based loosely on [ChaiScript](http://www.chaiscript.com) called [Rhai](https://github.com/jntrnr/rhai).  What's an embedded scripting language?  While the definition might depend on who you ask, for this post embedded scripting has a few distinct features: 
 
 * A language that derives all functionality from bindings to the hosting environment
 * As a result, it allows complete control over the API exposed to the script, letting you lock down the script to your application's needs
@@ -267,4 +267,4 @@ For variables, the engine works by passing a scope stack around.  For lookup, in
 
 Rhai is still very young and has a bit of growing to do before it's ready for primetime.  Parsing and error reporting are barebones and don't have the kind of error recovery you'd expect from more industrial-strength scripting.  There are also a number of convenience features that would be relatively easy to add, like vectors, iterators, for..in.., and so on.
  
-If you'd like to help out, jump over to the [GitHub site](https://github.com/jonathandturner/rhai).
+If you'd like to help out, jump over to the [GitHub site](https://github.com/jntrnr/rhai).

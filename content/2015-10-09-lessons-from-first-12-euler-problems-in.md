@@ -18,7 +18,7 @@ While I've dabbled with it before, this week was the first time I really gave it
 
 In this post I talk through solving some of the Euler problems in Rust, both de-rusting my programming skills and learning what this Rust thing was all about.
 
-If you're interested, you can grab the [source code to my solutions](https://github.com/jonathandturner/rustnewbie).
+If you're interested, you can grab the [source code to my solutions](https://github.com/jntrnr/rustnewbie).
 
 # Problem 1
 
@@ -235,7 +235,7 @@ Now that we have a single pair, we immediately use it.  At the beginning of line
 
 # Problems 5 through 7
 
-Problems [#5](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex5.rs), [#6](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex6.rs), and [#7](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex7.rs) are all straightforward and don't show off anything new in the language.  Let's jump ahead to the next interesting one.
+Problems [#5](https://github.com/jntrnr/rustnewbie/blob/master/euler/src/ex5.rs), [#6](https://github.com/jntrnr/rustnewbie/blob/master/euler/src/ex6.rs), and [#7](https://github.com/jntrnr/rustnewbie/blob/master/euler/src/ex7.rs) are all straightforward and don't show off anything new in the language.  Let's jump ahead to the next interesting one.
 
 # Problem 8
 
@@ -298,7 +298,7 @@ Finally, we use another format string ```{:?}```, which can print out our winnin
 
 # Problem 9
 
-Problem [#9](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex9.rs) is another solution that's simple and doesn't show off any new features.  Moving on.
+Problem [#9](https://github.com/jntrnr/rustnewbie/blob/master/euler/src/ex9.rs) is another solution that's simple and doesn't show off any new features.  Moving on.
 
 # Problem 10
 
@@ -377,7 +377,7 @@ let input_as_num: Vec<i32> = input_split.map(|x|
 ).collect();
 ```
 
-I'm only showing the interesting part of the solution since it's a bit long, but you can read the [whole solution](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex11.rs).
+I'm only showing the interesting part of the solution since it's a bit long, but you can read the [whole solution](https://github.com/jntrnr/rustnewbie/blob/master/euler/src/ex11.rs).
 
 Here we do a bit more string manipulation using some new methods.  The ```.split_whitespace()``` method on **line 23** lets us turn our input string into an iterator of strings, splitting at any whitespace. 
 
@@ -426,7 +426,7 @@ fn main() {
 }
 ```
 
-Again we'll trim down to the interesting parts, since we've seen the prime iterator before, but you can read the [full file](https://github.com/jonathandturner/rustnewbie/blob/master/euler/src/ex12.rs).
+Again we'll trim down to the interesting parts, since we've seen the prime iterator before, but you can read the [full file](https://github.com/jntrnr/rustnewbie/blob/master/euler/src/ex12.rs).
 
 This looks pretty familiar.  On **line 5**, we run our primes iterator, take enough to use later, and turn that into a ```Vec<u64>``` we can use a bunch of times.
 
