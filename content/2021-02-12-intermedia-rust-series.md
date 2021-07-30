@@ -8,7 +8,7 @@ Hi all!
 
 A few days ago I [posted on Twitter](https://twitter.com/jntrnr/status/1358592787852140550?s=20) asking for topics that people wanted to see covered for intermediate Rust content. The response was awesome and it's inspired me to make a series where I go through each topic and do my best to cover it as a video and/or blog post.
 
-Here's the current list of topics. If you see something missing, you can drop an issue on [this repo](https://github.com/jonathandturner/jonathandturner.github.io) or ping me [on Twitter](https://twitter.com/jntrnr) and I'll try to add it.
+Here's the current list of topics. If you see something missing, you can drop an issue on [this repo](https://github.com/jonathandturner/jntrnr.github.io) or ping me [on Twitter](https://twitter.com/jntrnr) and I'll try to add it.
 
 ## Rust features
 * Associated types
