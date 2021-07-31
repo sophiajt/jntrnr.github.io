@@ -35,7 +35,7 @@ profile_small = "icon.png"
 accent = "#05a081"
 accent_light = "#82d0c0"
 
-author = "Jonathan Turner"
+author = "JT"
 
 footer_about = """
 A simple dev-blog theme created by Bennett. You can follow him on [Github](https://github.com/bennetthardwick) (if you like).
