@@ -4,4 +4,4 @@ page_template = "blog-post.html"
 sort_by = "date"
 +++
 
-## Jonathan Turner's blog
+## JT's blog
