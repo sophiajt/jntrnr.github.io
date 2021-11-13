@@ -4,7 +4,7 @@ title = "Feature Bias, or Rethinking the Blub Paradox"
 tags = [ "philosophy" ]
 +++
 
-I got a lot of great feedback on my previous post ["Rust and the Blub Paradox"](http://www.jonathanturner.org/2016/01/rust-and-blub-paradox.html), which inspired me to write a follow-up.
+I got a lot of great feedback on my previous post ["Rust and the Blub Paradox"](http://www.jntrnr.com/2016/01/rust-and-blub-paradox.html), which inspired me to write a follow-up.
 
 In its original formulation, the [Blub Paradox](http://www.paulgraham.com/avg.html) is something of a tool for people to feel smug about their favorite language.  I heard a lot of feedback that it feels condescending.  I hadn't realized that in my mind the Blub Paradox had morphed from its original form into something different.
 

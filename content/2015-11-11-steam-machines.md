@@ -52,7 +52,7 @@ It's still a risky play, and, I'd argue, one that's potentially riskier than par
 
 As an aside, you might think that being third-party would help you create the Steam Machine of your dreams, but as of the time of this writing, you can't even configure an Alienware machine to use SSD.  For a gaming machine.  No SSD.  What?  If you're like me, that's the first thing you'll want to upgrade.  I asked the Alienware rep over Twitter about it and got:
 
-![Image of Alienware blaming lack of consumer choice on SKU complexity](http://www.jonathanturner.org/images/alienware.png)
+![Image of Alienware blaming lack of consumer choice on SKU complexity](http://www.jntrnr.com/images/alienware.png)
 
 Again, likely something that will be fixed in time, but not the best initial experience and one that will turn-off some gamers from the Steam Machine idea.
 

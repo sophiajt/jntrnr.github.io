@@ -131,7 +131,7 @@ _Rust meetups now total over 130 around the world_
 
 The in-person piece of the Rust community, the Rust meetups, have seen 30% growth in the last nine months and now total over 130 around the world.  We've likewise seen steady growth in the number of conferences that users can attend for more training and networking.
 
-We've also seen some impressive growth in indicators of the online community as well since the [last time I reported on them](http://www.jonathanturner.org/2017/10/fun-facts-about-rust-growth.html). For example, the Rust reddit recently passed 40k users (up from the 29k of nine months ago), the GitHub repo is nearly at 30k stars (up from 24k), and the official Rust twitter has over 31k followers (up from 24k).
+We've also seen some impressive growth in indicators of the online community as well since the [last time I reported on them](http://www.jntrnr.com/2017/10/fun-facts-about-rust-growth.html). For example, the Rust reddit recently passed 40k users (up from the 29k of nine months ago), the GitHub repo is nearly at 30k stars (up from 24k), and the official Rust twitter has over 31k followers (up from 24k).
 
 This enthusiasm has also translated into the teams that govern Rust itself. Combined, the governing teams have doubled in size in the last 9 months to over [100 positions across the various teams](https://www.rust-lang.org/en-US/team.html). The scope has also grown in tandem, with new teams that cover infrastructure, developer experiences, and dependency management.
 

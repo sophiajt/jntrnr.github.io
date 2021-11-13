@@ -6,7 +6,7 @@ tags = [ "rust", "emulation" ]
 
 Many years ago, I created a [simple NES emulator in C#](http://jturner.tapetrade.net/sharpnes/index.html) using SDL and Mono.  For fun, I wanted to see what it would be like to port that emulator to Rust.  A couple weeks later, after poking on it on and off between packing for a move, I was able to [get it working](https://github.com/jntrnr/rustynes).
 
-![Image of Super Mario Bros 1 on emulator](http://www.jonathanturner.org/images/smb1.png)
+![Image of Super Mario Bros 1 on emulator](http://www.jntrnr.com/images/smb1.png)
 
 # What I did
 

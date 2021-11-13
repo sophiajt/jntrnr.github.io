@@ -10,7 +10,7 @@ A few weeks ago, I read an [analysis of Rust, D, and Go](https://www.quora.com/W
 
 Having met Andrei and seen a few of his talks, I know that he likes to poke fun.  Still, let's take the bait.  Is his observation funny because it's a funny image or is it funny because there's an underlying truth to what he's saying?
 
-**EDIT:** thanks to all the responses to this post, I've written a follow-up on [where the Blub Paradox is wrong and where it's helpful](http://www.jonathanturner.org/2016/01/rethinking-the-blub-paradox.html).
+**EDIT:** thanks to all the responses to this post, I've written a follow-up on [where the Blub Paradox is wrong and where it's helpful](http://www.jntrnr.com/2016/01/rethinking-the-blub-paradox.html).
 
 **EDIT #2:** Wow, some people also seem to be taking this article as an attack on Andrei.  Not at all!  Like I said, I've chatted with him in person and he's very much the type that likes to say funny things, whether about himself or the wide array of programming languages.  I just took one of his quotes about Rust as a starting point and had fun with it and looked at what might be weird about Rust coming from other languages.
 
@@ -196,7 +196,7 @@ While it may not look like it at first, the above example uses the "bubbling" st
 
 The end result means that if if ```load_header``` ever has a problem when calling ```file.read_u32()```, that Error will be returned instead.  If it is, the same thing happens in ```load_audio```, meaning that it, too, will return the same Error.  And so on, until the calling function finally handles the error case.  
 
-I wrote a [post about ```try!```](http://www.jonathanturner.org/2015/11/learning-to-try-things-in-rust.html), if you'd like to learn more.
+I wrote a [post about ```try!```](http://www.jntrnr.com/2015/11/learning-to-try-things-in-rust.html), if you'd like to learn more.
 
 # Weird feature #3: the borrow-checker
 
