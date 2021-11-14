@@ -4,7 +4,7 @@ Waiting to Grow
 Introduction
 --------------------------------
 
-_Waiting to Grow_ is a collection of poems by [Jonathan Turner](https://jonathanturner.org). 
+_Waiting to Grow_ is a collection of poems by [Jonathan Turner](https://jntrnr.com). 
 
 Please enjoy.
 
