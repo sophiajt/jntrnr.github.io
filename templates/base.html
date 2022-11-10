@@ -71,7 +71,7 @@
     {% endif %}
 
     {% for link in config.extra.nav %}
-      <link rel="prerender" href="{{ link.path }}" />
+      <link rel="prerender" href="{{ link.path }}" rel="me" />
     {% endfor %}
 
     <link rel="prefetch" href="{{ resize_image(path=config.extra.profile_small, width=50, height=50, op="fill") }}" />
