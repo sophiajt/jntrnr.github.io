@@ -22,7 +22,6 @@ nav = [
   { name = "Home", path = "/" },
   { name = "Tags", path = "/tags" },
   { name = "Twitter", path = "https://www.twitter.com/jntrnr" },
-  { name = "Mastodon", path = "https://mastodon.social/@jntrnr", rel = "me" },
   { name = "Atom/RSS", path = "/atom.xml" },
   { name = "Poems", path = "/poems/waitingtogrow" },
 ]
