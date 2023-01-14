@@ -22,7 +22,7 @@ Still, it felt like the right thing at the time to try to curb this growing habi
 
 I made a promise to myself as I got into self-help and meditation that I would stop using YouTube as a way to soothe this stress. That I could find other ways.
 
-I remember when I slipped back into it. My favorite YouTube content creator - after not posting for almost a year - had posted the start of a new series. By this point, I'd been off YouTube for almost a year. I was used to doing other things with my time. And yet, when they posted that video, and I got a notification, I didn't say no. Since then, I don't think I've ever taken more than a couple months break from it. When I slip back into it, it effortlessly returns to being part of my daily routine.
+I remember when I slipped back into it. My favorite YouTube content creator - after not posting for over a year - had posted the start of a new series. By this point, I'd been off YouTube for almost a year. I was used to doing other things with my time. And yet, when they posted that video, and I got a notification, I didn't say no. Since then, I don't think I've ever taken more than a couple months break from it. When I slip back into it, it effortlessly returns to being part of my daily routine.
 
 ## What do you mean by addicted?
 
