@@ -1,3 +1,9 @@
++++
+title = "YouTube Addiction"
+[taxonomies]
+tags = [ "thoughts" ]
++++
+
 # YouTube Addiction
 
 Hi, my name is JT. I'm a YouTube addict.
