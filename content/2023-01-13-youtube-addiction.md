@@ -4,8 +4,6 @@ title = "YouTube Addiction"
 tags = [ "thoughts" ]
 +++
 
-# YouTube Addiction
-
 Hi, my name is JT. I'm a YouTube addict.
 
 I know what you're thinking. That sounds like a joke. That you want a funny punchline to go with it. Me too.
