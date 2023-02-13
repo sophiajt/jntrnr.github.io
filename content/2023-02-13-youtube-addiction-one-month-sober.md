@@ -4,7 +4,7 @@ title = "YouTube addiction, one month sober"
 tags = [ "thoughts" ]
 +++
 
-Today marks my first month clean from YouTube. It was the right choice, but that's not to say it was easy.
+Today marks my first month [clean from YouTube](2023-01-13-youtube-addiction). It was the right choice, but that's not to say it was easy.
 
 Let's talk about it.
 
