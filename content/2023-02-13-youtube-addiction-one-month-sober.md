@@ -41,7 +41,7 @@ But the real changes started happening with my mental health.
 
 One of the things that made me try to find out what was wrong with me was my declining mental health. Part of me wanted to become a shut-in and lose myself, and another part of me wanted to fight this. I felt worse as the weeks passed.
 
-Once I stopped YouTube, I knew I needed a few things: I needed to understand *why* I got addicted in the first place, and I needed to work on both healthier habits.
+Once I stopped YouTube, I knew I needed a few things: I needed to understand *why* I got addicted in the first place, and I needed to work on healthier habits.
 
 This is still very early on for me, but I wanted to mention a few things I did:
 
@@ -67,7 +67,7 @@ Then we started talking about the "why", in the same way of holding up a mirror 
 
 In a sense, the goal of building new habits isn't to only have new habits. It's to start rewiring the brain to process risks, pain, and danger in a healthier way. There will always be risks, like crossing a street, and we re-learn how to work with them.
 
-To some folks, that might sound like total common sense. If it does for you, that's great. For me, it got surprisingly easy to create a safe illusion that turns into an unhealthy way to cope.
+To some folks, that might sound like total common sense. If it does for you, that's great. For me, it got surprisingly easy to create a safe illusion that turned into an unhealthy way to cope. I needed to see my way out of that.
 
 ## Other changes
 
