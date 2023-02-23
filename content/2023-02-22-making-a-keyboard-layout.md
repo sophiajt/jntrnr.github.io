@@ -49,7 +49,8 @@ Scoring the different moves ended up being a bit of an art. Setting scores high 
 ## Show us the layout already
 
 ![Keyboard with pmfcqxluoy inasbkreh ;vgdzjw,.](https://www.jntrnr.com/images/keyboard_layout.png)
-Inas keyboard layout
+
+*Inas keyboard layout*
 
 Here's the Inas layout (named by the home keys on the left hand).
 
