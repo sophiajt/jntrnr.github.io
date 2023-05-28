@@ -11,7 +11,7 @@ There's a lot of speculation about why I left Rust yesterday, so I want to set t
 A short timeline of what happened from my perspective, as this is relevant for later:
 
 1. A request went out to the interim leadership group for potential keynote speakers for RustConf.
-1. JeanHeyd Meneide was proposed by myself and Manish as a keynote.
+1. JeanHeyd Meneide was proposed by myself and Manish as a keynote. JeanHeyd is one of the two [editors of the official C standard](https://www.open-std.org/jtc1/sc22/wg14/www/contacts), a C++ expert, and a good speaker. We felt like he'd be a great invited expert with an outsider perspective.
 1. A few days later it was held to a vote, and JeanHeyd was selected as one of the keynotes.
 1. JeanHeyd was asked and accepted the keynote.
 1. Before the schedule was posted, it was discussed in a team meeting that JeanHeyd had been selected as one of the keynote speakers.
