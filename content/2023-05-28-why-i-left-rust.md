@@ -12,12 +12,12 @@ A short timeline of what happened from my perspective, as this is relevant for l
 
 1. A request went out to the interim leadership group for potential keynote speakers for RustConf.
 1. JeanHeyd Meneide was proposed by myself and Manish as a keynote. JeanHeyd is one of the two [editors of the official C standard](https://www.open-std.org/jtc1/sc22/wg14/www/contacts), a C++ expert, and a good speaker. We felt like he'd be a great invited expert with an outsider perspective.
-1. A few days later it was held to a vote, and JeanHeyd was selected as one of the keynotes.
+1. A few days later it was held to a vote. Consensus in the interim leadership group (what the official blog calls the "leadership chat") are of those present in the group when the decision is made. In total five members voted, and all five votes supported JeanHeyd as the keynote speaker.
 1. JeanHeyd was asked and accepted the keynote.
 1. Before the schedule was posted, it was discussed in a team meeting that JeanHeyd had been selected as one of the keynote speakers.
 1. A couple team members had strong opinions/discomfort against JeanHeyd being selected as a keynote speaker, as best as I understand it, because of the content of JeanHeyd's blog post on reflection in Rust.
 1. This discomfort was brought to the interim leadership group as a problem that must be fixed immediately. There was no discussion of the ramifications of making a change at this point. There were complaints that this pushback was not sufficient to require change, but this feedback was ignored. The discussion focused on the discomfort of the team members and changing JeanHeyd away from being a keynote speaker as the only solution.
-1. A person in Rust leadership then, without taking a vote from the interim leadership group (remember, JeanHeyd was voted on and selected by Rust leadership), reached directly to RustConf leadership and asked to change the invitation.
+1. Two people in Rust leadership then, without taking a vote from the interim leadership group (remember, JeanHeyd was voted on and selected by Rust leadership), reached directly to RustConf leadership and asked to change the invitation. (note: this used to say one person, but I've now had multiple people independently confirm it was two people.)
 1. RustConf leadership decided to wait a week before informing JeanHeyd, giving Rust leadership time to change its mind. The interim leadership group was not informed of this week delay.
 1. After the week expired, JeanHeyd was informed of the decision to downgrade the talk. Understandably, he fully declined to speak at RustConf.
 1. When I read JeanHeyd's blog post and learned of the declining of the invitation, I immediately resigned from the Rust project.
