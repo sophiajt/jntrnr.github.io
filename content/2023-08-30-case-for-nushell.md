@@ -20,9 +20,9 @@ I also throw 'zsh' in here as well. Apple's macOS switched from bash to zsh, an 
 
 Bash at this point has become so well known that people often confuse support for bash-isms as part of the POSIX standard, but we'll talk about that later.
 
-Pros: it's everywhere. Learn once, run anywhere.
+**Pros:** it's everywhere. Learn once, run anywhere.
 
-Cons: as a language, bash/zsh feels a bit too retro. It doesn't offer any of the modern programming language style, tool support, etc folks would be used to from other languages. In truth, bash was never really meant for writing the kind of large scripts that people are maintaining today.
+**Cons:** as a language, bash/zsh feels a bit too retro. It doesn't offer any of the modern programming language style, tool support, etc folks would be used to from other languages. In truth, bash was never really meant for writing the kind of large scripts that people are maintaining today.
 
 Example for loop in bash:
 
@@ -50,8 +50,9 @@ for i in (seq 1 10);
 end
 ```
 
-Pros: the interactive experience of fish does feel quite a bit nicer that bash/zsh out of the box. Scripting is a bit nicer.
-Cons: As it says on the tin, it's a shell for the 90s. It ain't the 90s anymore.
+**Pros:** the interactive experience of fish does feel quite a bit nicer that bash/zsh out of the box. Scripting is a bit nicer.
+
+**Cons:** As it says on the tin, it's a shell for the 90s. It ain't the 90s anymore.
 
 ### PowerShell
 
@@ -69,9 +70,9 @@ foreach ($i in 1..10) {
 
 PowerShell came with an opinionated design that focused on verb-noun naming, improvements to shell syntax, and a vast set of functionality drawn from the .NET ecosystem.
 
-Pros: it's a structured shell - you can actually work with objects rather than text. Powerful set of tools and capabilities taken from .NET.
+**Pros:** it's a structured shell - you can actually work with objects rather than text. Powerful set of tools and capabilities taken from .NET.
 
-Cons: I'll go ahead and say it: PowerShell was never really designed to be a language first. The verb-noun convention forces a style that feels very awkward coming from other languages. Worth a mention: earlier versions of PowerShell were Windows-only and modern crossplatform support lacks some of the features of the earlier versions.
+**Cons:** I'll go ahead and say it: PowerShell was never really designed to be a language first. The verb-noun convention forces a style that feels very awkward coming from other languages. Worth a mention: earlier versions of PowerShell were Windows-only and modern crossplatform support lacks some of the features of the earlier versions.
 
 ### Other shells
 
