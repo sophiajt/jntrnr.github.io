@@ -76,7 +76,7 @@ PowerShell came with an opinionated design that focused on verb-noun naming, imp
 
 ### Other shells
 
-When I was coming up, there were a lot of other shells, including the csh/tcsh family. Having said that, I don't know anyone who is using of the other family of shells. Bash/zsh and to some extend fish really dominate the developer mindshare.
+When I was coming up, there were a lot of other shells, including the csh/tcsh family. Having said that, I don't know anyone who is using any of the other family of shells. Bash/zsh and to some extent fish really dominate the developer mindshare.
 
 ## Hold up, we really need to talk about POSIX
 
