@@ -118,7 +118,7 @@ Let's talk about exit codes. Actually, wait, I [already did that](https://www.jn
 
 > "The value of status may be 0, EXIT_SUCCESS, EXIT_FAILURE, [CX] [Option Start] or any other value, though only the least significant 8 bits (that is, status & 0377) shall be available from wait() and waitpid(); the full value shall be available from waitid() and in the siginfo_t passed to a signal handler for SIGCHLD. [Option End]"
 
-Sure - we all still use 8-bit machines while flipping through a manual we printed trying to find the exit code description to understand why a command that failed.
+Sure - we all still use 8-bit machines while flipping through a manual we printed trying to find the exit code description to understand why a command failed.
 
 I hear you: "but jt, look, it doesn't matter how archaic this stuff is, if we all agree to use it things keep working."
 
