@@ -254,7 +254,7 @@ Nushell is really an interactive, data-focused scripting language with shell cap
 - An interactive shell
 - A data processing system (that can also handle large data loads via dataframes)
 
-Rather than these being three separate ideas glued together, in practice it feels like Nushell is treating everything you interact with as data. This allows you to pull together different kinds of data, and know that the same commands will work over it.
+Rather than these being three separate ideas glued together, in practice it feels like Nushell is treating everything you interact with as data. This allows you to pull together different kinds of data, and know that the same commands will work over them.
 
 You might look at that list and think you don't need all that, but the way I might frame it is this: it's nice to have it when you need it.
 
