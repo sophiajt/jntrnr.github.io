@@ -178,7 +178,7 @@ for i in 1..10 {
 
 (_aside: "but jt why do variables have dollar signs?". Turns out the flexibility of shell programming allows paths to not use quotes, so it's nice to tell a difference between `cd foo` and `cd $foo`_)
 
-This eye towards usable design shows up in many ways. Working data is improved by not only having structure, but also being able to pattern match against it. Here's an example of pattern matching a list in Nushell:
+This eye towards usable design shows up in many ways. Working with data is improved by not only having structure, but also being able to pattern match against it. Here's an example of pattern matching a list in Nushell:
 
 ```nushell
 match $list {
