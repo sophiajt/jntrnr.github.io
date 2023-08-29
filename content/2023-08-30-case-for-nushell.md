@@ -230,7 +230,7 @@ An important decision we made from day 1 was to be crossplatform. You can run Nu
 
 ## Is Nushell good enough to overcome the inertia?
 
-I distinctly remembering going to a SIAM conference many years back and giving a talk on the [Chapel programming language](https://chapel-lang.org). Even back then, it was a clever language. In a couple lines, you could write code that could distribute and process a matrix across a network of computers. Coming from a lineage of array languages, it ate up data parallel processing. The equivalent code in other languages looked verbose in comparison.
+I distinctly remember going to a SIAM conference many years back and giving a talk on the [Chapel programming language](https://chapel-lang.org). Even back then, it was a clever language. In a couple lines, you could write code that could distribute and process a matrix across a network of computers. Coming from a lineage of array languages, it ate up data parallel processing. The equivalent code in other languages looked verbose in comparison.
 
 I went through my talk, hoping I'd done a decent job of conveying the main points, and at the end, someone in the audience stood up and said "but I can do all this in C++".
 
