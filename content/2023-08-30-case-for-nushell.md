@@ -224,6 +224,10 @@ When you start using Nushell to compose pipelines, you'll notice that it has a d
 
 This gives Nushell a distinctive design that encourages experimentation and exploration.
 
+### Nushell is, and has always been, crossplatform
+
+An important decision we made from day 1 was to be crossplatform. You can run Nushell on Windows, Linux, and macOS (and BSD, and Android) and get the same experience. You can easily write scripts in a way that they can be run across different platforms. Everything that you learn transfers between OSes without friction.
+
 ## Is Nushell good enough to overcome the inertia?
 
 I distinctly remembering going to a SIAM conference many years back and giving a talk on the [Chapel programming language](https://chapel-lang.org). Even back then, it was a clever language. In a couple lines, you could write code that could distribute and process a matrix across a network of computers. Coming from a lineage of array languages, it ate up data parallel processing.
