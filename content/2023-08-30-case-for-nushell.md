@@ -245,7 +245,7 @@ To answer whether Nushell can overcome this kind of inertia, I'll pose two quest
 
 Let's tackle the first question. Time and again, as people try Nushell, they come back with quotes like "this is the most excited I've been about tech in 15 years". It has a fanbase that loves it, and that fanbase is growing. It reminds me of the early days of Rust, just after hitting 1.0.
 
-To the second question: would adopting Nushell broadly actually improve things noticeably? Without a doubt. I say this without any reservation. Thinking of our shells as structured, interactive processing engines opens up the doors to a much wider array of things you can do with them. The commands would be far simpler than their POSIX equivalents and would compose far better. They'd benefit from the full knowledge of the data being shared between them. Adaptors could be made to connect to all parts of the system, allowing you full, structured access to everything you have access to.
+To the second question: would adopting Nushell broadly actually improve things noticeably? Without a doubt. I say this without any reservation. Thinking of our shells as structured, interactive processing engines opens up the doors to a much wider array of things you can do with them. The commands would be far simpler than their POSIX equivalents and would compose far better. They'd benefit from the full knowledge of the data being shared between them. Adaptors could be made to connect to all parts of the system, allowing you full, structured interaction with everything you have access to.
 
 In essence, as the saying goes, we'd be building a skyscraper starting from the 15th floor instead of the 1st.
 
