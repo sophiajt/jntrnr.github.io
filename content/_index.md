@@ -4,4 +4,4 @@ page_template = "blog-post.html"
 sort_by = "date"
 +++
 
-## JT's blog
+## Sophia June Turner's blog
