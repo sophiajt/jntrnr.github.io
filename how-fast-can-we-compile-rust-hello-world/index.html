@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <style>
+      :root {
+        --accent-color: #05a081;
+        --accent-color-light: #82d0c0;
+      }
+    </style>
+
+    <meta name="theme-color" content="#05a081" />
+
+    
+      <link rel="icon" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;444e76059742f47b00.png" />
+      <link rel="apple-touch-icon" sizes="48x48" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;444e76059742f47b00.png" />
+      <link rel="apple-touch-icon" sizes="72x72" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;6dfeb9b0bd094d5a00.png" />
+      <link rel="apple-touch-icon" sizes="96x96" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;3959b3b31b7ae92700.png" />
+      <link rel="apple-touch-icon" sizes="144x144" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;e644b27af091684500.png" />
+      <link rel="apple-touch-icon" sizes="192x192" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;3344ee474c2d849c00.png" />
+      <link rel="apple-touch-icon" sizes="256x256" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;d92103ca49c6bd5e00.png" />
+      <link rel="apple-touch-icon" sizes="384x384" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;b8dd2689e662c9cd00.png" />
+      <link rel="apple-touch-icon" sizes="512x512" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;c0d9496000275d3400.png" />
+    
+
+    
+
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary">
+
+    
+
+    
+
+    
+      
+        <meta name="description" content="" />
+        <meta name="twitter:description" content="">
+      
+    
+
+    
+      <meta name="twitter:title" content="How fast can we compile Rust hello world?">
+    
+
+    
+      <link rel="prerender" href="&#x2F;" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;tags" rel="me" />
+    
+      <link rel="prerender" href="https:&#x2F;&#x2F;www.twitter.com&#x2F;jntrnr" rel="me" />
+    
+      <link rel="prerender" href="https:&#x2F;&#x2F;fosstodon.org&#x2F;@jntrnr" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;atom.xml" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;poems&#x2F;waitingtogrow" rel="me" />
+    
+
+    <link rel="prefetch" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;53af5229a2f8852200.png" />
+
+    <title>
+      
+        
+          How fast can we compile Rust hello world?
+        
+      
+    </title>
+
+    
+    
+      <link rel="stylesheet" href="https://www.jntrnr.com/main.css">
+    
+    
+  
+    <link rel="prerender" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;how-we-talk-about-rust-in-2018&#x2F;">
+  
+
+  
+    <link rel="prerender" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;starting-the-next-thing&#x2F;">
+  
+
+  
+    <link rel="prerender"  href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rust&#x2F;">
+  
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://google.com/article"
+      },
+      "headline": "How fast can we compile Rust hello world?",
+      "image": [],
+      "datePublished": "2018-05-03T00:00:00+00:00",
+      "dateModified": "2018-05-03T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Sophia June Turner"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "Sophia June Turner",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.jntrnr.com/icon.png"
+        }
+        
+      }
+      
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        
+
+        
+        {
+          
+          "@type": "ListItem",
+          "position": 1,
+          "name": "",
+          "item": "https://www.jntrnr.com/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "How fast can we compile Rust hello world?",
+          "item": "https://www.jntrnr.com/how-fast-can-we-compile-rust-hello-world/"
+        }
+      ]
+    }
+  </script>
+
+  </head>
+  <body>
+    
+      <header>
+        <a class="profile-icon" href="/">
+          <img src="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;53af5229a2f8852200.png" alt="profile picture">
+        </a>
+        <nav>
+          
+            <a rel="me" href="&#x2F;">Home</a>
+          
+            <a rel="me" href="&#x2F;tags">Tags</a>
+          
+            <a rel="me" href="https:&#x2F;&#x2F;www.twitter.com&#x2F;jntrnr">Twitter</a>
+          
+            <a rel="me" href="https:&#x2F;&#x2F;fosstodon.org&#x2F;@jntrnr">Mastodon</a>
+          
+            <a rel="me" href="&#x2F;atom.xml">Atom&#x2F;RSS</a>
+          
+            <a rel="me" href="&#x2F;poems&#x2F;waitingtogrow">Poems</a>
+          
+        </nav>
+      </header>
+    
+    <main>
+    
+  <div class="post-title">
+    <h1>How fast can we compile Rust hello world?</h1>
+    <small>
+      May 03, 2018
+      
+        - 
+        <span class="tags">
+          
+            <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rust&#x2F;">rust</a>
+          
+        </span>
+      
+    </small>
+  </div>
+
+  <div>
+    <p>Seeing <a href="https://blog.mozilla.org/nnethercote/2018/04/30/how-to-speed-up-the-rust-compiler-in-2018/">Nick Nethercote's blog post about speeding up the compiler</a>, I started wondering just how fast could a Rust compiler be?  How fast could we compile a simple example?  How fast can we compile a Rust hello world?</p>
+<h2 id="starting-out">Starting out</h2>
+<p>When you do a <code>cargo new hello_rust --bin</code>, you get a simple Rust hello world:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    println!(&quot;</span><span style="color:#a3be8c;">Hello, world!</span><span style="color:#c0c5ce;">&quot;);
+}
+</span></code></pre>
+<p>Awesome.  Let's see how long this takes to build:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; time cargo build
+   Compiling hello_rust v0.1.0 (file:///home/jonathan/Source/hello_rust)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.52 secs
+
+real     0m0.548s
+user     0m0.468s
+sys      0m0.080s
+</span></code></pre>
+<p>Half a second on my XPS 13 9360, with a i7-7500U @ 2.70GHz with 16 gigs of RAM.  That seems, a bit long for a hello world.  Maybe cargo is doing extra work?</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; time rustc src/main.rs
+
+real     0m0.378s
+user     0m0.289s
+sys      0m0.083s
+</span></code></pre>
+<p>That's definitely better.  We're just over 1/3rd of a second.</p>
+<p>What should we expect?  If only there were another language we could compile a hello world for that's comparable... </p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; cat hello_c.c
+#include &lt;stdio.h&gt;
+
+int main() {
+    puts(&quot;Hello, from C!&quot;);
+    return 0;
+}
+&gt; time clang hello_c.c
+
+real     0m0.082s
+user     0m0.021s
+sys      0m0.041s
+</span></code></pre>
+<p>Woooaah!  Wait a second.  You're telling me that compiling C hello world is over 4.5x faster.  That's... that's something.  Maybe the compiler is doing a bit too much work for this small example?  I mean, we don't need much from the standard library, just the println macro.</p>
+<p>You know, a reasonable person would probably stop here and walk away.  Chalk it up to &quot;Rust is more complicated&quot; or &quot;maybe if I knew the right commandline options&quot;</p>
+<p>No, that's not us.  Not today.  Today, we're going to write our own Rust translator.  We're going to see just how fast we can compile Rust to a working hello world.</p>
+<h2 id="first-stop-let-s-build-a-rust-c-translator">First stop: let's build a Rust-&gt;C translator.</h2>
+<p>Here's my thinking: if we write our own translator, we can translate the Rust to C ourselves, and then compile the C.  That way, we should end up with a compile time close to the C.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; cargo new rabbithole --bin
+</span></code></pre>
+<p>Writing a full compiler is complex work, but we're going for speed here.  And speed means cutting corners.  To that end, we're implementing <em>just enough</em> of a compiler to translate our Rust to C, then we're calling that good enough.</p>
+<p>First step, we need a parser.  Luckily, there already is a crate that can parse Rust code for us.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">[dependencies]
+syn = {version = &quot;0.13&quot;, features = [&quot;full&quot;, &quot;extra-traits&quot;] }
+</span></code></pre><pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> syn;
+
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::env;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::fs::File;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::Read;
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> args = env::args();
+    args.</span><span style="color:#96b5b4;">next</span><span style="color:#c0c5ce;">();
+
+    </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> args.</span><span style="color:#96b5b4;">next</span><span style="color:#c0c5ce;">() {
+        Some(fname) =&gt; {
+            </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> src = String::new();
+            </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> file = File::open(&amp;fname).</span><span style="color:#96b5b4;">expect</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Unable to open file</span><span style="color:#c0c5ce;">&quot;);
+            file.</span><span style="color:#96b5b4;">read_to_string</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> src).</span><span style="color:#96b5b4;">expect</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Unable to read file</span><span style="color:#c0c5ce;">&quot;);
+
+            </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> syntax = syn::parse_file(&amp;src).</span><span style="color:#96b5b4;">expect</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Unable to parse file</span><span style="color:#c0c5ce;">&quot;);
+            println!(&quot;</span><span style="color:#d08770;">{:#?}</span><span style="color:#c0c5ce;">&quot;, syntax);
+        }
+        _ =&gt; {
+            println!(&quot;</span><span style="color:#a3be8c;">Please supply the file to compile</span><span style="color:#c0c5ce;">&quot;);
+        }
+    }
+}
+</span></code></pre><pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; cargo run -- hello.rs
+File {
+    shebang: None,
+    attrs: [],
+    items: [
+        Fn(
+            ItemFn {
+                attrs: [],
+                vis: Inherited,
+                constness: None,
+                unsafety: None,
+                abi: None,
+                ident: Ident {
+                    term: Term {
+                        sym: main
+                    }
+                },
+                decl: FnDecl {
+                    fn_token: Fn,
+                    generics: Generics {
+                        lt_token: None,
+                        params: [],
+                        gt_token: None,
+                        where_clause: None
+                    },
+                    paren_token: Paren,
+                    inputs: [],
+                    variadic: None,
+                    output: Default
+                },
+                block: Block {
+                    brace_token: Brace,
+                    stmts: [
+                        Item(
+                            Macro(
+                                ItemMacro {
+                                    attrs: [],
+                                    ident: None,
+                                    mac: Macro {
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident {
+                                                        term: Term {
+                                                            sym: println
+                                                        }
+                                                    },
+                                                    arguments: None
+                                                }
+                                            ]
+                                        },
+                                        bang_token: Bang,
+                                        delimiter: Paren(
+                                            Paren
+                                        ),
+                                        tts: TokenStream [
+                                            Literal {
+                                                lit: &quot;Hello, world!&quot;
+                                            }
+                                        ]
+                                    },
+                                    semi_token: Some(
+                                        Semi
+                                    )
+                                }
+                            )
+                        )
+                    ]
+                }
+            }
+        )
+    ]
+}
+</span></code></pre>
+<p>This might look a bit intimidating, so let's break it down.  The top-most thing is a File.</p>
+<ul>
+<li>File</li>
+</ul>
+<p>Each File continues zero or more Items.  An Item are things like declarations.  Function declarations, for example, are one kind of Item.</p>
+<ul>
+<li>File
+<ul>
+<li>Item</li>
+</ul>
+</li>
+</ul>
+<p>Since this file has one function, it has one item, an ItemFn.  This holds all the information about our main function.  You can see in here that we have the function's declaration (sometimes called the function prototype, if you come from C).  This tells us how many parameters it takes, what its return type is, etc.  Luckily for us, this is all empty because main has nothing interesting here.  This lets us focus on the body of the function, here called 'block'</p>
+<ul>
+<li>File
+<ul>
+<li>Item (ItemFn)
+<ul>
+<li>Block</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Blocks contain statements and expressions.  This is really the meat of what actually <em>does</em> things, and which is where we'll actually spend our time writing the compiler.  Let's take a closer look:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">block: Block {
+    brace_token: Brace,
+    stmts: [
+        Item(
+            Macro(
+                ItemMacro {
+                    attrs: [],
+                    ident: None,
+                    mac: Macro {
+                        path: Path {
+                            leading_colon: None,
+                            segments: [
+                                PathSegment {
+                                    ident: Ident {
+                                        term: Term {
+                                            sym: println
+                                        }
+                                    },
+                                    arguments: None
+                                }
+                            ]
+                        },
+                        bang_token: Bang,
+                        delimiter: Paren(
+                            Paren
+                        ),
+                        tts: TokenStream [
+                            Literal {
+                                lit: &quot;Hello, world!&quot;
+                            }
+                        ]
+                    },
+                    semi_token: Some(
+                        Semi
+                    )
+                }
+            )
+        )
+    ]
+}
+</span></code></pre>
+<p>On closer inspection we see this block has only one statement.  A something-something macro something or other.  Oh right, println is a macro!  Let's focus on just the macro invocation itself:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">mac: Macro {
+    path: Path {
+        leading_colon: None,
+        segments: [
+            PathSegment {
+                ident: Ident {
+                    term: Term {
+                        sym: println
+                    }
+                },
+                arguments: None
+            }
+        ]
+    },
+    bang_token: Bang,
+    delimiter: Paren(
+        Paren
+    ),
+    tts: TokenStream [
+        Literal {
+            lit: &quot;Hello, world!&quot;
+        }
+    ]
+},
+</span></code></pre>
+<p>Now this is a little more like it.  It's still a little cumbersome, but we can see the parts we need.  There's a <code>sym</code> thing that says what the macro is.  Later on, we can see the string that we're printing is a literal string.  We can ignore the rest.</p>
+<p>That's it.  Make sure it's invoking println, and then we'll look for the string that's being printed.</p>
+<p>To make things a little easier on ourselves, let's make a quick-and-dirty intermediate representation.  This will only have one command so far, but it'll be an easy way to de-couple the function that does the parsing from the one that does the code generation.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">enum </span><span style="color:#c0c5ce;">Command {
+    PrintLn(String)
+}
+</span></code></pre>
+<p>With that, we're ready to make our parser that can take in the <code>syn::File</code> and output our Command.  There are a few ways we can do this, but to keep things pretty simple, I'm going to make a separate <code>parse</code> function for each layer we talked about earlier: File, Item, and Block.  You can think of this as us unpacking the useful information from what <code>syn</code> gives us into much simpler data structures.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> syn;
+
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::env;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::fs;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::Read;
+
+#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug)]
+</span><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">File {
+    </span><span style="color:#bf616a;">functions</span><span style="color:#c0c5ce;">: Vec&lt;Function&gt;,
+}
+
+#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug)]
+</span><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">Function {
+    </span><span style="color:#bf616a;">body</span><span style="color:#c0c5ce;">: Vec&lt;Command&gt;,
+}
+
+#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug)]
+</span><span style="color:#b48ead;">enum </span><span style="color:#c0c5ce;">Command {
+    PrintLn(String),
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parse_body</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">body</span><span style="color:#c0c5ce;">: &amp;syn::Block) -&gt; Result&lt;Vec&lt;Command&gt;, String&gt; {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> stmts = vec![];
+    </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;"> stmt in &amp;body.stmts {
+        </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> stmt {
+            syn::Stmt::Item(syn::Item::Macro(</span><span style="color:#b48ead;">ref</span><span style="color:#c0c5ce;"> im)) =&gt; {
+                </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> macro_name = im.mac.path.segments[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">].ident.</span><span style="color:#96b5b4;">as_ref</span><span style="color:#c0c5ce;">();
+                </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;"> macro_name == &quot;</span><span style="color:#a3be8c;">println</span><span style="color:#c0c5ce;">&quot; {
+                    </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> im.mac.tts.</span><span style="color:#96b5b4;">clone</span><span style="color:#c0c5ce;">().</span><span style="color:#96b5b4;">into_iter</span><span style="color:#c0c5ce;">().</span><span style="color:#96b5b4;">next</span><span style="color:#c0c5ce;">() {
+                        Some(</span><span style="color:#b48ead;">ref</span><span style="color:#c0c5ce;"> arg) =&gt; {
+                            stmts.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(Command::PrintLn(arg.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">()));
+                        }
+                        None =&gt; </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">Err(&quot;</span><span style="color:#a3be8c;">Expected argument in function</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">into</span><span style="color:#c0c5ce;">()),
+                    }
+                } </span><span style="color:#b48ead;">else </span><span style="color:#c0c5ce;">{
+                    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">Err(format!(&quot;</span><span style="color:#a3be8c;">Unknown macro: </span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, macro_name));
+                }
+            }
+            _ =&gt; </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">Err(&quot;</span><span style="color:#a3be8c;">Unexpected statement in function</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">into</span><span style="color:#c0c5ce;">()),
+        }
+    }
+    Ok(stmts)
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parse_fn</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">: &amp;syn::ItemFn) -&gt; Result&lt;Function, String&gt; {
+    Ok(Function {
+        body: </span><span style="color:#96b5b4;">parse_body</span><span style="color:#c0c5ce;">(&amp;item.block)?,
+    })
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parse_file</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">file</span><span style="color:#c0c5ce;">: &amp;syn::File) -&gt; Result&lt;File, String&gt; {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> functions = vec![];
+    </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;"> item in &amp;file.items {
+        </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> item {
+            syn::Item::Fn(</span><span style="color:#b48ead;">ref</span><span style="color:#c0c5ce;"> item_fn) =&gt; {
+                functions.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">parse_fn</span><span style="color:#c0c5ce;">(item_fn)?);
+            }
+            _ =&gt; </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">Err(&quot;</span><span style="color:#a3be8c;">Unexpected item in file</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">into</span><span style="color:#c0c5ce;">()),
+        }
+    }
+    Ok(File { functions })
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> args = env::args();
+    args.</span><span style="color:#96b5b4;">next</span><span style="color:#c0c5ce;">();
+
+    </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> args.</span><span style="color:#96b5b4;">next</span><span style="color:#c0c5ce;">() {
+        Some(fname) =&gt; {
+            </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> src = String::new();
+            </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> file = fs::File::open(&amp;fname).</span><span style="color:#96b5b4;">expect</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Unable to open file</span><span style="color:#c0c5ce;">&quot;);
+            file.</span><span style="color:#96b5b4;">read_to_string</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> src).</span><span style="color:#96b5b4;">expect</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Unable to read file</span><span style="color:#c0c5ce;">&quot;);
+
+            </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> syntax = syn::parse_file(&amp;src).</span><span style="color:#96b5b4;">expect</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Unable to parse file</span><span style="color:#c0c5ce;">&quot;);
+            </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> result = </span><span style="color:#96b5b4;">parse_file</span><span style="color:#c0c5ce;">(&amp;syntax);
+
+            println!(&quot;</span><span style="color:#d08770;">{:#?}</span><span style="color:#c0c5ce;">&quot;, result);
+        }
+        _ =&gt; {
+            println!(&quot;</span><span style="color:#a3be8c;">Please supply the file to compile</span><span style="color:#c0c5ce;">&quot;);
+        }
+    }
+}
+</span></code></pre>
+<p>Which results in:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">Ok(
+    File {
+        functions: [
+            Function {
+                body: [
+                    PrintLn(
+                        &quot;\&quot;Hello, world!\&quot;&quot;
+                    )
+                ]
+            }
+        ]
+    }
+)
+</span></code></pre>
+<p>That's much nicer!  It took a little work reading the <code>syn</code> documentation, but once we got the hang of it, we can now work with real Rust source code and turn it into something we can use.</p>
+<p>Oh, before we go, let's clean one thing up.  You might have noticed that extra set of quotes in the macro argument.  No problem, we'll just turn:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">stmts.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(Command::PrintLn(arg.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">()));
+</span></code></pre>
+<p>Into:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">stmts.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(Command::PrintLn(arg.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">().</span><span style="color:#96b5b4;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#c0c5ce;">&quot;, &quot;&quot;)));
+</span></code></pre>
+<p>Which gives us:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">Ok(
+    File {
+        functions: [
+            Function {
+                body: [
+                    PrintLn(
+                        &quot;Hello, world!&quot;
+                    )
+                ]
+            }
+        ]
+    }
+)
+</span></code></pre>
+<p>Beautiful.  Now that we have it in this form, we have a much simpler form that we can hand to the other half of the translator.  In this half, we'll be outputting the C code and compiling it.</p>
+<p>Since we only care about one function in one file, let's just make a quick-and-dirty function to generate the C:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">compile_to_c</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">file</span><span style="color:#c0c5ce;">: &amp;File) -&gt; String {
+    </span><span style="color:#b48ead;">let mut c_output </span><span style="color:#c0c5ce;">= String::new();
+
+    </span><span style="color:#b48ead;">c_output </span><span style="color:#c0c5ce;">+= &quot;</span><span style="color:#a3be8c;">#include &lt;stdio.h&gt;</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;
+    </span><span style="color:#b48ead;">c_output </span><span style="color:#c0c5ce;">+= &quot;</span><span style="color:#a3be8c;">int main() {</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;
+
+    </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;"> stmt in &amp;file.functions[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">].body {
+        </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> stmt {
+            Command::PrintLn(</span><span style="color:#b48ead;">ref</span><span style="color:#c0c5ce;"> msg) =&gt; {
+                </span><span style="color:#b48ead;">c_output </span><span style="color:#c0c5ce;">+= &amp;format!(&quot;</span><span style="color:#a3be8c;">puts(</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#d08770;">{}</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">);</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;, msg);
+            }
+        }
+    }
+
+    </span><span style="color:#b48ead;">c_output </span><span style="color:#c0c5ce;">+= &quot;</span><span style="color:#a3be8c;">}</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;
+    </span><span style="color:#b48ead;">c_output
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<p>That's it.  Let's call it.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#96b5b4;">compile_to_c</span><span style="color:#c0c5ce;">(&amp;result.</span><span style="color:#96b5b4;">unwrap</span><span style="color:#c0c5ce;">()));
+</span></code></pre>
+<p>Running it again, we get:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">#include &lt;stdio.h&gt;
+int main() {
+puts(&quot;Hello, world!&quot;);
+}
+</span></code></pre>
+<p>Woah!  That looks like C to me.  Dare we try to compile it?</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; cargo run -- ../hello_rust/src/main.rs  &gt; testme.c
+&gt; clang testme.c
+&gt; ./a.out
+Hello, world!
+</span></code></pre>
+<p>It... works!  We just made a compiler!</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; time ./target/release/rabbithole ../hello_rust/src/main.rs &gt; testme.c
+
+real    0m0.014s
+user    0m0.010s
+sys    0m0.004s
+&gt; time clang testme.c -o testme
+real    0m0.100s
+user    0m0.043s
+sys    0m0.041s
+</span></code></pre>
+<p>Nice, by cutting lots of corners and making our own translator, we got the compile times down from 0.378s to 0.114s, less than 1/3rd of where we were.</p>
+<p>Should we stop there?  Surely we can go further down the rabbit hole.  Oh right, C is not the lowest we can go</p>
+<h2 id="deeper-down-the-rabbit-hole">Deeper down the rabbit hole</h2>
+<p>Let's cook up some assembly.  First, let's test how fast we can assemble a hello world in assembly.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; cat hello_asm.s
+ .text
+ .global main
+main:
+ mov $hw_str, %rdi
+ call puts
+ mov $0, %rax
+ ret
+
+ .data
+hw_str:
+ .asciz &quot;hello asm&quot;
+&gt; time as hello_asm.s -o hello_asm.o
+real    0m0.019s
+user    0m0.008s
+sys    0m0.011s
+&gt; time ld -o hello -dynamic-linker /lib64/ld-linux-x86-64.so.2 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o -lc hello_asm.o /usr/lib/x86_64-linux-gnu/crtn.o
+
+real    0m0.044s
+user    0m0.036s
+sys    0m0.008s
+</span></code></pre>
+<p>Wow, the assembly output cuts the compile almost in half!  If you haven't seen x64 assembly before, that might look a little strange.  Instead of working with C code with functions, we've dropped down much closer to the machine itself.  The above represents the lowest we can go in Linux.  Let's unpack what's happening:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#8fa1b3;"> .text
+ .</span><span style="color:#96b5b4;">global </span><span style="color:#8fa1b3;">main
+</span></code></pre>
+<p>Our assembly file starts with two things.  One, a section that we'll be talking about the code itself (.text) and then the one symbol we'll be making visible (main).  This will be the main function that the linker will use later.</p>
+<p>Next, main begins:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#8fa1b3;">main:
+</span></code></pre>
+<p>What follows are series of assembly commands.  The hardware keeps numbers and addresses in registers, similar to how you might store them in variables.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">mov </span><span style="color:#96b5b4;">$</span><span style="color:#8fa1b3;">hw_str</span><span style="color:#c0c5ce;">, </span><span style="color:#8fa1b3;">%</span><span style="color:#bf616a;">rdi
+</span><span style="color:#b48ead;">call </span><span style="color:#8fa1b3;">puts
+</span></code></pre>
+<p>With that in mind, this doesn't seem quite so bad.  The first line is going to set up our register that we'll use as the argument to the puts function (here, in Linux, %rdi).  After the argument is ready, we call puts.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#8fa1b3;"> </span><span style="color:#b48ead;">mov </span><span style="color:#96b5b4;">$</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">, </span><span style="color:#8fa1b3;">%</span><span style="color:#bf616a;">rax
+ </span><span style="color:#b48ead;">ret
+</span></code></pre>
+<p>After that, we return 0, just like we did in C.  Here, in 64-bit assembly, we're returning the return value in %rax.</p>
+<p>That's it.  Oh wait, one more thing.  So this was the code section, we still haven't told it what the string is to print (which we called $hw_str earlier).</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#8fa1b3;"> .data
+hw_str:
+ .asciz </span><span style="color:#a3be8c;">&quot;hello asm&quot;
+</span></code></pre>
+<p>That's not bad.  We have a data section that contains our strings.  We have one string, called <code>hw_str</code>, and we give it a null-terminated string to print.</p>
+<p>You may have been wondering about our linker line, too:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; time ld -o hello -dynamic-linker /lib64/ld-linux-x86-64.so.2 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o -lc hello_asm.o /usr/lib/x86_64-linux-gnu/crtn.o
+</span></code></pre>
+<p>This bit of magic is actually the kind of tasks that your C compiler does for you behind the scenes.  In Linux, for a program to run, it needs to be able to access things like the Linux program loader, the C standard library, and the Linux subsystems.  The above takes the barebones object file we made with the assembler and gives it all it needs to be a complete Linux executable.</p>
+<p>Before we write our assembly-outputting function, let's take a quick pause and talk about Windows.  We've been giving a lot of examples for Linux, but you can do the same kinds of things in Windows.  Make sure you have a 64-bit <a href="https://www.nasm.us/">nasm</a> installed.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">C:\Users\Jonathan\source\fast_hello&gt;type nasm_hello.asm
+    global main
+    extern puts
+
+    section .text
+main:
+    push rbp
+    mov rbp, rsp
+    mov rcx, message
+    call puts
+    mov rax, 0
+    pop rbp
+    ret
+message:
+    db &#39;Hello, Rust!&#39;, 0
+C:\Users\Jonathan\source\fast_hello&gt;nasm -f win64 nasm_hello.asm -g -o nasm_hello.obj
+
+C:\Users\Jonathan\source\fast_hello&gt;link -out:b.exe -defaultlib:libcmt &quot;-libpath:C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\lib\\amd64&quot; &quot;-libpath:C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.15063.0\\ucrt\\x64&quot; &quot;-libpath:C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.15063.0\\um\\x64&quot; -nologo nasm_hello.obj
+</span></code></pre>
+<p>You can see that the assembly looks different, though it's similar.  We do a little more setup, but the core of the work is the same.  We set up where the string is, we send it to the <code>puts</code> function, and we return 0 via the <code>rax</code> register.  Likewise, after we have an object file from the assembler, we have to do a similar dance with the linker in order to have a fully working Windows executable.</p>
+<p>With that, we can see all the techniques we're using in Linux can work in Windows, too.</p>
+<p>Okay, let's finish this up and see where we are.  Just like we wrote a C output function, we're going to write an assembly output function.  This function will create two strings: one for the code and one for the data, and then stitch them together.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">compile_to_asm</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">file</span><span style="color:#c0c5ce;">: &amp;File) -&gt; String {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> asm_code_output = String::new();
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> asm_data_output = String::new();
+
+    asm_data_output += &quot;</span><span style="color:#a3be8c;">.data</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;
+
+    asm_code_output += &quot;</span><span style="color:#a3be8c;">.text</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;
+    asm_code_output += &quot;</span><span style="color:#a3be8c;">.global main</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;
+    asm_code_output += &quot;</span><span style="color:#a3be8c;">main:</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;
+
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> temp_num = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;
+    </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;"> stmt in &amp;file.functions[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">].body {
+        </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> stmt {
+            Command::PrintLn(</span><span style="color:#b48ead;">ref</span><span style="color:#c0c5ce;"> msg) =&gt; {
+                asm_code_output += &amp;format!(&quot;</span><span style="color:#a3be8c;">mov $str_</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">, %edi</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;, temp_num);
+                asm_code_output += &quot;</span><span style="color:#a3be8c;">call puts</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;
+
+                asm_data_output += &amp;format!(&quot;</span><span style="color:#a3be8c;">str_</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">:</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;, temp_num);
+                asm_data_output += &amp;format!(&quot;</span><span style="color:#a3be8c;"> .asciz </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#d08770;">{}</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#c0c5ce;">&quot;, msg);
+                temp_num += </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">;
+            }
+        }
+    }
+
+    asm_code_output + &amp;asm_data_output
+}
+</span></code></pre><pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; time ./target/release/rabbithole ../hello_rust/src/main.rs &gt; hello_asm.s
+
+real    0m0.015s
+user    0m0.010s
+sys    0m0.005s
+&gt; time as hello_asm.s -o hello_asm.o
+real    0m0.022s
+user    0m0.009s
+sys    0m0.012s
+&gt; time ld -o hello -dynamic-linker /lib64/ld-linux-x86-64.so.2 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o -lc hello_asm.o /usr/lib/x86_64-linux-gnu/crtn.o
+
+real    0m0.043s
+user    0m0.029s
+sys    0m0.011s
+</span></code></pre>
+<p>From 0.114s to 0.08s.  We dropped another 30% off the compile time!</p>
+<p>To recap, we started at 0.548s with Cargo, then 0.378s with rustc, 0.114 going via C, and 0.08 going via assembly.  Roughly a 6.8x speedup.  Can we squeeze anything else out?</p>
+<p>You might be wondering about keeping more things in memory and getting a bit more caching.  It's a good hunch, let's try it!</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&gt; time (./target/release/rabbithole ../hello_rust/src/main.rs &gt; hello_asm.s &amp;&amp; as hello_asm.s -o hello_asm.o &amp;&amp; ld -o hello -dynamic-linker /lib64/ld-linux-x86-64.so.2 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o -lc hello_asm.o /usr/lib/x86_64-linux-gnu/crtn.o)
+
+real    0m0.048s
+user    0m0.028s
+sys    0m0.021s
+</span></code></pre>
+<p>That's another 40% off the compile time.  We've now gone from 0.548s to 0.048s, a whole 11x faster.  There's even more we can do.  For example, we can squeeze out more by writing our own parser, outputting the .o ourselves, and more.  But we'll leave that as an exercise for the reader.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope you had as much fun reading this post as I had in writing it.  There are amazing benefits to all the features that cargo and rustc provide, and the Rust ecosystem builds on those benefits.  At the same time, it's fun to play around with compiler technology and see that when we get down to it, it's just another Rust program that we can tune to our heart's content.</p>
+<p>You can see the <a href="https://github.com/jntrnr/rabbithole">rabbithole source</a> if you want to play with it yourself.  </p>
+
+  </div>
+
+  <hr class="footer-rule" />
+
+  
+    <div class="footer-about">
+      <p>A simple dev-blog theme created by Bennett. You can follow him on <a href="https://github.com/bennetthardwick">Github</a> (if you like).</p>
+
+    </div>
+  
+
+  <div class="related-container">
+
+    
+      <div class="link">
+        Previous <br />
+        <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;how-we-talk-about-rust-in-2018&#x2F;">Talking about how we talk about Rust in 2018</a>
+      </div>
+    
+
+    
+      <div class="link">
+        Next <br />
+        <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;starting-the-next-thing&#x2F;">Starting the next thing</a>
+      </div>
+    
+
+  </div>
+
+
+    </main>
+  </body>
+</html>

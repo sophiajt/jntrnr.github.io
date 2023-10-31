@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <style>
+      :root {
+        --accent-color: #05a081;
+        --accent-color-light: #82d0c0;
+      }
+    </style>
+
+    <meta name="theme-color" content="#05a081" />
+
+    
+      <link rel="icon" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;444e76059742f47b00.png" />
+      <link rel="apple-touch-icon" sizes="48x48" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;444e76059742f47b00.png" />
+      <link rel="apple-touch-icon" sizes="72x72" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;6dfeb9b0bd094d5a00.png" />
+      <link rel="apple-touch-icon" sizes="96x96" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;3959b3b31b7ae92700.png" />
+      <link rel="apple-touch-icon" sizes="144x144" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;e644b27af091684500.png" />
+      <link rel="apple-touch-icon" sizes="192x192" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;3344ee474c2d849c00.png" />
+      <link rel="apple-touch-icon" sizes="256x256" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;d92103ca49c6bd5e00.png" />
+      <link rel="apple-touch-icon" sizes="384x384" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;b8dd2689e662c9cd00.png" />
+      <link rel="apple-touch-icon" sizes="512x512" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;c0d9496000275d3400.png" />
+    
+
+    
+
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary">
+
+    
+
+    
+
+    
+      
+        <meta name="description" content="" />
+        <meta name="twitter:description" content="">
+      
+    
+
+    
+      <meta name="twitter:title" content="Embedded scripting in Rust">
+    
+
+    
+      <link rel="prerender" href="&#x2F;" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;tags" rel="me" />
+    
+      <link rel="prerender" href="https:&#x2F;&#x2F;www.twitter.com&#x2F;jntrnr" rel="me" />
+    
+      <link rel="prerender" href="https:&#x2F;&#x2F;fosstodon.org&#x2F;@jntrnr" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;atom.xml" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;poems&#x2F;waitingtogrow" rel="me" />
+    
+
+    <link rel="prefetch" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;53af5229a2f8852200.png" />
+
+    <title>
+      
+        
+          Embedded scripting in Rust
+        
+      
+    </title>
+
+    
+    
+      <link rel="stylesheet" href="https://www.jntrnr.com/main.css">
+    
+    
+  
+    <link rel="prerender" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;down-the-rabbit-hole-with-traits&#x2F;">
+  
+
+  
+    <link rel="prerender" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;rhai-02&#x2F;">
+  
+
+  
+    <link rel="prerender"  href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rust&#x2F;">
+  
+    <link rel="prerender"  href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rhai&#x2F;">
+  
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://google.com/article"
+      },
+      "headline": "Embedded scripting in Rust",
+      "image": [],
+      "datePublished": "2016-03-14T00:00:00+00:00",
+      "dateModified": "2016-03-14T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Sophia June Turner"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "Sophia June Turner",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.jntrnr.com/icon.png"
+        }
+        
+      }
+      
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        
+
+        
+        {
+          
+          "@type": "ListItem",
+          "position": 1,
+          "name": "",
+          "item": "https://www.jntrnr.com/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Embedded scripting in Rust",
+          "item": "https://www.jntrnr.com/embedded-scripting-in-rust/"
+        }
+      ]
+    }
+  </script>
+
+  </head>
+  <body>
+    
+      <header>
+        <a class="profile-icon" href="/">
+          <img src="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;53af5229a2f8852200.png" alt="profile picture">
+        </a>
+        <nav>
+          
+            <a rel="me" href="&#x2F;">Home</a>
+          
+            <a rel="me" href="&#x2F;tags">Tags</a>
+          
+            <a rel="me" href="https:&#x2F;&#x2F;www.twitter.com&#x2F;jntrnr">Twitter</a>
+          
+            <a rel="me" href="https:&#x2F;&#x2F;fosstodon.org&#x2F;@jntrnr">Mastodon</a>
+          
+            <a rel="me" href="&#x2F;atom.xml">Atom&#x2F;RSS</a>
+          
+            <a rel="me" href="&#x2F;poems&#x2F;waitingtogrow">Poems</a>
+          
+        </nav>
+      </header>
+    
+    <main>
+    
+  <div class="post-title">
+    <h1>Embedded scripting in Rust</h1>
+    <small>
+      March 14, 2016
+      
+        - 
+        <span class="tags">
+          
+            <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rust&#x2F;">rust</a>
+          
+            <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rhai&#x2F;">rhai</a>
+          
+        </span>
+      
+    </small>
+  </div>
+
+  <div>
+    <p>For the last few weeks, I've been working on an embedded scripting language for Rust, based loosely on <a href="http://www.chaiscript.com">ChaiScript</a> called <a href="https://github.com/jntrnr/rhai">Rhai</a>.  What's an embedded scripting language?  While the definition might depend on who you ask, for this post embedded scripting has a few distinct features: </p>
+<ul>
+<li>A language that derives all functionality from bindings to the hosting environment</li>
+<li>As a result, it allows complete control over the API exposed to the script, letting you lock down the script to your application's needs</li>
+</ul>
+<p>In short, it's like the little brother of a full scripting language.  It's smaller, thinner, but still useful for a variety of apps.</p>
+<p>Because I'm using Rust as the host language, I also put a few other constraints on the project to make it work with a wider range of use cases.</p>
+<ul>
+<li>No use of 'unsafe' - this lets us script where security is a concern</li>
+<li>No additional dependencies - keeps our design small</li>
+<li>Easy-to-use - even being safe and lightweight, it still needs to be easy to get started</li>
+</ul>
+<h1 id="introducing-rhai">Introducing: Rhai</h1>
+<p>Let's take a look at what Rhai looks like, then we'll break down how it works.</p>
+<h2 id="hello-world">Hello world</h2>
+<p>As I mentioned earlier, one of the goals with Rhai was to have minimal setup to get going.  This example is a full &quot;hello world&quot; of scripting that evaluates some script and gives us the result:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> rhai;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">rhai::Engine;
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> engine = Engine::new();
+
+    </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Ok(result) = engine.</span><span style="color:#96b5b4;">eval</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">40 + 2</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">())
+        .</span><span style="color:#96b5b4;">unwrap</span><span style="color:#c0c5ce;">().downcast::&lt;</span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">&gt;() {
+        
+        println!(&quot;</span><span style="color:#a3be8c;">Answer: </span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, *result);  </span><span style="color:#65737e;">// prints 42
+    </span><span style="color:#c0c5ce;">}
+}
+</span></code></pre>
+<p>Looking a little closer.  We pull in the Rhai crate and get the scripting engine into view:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> rhai;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">rhai::Engine;
+</span></code></pre>
+<p>Next, we create an instance of the engine:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> engine = Engine::new();
+</span></code></pre>
+<p>Finally, we call into the engine.  Perhaps the most interesting part here is the roundtrip.  The 'eval' method takes a <code>String</code>, and returns a <code>Result&lt;Box&lt;Any&gt;, EvalAltResult&gt;</code>.  Because we're in a scripting context, everything we're working with is dynamically typed, so as values get passed around, we make liberal use of <code>Box&lt;Any&gt;</code>.  Here, the expression &quot;40 + 2&quot; is going to evaluated to give us a Box'ed number.  Of course, we can also have errors occur during script execution, so we need to return a Result.</p>
+<p>To go from a Result to the actual numeric value, we have to take a few steps to peel away the layers.  I cheat and use 'unwrap' to get through the Result, then the downcast takes us from a <code>Box&lt;Any&gt;</code> to a <code>Box&lt;i32&gt;</code>.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">engine.</span><span style="color:#96b5b4;">eval</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">40 + 2</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">()).</span><span style="color:#96b5b4;">unwrap</span><span style="color:#c0c5ce;">().downcast::&lt;</span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">&gt;()
+</span></code></pre>
+<p>That's it.  We've done a full round trip of creating script and then making sense of its output.  The language, at this point, has only basic functionality because we haven't registered anything the script can use.  So let's fix that.</p>
+<h2 id="registering-your-functions">Registering your functions</h2>
+<p>To make your functions visible to the script, you'll need to register them with the script engine.  Let's do the same example, but this time we'll create an add function in our native code and call it from script:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> rhai;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">rhai::{Engine, FnRegister};
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">add</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">y</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">i32 </span><span style="color:#c0c5ce;">{
+    x + y
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> engine = Engine::new();
+
+    &amp;(add as </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">(x: </span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">, y: </span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">)-&gt;</span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">).</span><span style="color:#96b5b4;">register</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> engine, &quot;</span><span style="color:#a3be8c;">add</span><span style="color:#c0c5ce;">&quot;);
+
+    </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Ok(result) = engine.</span><span style="color:#96b5b4;">eval</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">add(40, 2)</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">())
+        .</span><span style="color:#96b5b4;">unwrap</span><span style="color:#c0c5ce;">().downcast::&lt;</span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">&gt;() {
+        
+        println!(&quot;</span><span style="color:#a3be8c;">Answer: </span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, *result);  </span><span style="color:#65737e;">// prints 42
+    </span><span style="color:#c0c5ce;">}
+}
+</span></code></pre>
+<p>The big change in this example is this line:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">&amp;(add as </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">(x: </span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">, y: </span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">)-&gt;</span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">).</span><span style="color:#96b5b4;">register</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> engine, &quot;</span><span style="color:#a3be8c;">add</span><span style="color:#c0c5ce;">&quot;);
+</span></code></pre>
+<p>This uses the function registration capability taken from the FnRegister trait that we've added to our imports.  It's a trait implemenented on functions which gives them a register method.  We call the method and pass into it both our engine and the name we want the function to be called in script.  With that, we're good to go and can call the function.</p>
+<p>Let's do two more examples so we can see how some of the other details play out.</p>
+<h2 id="function-overloading">Function overloading</h2>
+<p>Rhai also has supported for function overloading.  This gives you a way to work with generic functions (like the example below) or to register multiple functions to the same name.  During call resolution, the engine will call these functions and will fall through to the case that matches the types at runtime.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::fmt::Display;
+
+</span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> rhai;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">rhai::{Engine, FnRegister};
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">showit</span><span style="color:#c0c5ce;">&lt;T: Display&gt;(</span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> T) -&gt; () {
+    println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, x)
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> engine = Engine::new();
+
+    &amp;(showit as </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">(x: &amp;</span><span style="color:#b48ead;">mut i32</span><span style="color:#c0c5ce;">)-&gt;()).</span><span style="color:#96b5b4;">register</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> engine, &quot;</span><span style="color:#a3be8c;">print</span><span style="color:#c0c5ce;">&quot;);
+    &amp;(showit as </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">(x: &amp;</span><span style="color:#b48ead;">mut bool</span><span style="color:#c0c5ce;">)-&gt;()).</span><span style="color:#96b5b4;">register</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> engine, &quot;</span><span style="color:#a3be8c;">print</span><span style="color:#c0c5ce;">&quot;);
+    &amp;(showit as </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">(x: &amp;</span><span style="color:#b48ead;">mut </span><span style="color:#c0c5ce;">String)-&gt;()).</span><span style="color:#96b5b4;">register</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> engine, &quot;</span><span style="color:#a3be8c;">print</span><span style="color:#c0c5ce;">&quot;);
+}
+</span></code></pre><h2 id="working-with-custom-types">Working with custom types</h2>
+<p>Finally, in addition to working with your functions, Rhai also supports working with custom types.  In this example, we introduce a few more features.  First, you can register functions that take a <code>&amp;mut</code> as their first argument.  This allows them to be used as methods in the script.  Next, we register a special getter function.  This lets us read (or write, if we register a setter also) the member directly in script.</p>
+<p>You'll notice too that we make sure our object is clone-able.  As we'll talk about in the next section, this ends up being a requirement when working with values in the script engine.  We make sure to register our custom type with the engine to make cloning possible from inside the engine.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> rhai;
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">rhai::{Engine, FnRegister};
+
+#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Clone)]
+</span><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">TestStruct {
+    </span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">i32
+</span><span style="color:#c0c5ce;">}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">TestStruct {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">update</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) {
+        </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.x += </span><span style="color:#d08770;">1000</span><span style="color:#c0c5ce;">;
+    }
+
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">get_x</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">i32 </span><span style="color:#c0c5ce;">{ </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.x }
+
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span style="color:#c0c5ce;">() -&gt; TestStruct {
+        TestStruct { x: </span><span style="color:#d08770;">1 </span><span style="color:#c0c5ce;">}
+    }
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> engine = Engine::new();
+
+    engine.register_type::&lt;TestStruct&gt;();
+
+    &amp;(TestStruct::new as </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">()-&gt;TestStruct).</span><span style="color:#96b5b4;">register</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> engine, &quot;</span><span style="color:#a3be8c;">new_ts</span><span style="color:#c0c5ce;">&quot;);
+
+    &amp;(TestStruct::update as </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> TestStruct)-&gt;())
+        .</span><span style="color:#96b5b4;">register</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> engine, &quot;</span><span style="color:#a3be8c;">update</span><span style="color:#c0c5ce;">&quot;);
+    &amp;(TestStruct::get_x as </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> TestStruct)-&gt;</span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">)
+        .</span><span style="color:#96b5b4;">register</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> engine, &quot;</span><span style="color:#a3be8c;">get$x</span><span style="color:#c0c5ce;">&quot;);
+
+    </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Ok(result) = 
+        engine.</span><span style="color:#96b5b4;">eval</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">var myts = new_ts(); myts.update(); myts.x</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">())
+            .</span><span style="color:#96b5b4;">unwrap</span><span style="color:#c0c5ce;">().downcast::&lt;</span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">&gt;() {
+        
+        println!(&quot;</span><span style="color:#a3be8c;">result: </span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, *result); </span><span style="color:#65737e;">// prints 1001
+    </span><span style="color:#c0c5ce;">}
+}
+</span></code></pre><h1 id="how-it-works">How it works</h1>
+<p>Let's take a look at how the scripting engine works.  There may be even better ways to do some of these steps, so I'm eager to hear your feedback.</p>
+<p>Without further ado, let's jump in.</p>
+<h2 id="function-resolution">Function resolution</h2>
+<p>The heart of the system is the function resolver.  In Rhai, all function calls, even all operators like plus and minus, end up going through the resolver.  Yet, it's a relatively simple piece of code.</p>
+<ul>
+<li>First, find all functions which match the name.  Let's say 'foo'</li>
+<li>For each 'foo' function, try to call the function with the argument(s) given</li>
+<li>If it succeeds, return the resulting value</li>
+<li>If it fails, continue trying the rest of the functions registered to 'foo'</li>
+<li>If none succeed, error</li>
+</ul>
+<p>Going through all the functions which match a name gives us the ability to do overloaded functions.  It also lets us do operators, which themselves are commonly overloaded.</p>
+<h2 id="function-registration">Function registration</h2>
+<p>The next piece to working with functions in the engine is registering them.  There are two kinds of functions that are registered: inner functions, or those created inside the script itself, and external functions, or those created in the native code.</p>
+<p>Inner functions are relatively simple.  They work by creating a new scope, adding the function arguments to this new scope, and then executing the function body.</p>
+<p>External functions, if you will, are where the magic happens.  Here, we handle the boundary between the scripting world and the native world.</p>
+<p>Let's look at how to register a function with one pass-by-value argument <code>fn(T)-&gt;U</code>:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">impl</span><span style="color:#c0c5ce;">&lt;T: Any+Clone, U: Any+Clone&gt; FnRegister </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">fn(T)-&gt;U {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">register</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">engine</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> Engine, </span><span style="color:#bf616a;">name</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) {        
+        </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> wrapped : Box&lt;Fn(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#c0c5ce;">Box&lt;Any&gt;)-&gt;Result&lt;Box&lt;Any&gt;, EvalAltResult&gt;&gt; = 
+            Box::new(
+                </span><span style="color:#b48ead;">move </span><span style="color:#c0c5ce;">|arg: &amp;</span><span style="color:#b48ead;">mut </span><span style="color:#c0c5ce;">Box&lt;Any&gt;| {
+                    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> inside = (*arg).</span><span style="color:#96b5b4;">downcast_mut</span><span style="color:#c0c5ce;">() as Option&lt;&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> T&gt;;
+                    </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> inside {
+                        Some(b) =&gt; Ok(Box::new(</span><span style="color:#96b5b4;">self</span><span style="color:#c0c5ce;">(b.</span><span style="color:#96b5b4;">clone</span><span style="color:#c0c5ce;">())) as Box&lt;Any&gt;),
+                        None =&gt; Err(EvalAltResult::ErrorFunctionArgMismatch)
+                    }
+                }
+            );
+
+        </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> ent = engine.fns.</span><span style="color:#96b5b4;">entry</span><span style="color:#c0c5ce;">(name.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">()).</span><span style="color:#96b5b4;">or_insert</span><span style="color:#c0c5ce;">(Vec::new());
+        (*ent).</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(FnType::ExternalFn1(wrapped));
+    }
+}
+</span></code></pre>
+<p>There's a lot going on, so let's break it down:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">impl</span><span style="color:#c0c5ce;">&lt;T: Any+Clone, U: Any+Clone&gt; FnRegister </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">fn(T)-&gt;U
+</span></code></pre>
+<p>As I mentioned earlier, all the types used in the scripting engine need to be clone-able.  We enforce that here as well because we'll use the clone feature in the call.  We are implementing the FnRegister trait on all functions that match this constraint.</p>
+<p>Next, we are going to create a wrapper function which will call the function given:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> wrapped : Box&lt;Fn(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#c0c5ce;">Box&lt;Any&gt;)-&gt;Result&lt;Box&lt;Any&gt;, EvalAltResult&gt;&gt;
+</span></code></pre>
+<p>All functions of arity one have this internal wrapper function, regardless of if they are pass by value or reference.  This lets us work through a vector of functions easily during function resolution, without having to have too much information out the specific type of the function.</p>
+<p>Next, we have the wrapper function itself:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">Box::new(
+    </span><span style="color:#b48ead;">move </span><span style="color:#c0c5ce;">|arg: &amp;</span><span style="color:#b48ead;">mut </span><span style="color:#c0c5ce;">Box&lt;Any&gt;| {
+        </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> inside = (*arg).</span><span style="color:#96b5b4;">downcast_mut</span><span style="color:#c0c5ce;">() as Option&lt;&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> T&gt;;
+        </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> inside {
+            Some(b) =&gt; Ok(Box::new(</span><span style="color:#96b5b4;">self</span><span style="color:#c0c5ce;">(b.</span><span style="color:#96b5b4;">clone</span><span style="color:#c0c5ce;">())) as Box&lt;Any&gt;),
+            None =&gt; Err(EvalAltResult::ErrorFunctionArgMismatch)
+        }
+    }
+);
+</span></code></pre>
+<p>The wrapper is a closure that moves its environment. In this case, it's moving the function we're wrapping.  Once it has ownership, we can safely return the wrapper and complete registration.</p>
+<p>Inside the closure, we handle working with the argument.  Because we know the type of the function during registration, we use this knowledge to downcast the argument and give it the proper type.  If this succeeds, we know we have the correct function and can call it.  If it fails, we know this isn't a match and later can try the next function in the overloads.</p>
+<p>To call the function, since we're pass by value, we need to take the extra cloning step to get to a value rather than a reference.  This lets us respect the ownership model, albeit at the cost of the clone.</p>
+<p>That's the heart of how the resolution system works.  Resolution works through each possible match, and registration gives us a wrapper function that can try each function against the types known at compile time.</p>
+<h2 id="the-rest-of-the-story">The rest of the story</h2>
+<p>Many of the remaining features built on these two main components.  As mentioned earlier, when you register special get and set functions for fields, the engine will use them when you work with the fields in script.</p>
+<p>The engine will register a set of basic arithmetic and comparison operators to get started with.  These also use the same function resolution mechanism.</p>
+<p>For variables, the engine works by passing a scope stack around.  For lookup, in order to follow the ownership rules (and maintain pass-by-value semantics), we clone variable values when they're used in an expression.  During assignment, we use a mutable reference to their value in the scope stack so that it can be updated with the right-hand side of the assignment.</p>
+<h1 id="what-s-next">What's next?</h1>
+<p>Rhai is still very young and has a bit of growing to do before it's ready for primetime.  Parsing and error reporting are barebones and don't have the kind of error recovery you'd expect from more industrial-strength scripting.  There are also a number of convenience features that would be relatively easy to add, like vectors, iterators, for..in.., and so on.</p>
+<p>If you'd like to help out, jump over to the <a href="https://github.com/jntrnr/rhai">GitHub site</a>.</p>
+
+  </div>
+
+  <hr class="footer-rule" />
+
+  
+    <div class="footer-about">
+      <p>A simple dev-blog theme created by Bennett. You can follow him on <a href="https://github.com/bennetthardwick">Github</a> (if you like).</p>
+
+    </div>
+  
+
+  <div class="related-container">
+
+    
+      <div class="link">
+        Previous <br />
+        <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;down-the-rabbit-hole-with-traits&#x2F;">Going down the rabbit hole with Rust traits</a>
+      </div>
+    
+
+    
+      <div class="link">
+        Next <br />
+        <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;rhai-02&#x2F;">Rhai 0.2 release</a>
+      </div>
+    
+
+  </div>
+
+
+    </main>
+  </body>
+</html>

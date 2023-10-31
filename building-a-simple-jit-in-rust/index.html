@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <style>
+      :root {
+        --accent-color: #05a081;
+        --accent-color-light: #82d0c0;
+      }
+    </style>
+
+    <meta name="theme-color" content="#05a081" />
+
+    
+      <link rel="icon" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;444e76059742f47b00.png" />
+      <link rel="apple-touch-icon" sizes="48x48" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;444e76059742f47b00.png" />
+      <link rel="apple-touch-icon" sizes="72x72" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;6dfeb9b0bd094d5a00.png" />
+      <link rel="apple-touch-icon" sizes="96x96" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;3959b3b31b7ae92700.png" />
+      <link rel="apple-touch-icon" sizes="144x144" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;e644b27af091684500.png" />
+      <link rel="apple-touch-icon" sizes="192x192" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;3344ee474c2d849c00.png" />
+      <link rel="apple-touch-icon" sizes="256x256" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;d92103ca49c6bd5e00.png" />
+      <link rel="apple-touch-icon" sizes="384x384" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;b8dd2689e662c9cd00.png" />
+      <link rel="apple-touch-icon" sizes="512x512" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;c0d9496000275d3400.png" />
+    
+
+    
+
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary">
+
+    
+
+    
+
+    
+      
+        <meta name="description" content="" />
+        <meta name="twitter:description" content="">
+      
+    
+
+    
+      <meta name="twitter:title" content="Building a simple JIT in Rust">
+    
+
+    
+      <link rel="prerender" href="&#x2F;" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;tags" rel="me" />
+    
+      <link rel="prerender" href="https:&#x2F;&#x2F;www.twitter.com&#x2F;jntrnr" rel="me" />
+    
+      <link rel="prerender" href="https:&#x2F;&#x2F;fosstodon.org&#x2F;@jntrnr" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;atom.xml" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;poems&#x2F;waitingtogrow" rel="me" />
+    
+
+    <link rel="prefetch" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;53af5229a2f8852200.png" />
+
+    <title>
+      
+        
+          Building a simple JIT in Rust
+        
+      
+    </title>
+
+    
+    
+      <link rel="stylesheet" href="https://www.jntrnr.com/main.css">
+    
+    
+  
+    <link rel="prerender" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;porting-csharp-nes-emu-to-rust&#x2F;">
+  
+
+  
+    <link rel="prerender" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;travel-log-blacksburg&#x2F;">
+  
+
+  
+    <link rel="prerender"  href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rust&#x2F;">
+  
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://google.com/article"
+      },
+      "headline": "Building a simple JIT in Rust",
+      "image": [],
+      "datePublished": "2015-12-01T00:00:00+00:00",
+      "dateModified": "2015-12-01T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Sophia June Turner"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "Sophia June Turner",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.jntrnr.com/icon.png"
+        }
+        
+      }
+      
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        
+
+        
+        {
+          
+          "@type": "ListItem",
+          "position": 1,
+          "name": "",
+          "item": "https://www.jntrnr.com/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Building a simple JIT in Rust",
+          "item": "https://www.jntrnr.com/building-a-simple-jit-in-rust/"
+        }
+      ]
+    }
+  </script>
+
+  </head>
+  <body>
+    
+      <header>
+        <a class="profile-icon" href="/">
+          <img src="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;53af5229a2f8852200.png" alt="profile picture">
+        </a>
+        <nav>
+          
+            <a rel="me" href="&#x2F;">Home</a>
+          
+            <a rel="me" href="&#x2F;tags">Tags</a>
+          
+            <a rel="me" href="https:&#x2F;&#x2F;www.twitter.com&#x2F;jntrnr">Twitter</a>
+          
+            <a rel="me" href="https:&#x2F;&#x2F;fosstodon.org&#x2F;@jntrnr">Mastodon</a>
+          
+            <a rel="me" href="&#x2F;atom.xml">Atom&#x2F;RSS</a>
+          
+            <a rel="me" href="&#x2F;poems&#x2F;waitingtogrow">Poems</a>
+          
+        </nav>
+      </header>
+    
+    <main>
+    
+  <div class="post-title">
+    <h1>Building a simple JIT in Rust</h1>
+    <small>
+      December 01, 2015
+      
+        - 
+        <span class="tags">
+          
+            <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rust&#x2F;">rust</a>
+          
+        </span>
+      
+    </small>
+  </div>
+
+  <div>
+    <p>The other day I threw together a simple Just-In-Time compiler (or JIT, for short), and I thought it'd be fun to show the steps I did.  With this, it should be possible to create a page of executable memory, write some machine code into it, and then treat it like a function call from Rust.</p>
+<p>Let's get started!  You can grab my <a href="https://github.com/jntrnr/rustyjit">JIT project</a>, if you want to follow along.  I've only tested this in OS X, but it should adaptable for other platforms.</p>
+<p><strong>Updated 12/2/2015:</strong> Thanks to some reader comments, I've updated the code below to not use malloc and instead use posix_memalign directly as the allocation step, which avoids leaking memory.</p>
+<h1 id="creating-executable-memory">Creating executable memory</h1>
+<p>For our JIT, we'll need to first allocate the memory that will hold our JIT'ted code.  The most important thing here is to create a block of memory that's executable so that we can later jump into it, run code, and then return back out.</p>
+<p>To do this, we need a few functions from the standard C library, which we can access through the <code>libc</code> external module.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;">// added to Cargo.toml
+</span><span style="color:#c0c5ce;">[dependencies]
+libc = &quot;</span><span style="color:#a3be8c;">0.2.2</span><span style="color:#c0c5ce;">&quot;
+
+</span><span style="color:#65737e;">// main.rs
+</span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> libc;
+</span></code></pre>
+<p>Once we've pulled in libc, we need to allocated memory.  Not just any memory, we need to allocate <em>aligned</em> memory.  Some operating systems, like OS X, require that executable code memory starts at a particular alignment.  For example, that the address is exactly a multiple of 0x1000.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">const </span><span style="color:#d08770;">PAGE_SIZE</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">usize </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">4096</span><span style="color:#c0c5ce;">;
+</span><span style="color:#65737e;">// ...
+</span><span style="color:#b48ead;">unsafe </span><span style="color:#c0c5ce;">{
+  </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> page : </span><span style="color:#b48ead;">*mut </span><span style="color:#c0c5ce;">libc::</span><span style="color:#b48ead;">c_void </span><span style="color:#c0c5ce;">= mem::uninitialized();
+  libc::posix_memalign(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> page, </span><span style="color:#d08770;">PAGE_SIZE</span><span style="color:#c0c5ce;">, size);
+}
+</span></code></pre>
+<p>Once allocated, we now have memory we can safely jump to.  Well, almost.  Before we can run code in our newly-allocated memory, we need to enable executing code in this area of memory.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">unsafe </span><span style="color:#c0c5ce;">{
+  libc::mprotect(page, size, libc::</span><span style="color:#d08770;">PROT_EXEC </span><span style="color:#c0c5ce;">| libc::</span><span style="color:#d08770;">PROT_READ </span><span style="color:#c0c5ce;">| libc::</span><span style="color:#d08770;">PROT_WRITE</span><span style="color:#c0c5ce;">);
+}
+</span></code></pre>
+<p>Now we're ready.  We have something we can write into and then jump into.  Since running JIT code is basically &quot;no man's land&quot; without any safeguards, it's easy to get yourself in trouble.  One step that I add is to also fill the memory block with the <code>RET</code> instruction, which will let us return from our function even if we happen to accidentally run other memory in the block.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">extern </span><span style="color:#c0c5ce;">{
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">memset</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">s</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">*mut </span><span style="color:#c0c5ce;">libc::c_void, </span><span style="color:#bf616a;">c</span><span style="color:#c0c5ce;">: libc::uint32_t, </span><span style="color:#bf616a;">n</span><span style="color:#c0c5ce;">: libc::size_t) -&gt; </span><span style="color:#b48ead;">*mut </span><span style="color:#c0c5ce;">libc::c_void;
+}
+</span><span style="color:#65737e;">// ...
+</span><span style="color:#b48ead;">unsafe </span><span style="color:#c0c5ce;">{
+  </span><span style="color:#96b5b4;">memset</span><span style="color:#c0c5ce;">(page, </span><span style="color:#d08770;">0xc3</span><span style="color:#c0c5ce;">, size);  </span><span style="color:#65737e;">// prepopulate with &#39;RET&#39; calls (0xc3)
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<p>We've allocated our JIT memory, aligned it, set it as executable, and then filled it with the <code>RET</code> instruction.  We're ready to write some code into it.</p>
+<p><em>Note:</em> You'll notice we don't explicitly call <code>libc::free()</code> after we allocate.  For simplicity, we treat the JIT'ed functions we create as long-lived, but a full-blown JIT would likely use better memory hygiene.</p>
+<h1 id="getting-ready-to-write-our-first-program">Getting ready to write our first program</h1>
+<p>To write our first JIT program, let's first make a way to more easily work with our memory.  In its current state, it's a raw C void* pointer, but this is a bit unweildy as we don't have a lot of support to work with that in Rust.  To make something that feels more natural, we'll create a new struct type that will hold our pointer and allow us to create indexing functions for easier access.  This will let us access the memory like <code>m[0] = 0x10</code>.</p>
+<p>Let's create the struct we'll use:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::mem;
+
+</span><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">JitMemory {
+    </span><span style="color:#bf616a;">contents </span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">*mut u8
+</span><span style="color:#c0c5ce;">}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">alloc</span><span style="color:#c0c5ce;">() -&gt; JitMemory {
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> contents: </span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;">* </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">;
+  </span><span style="color:#b48ead;">unsafe </span><span style="color:#c0c5ce;">{
+    </span><span style="color:#65737e;">//note: allocate &#39;page&#39; as before
+    
+    //then, transmute
+</span><span style="color:#c0c5ce;">    contents = mem::transmute(page);
+  }
+  
+  JitMemory { contents: contents }
+}
+</span></code></pre>
+<p>We've got the JitMemory struct which will hold the memory we've allocated, and we use the <code>mem::transmute</code> call to convert our raw void pointer to a raw u8 pointer, which will be easier to work with in our next step.</p>
+<p>Now that we have the struct, let's create some indexing functions.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::ops::{Index, IndexMut};
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">Index&lt;</span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">JitMemory {
+    </span><span style="color:#b48ead;">type </span><span style="color:#c0c5ce;">Output = </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">;
+
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">index</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">_index</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">) -&gt; &amp;</span><span style="color:#b48ead;">u8 </span><span style="color:#c0c5ce;">{
+        </span><span style="color:#b48ead;">unsafe </span><span style="color:#c0c5ce;">{&amp;*</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.contents.</span><span style="color:#96b5b4;">offset</span><span style="color:#c0c5ce;">(_index as </span><span style="color:#b48ead;">isize</span><span style="color:#c0c5ce;">) }
+    }
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">IndexMut&lt;</span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">JitMemory {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">index_mut</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">_index</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">) -&gt; &amp;</span><span style="color:#b48ead;">mut u8 </span><span style="color:#c0c5ce;">{
+        </span><span style="color:#b48ead;">unsafe </span><span style="color:#c0c5ce;">{&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#c0c5ce;">*</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.contents.</span><span style="color:#96b5b4;">offset</span><span style="color:#c0c5ce;">(_index as </span><span style="color:#b48ead;">isize</span><span style="color:#c0c5ce;">) }
+    }
+}
+</span></code></pre>
+<p>With these in place, we can now more easily write instructions into memory.  Before we do, let's put everything we'd done so far into a constructor for our struct:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">JitMemory {
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">num_pages</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">) -&gt; JitMemory {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> contents : </span><span style="color:#b48ead;">*mut u8</span><span style="color:#c0c5ce;">;
+    </span><span style="color:#b48ead;">unsafe </span><span style="color:#c0c5ce;">{
+      </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> size = num_pages * </span><span style="color:#d08770;">PAGE_SIZE</span><span style="color:#c0c5ce;">;
+      </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> _contents : </span><span style="color:#b48ead;">*mut </span><span style="color:#c0c5ce;">libc::</span><span style="color:#b48ead;">c_void </span><span style="color:#c0c5ce;">= mem::uninitialized(); </span><span style="color:#65737e;">// avoid uninitalized warning
+      </span><span style="color:#c0c5ce;">libc::posix_memalign(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> _contents, </span><span style="color:#d08770;">PAGE_SIZE</span><span style="color:#c0c5ce;">, size);
+      libc::mprotect(_contents, size, libc::</span><span style="color:#d08770;">PROT_EXEC </span><span style="color:#c0c5ce;">| libc::</span><span style="color:#d08770;">PROT_READ </span><span style="color:#c0c5ce;">| libc::</span><span style="color:#d08770;">PROT_WRITE</span><span style="color:#c0c5ce;">);
+
+      </span><span style="color:#96b5b4;">memset</span><span style="color:#c0c5ce;">(_contents, </span><span style="color:#d08770;">0xc3</span><span style="color:#c0c5ce;">, size);  </span><span style="color:#65737e;">// for now, prepopulate with &#39;RET&#39;
+</span><span style="color:#c0c5ce;">
+      contents = mem::transmute(_contents);
+    }
+
+    JitMemory { contents: contents }        
+  }
+}
+</span></code></pre><h1 id="writing-our-first-jit-program">Writing our first JIT program</h1>
+<p>With our new constructor and indexing functions in place, we can write our first JIT program.  The simplest &quot;hello world&quot; that I use when doing JIT is a function that takes no parameters and returns a simple value.</p>
+<p>We can do this with two assembly instructions:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">MOV RAX, 0x3  ; move our return value (0x3) into RAX, 
+              ; the register in x64 used for return values
+RET           ; return from the function call
+</span></code></pre>
+<p>Great, now we just need to write this program into our JIT memory.  But wait, we don't have an assembler :)</p>
+<p>Not to fear, there are plenty of assemblers to get us started.  There are even <a href="https://defuse.ca/online-x86-assembler.htm">online assemblers</a> you can use.  Let's plug the first line <code>MOV RAX, 0x3</code> into our online assembler.</p>
+<p>The top line of the result is the raw hex.  This is what we want.  These are the actual bits we'll be writing into memory for our function: 48C7C003000000</p>
+<p>With these bytes, and the RET instruction we already filled our memory with, we now have our full function.  We can use our indexing functions to write this out:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> jit : JitMemory = JitMemory::new(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">);  </span><span style="color:#65737e;">// allocate a page of memory
+</span><span style="color:#c0c5ce;">
+jit[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x48</span><span style="color:#c0c5ce;">;  </span><span style="color:#65737e;">// mov RAX, 0x3
+</span><span style="color:#c0c5ce;">jit[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0xc7</span><span style="color:#c0c5ce;">;
+jit[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0xc0</span><span style="color:#c0c5ce;">;
+jit[</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x03</span><span style="color:#c0c5ce;">;
+jit[</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x00</span><span style="color:#c0c5ce;">;
+jit[</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x00</span><span style="color:#c0c5ce;">;
+jit[</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x00</span><span style="color:#c0c5ce;">;
+</span></code></pre><h1 id="turning-our-memory-into-a-function">Turning our memory into a function</h1>
+<p>We have an executable block of memory with the code for our function filled in.  The last step is to turn this into a Rust function we can call.  We do this by doing another mem::transmute:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">run_jit</span><span style="color:#c0c5ce;">() -&gt; (</span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">() -&gt; </span><span style="color:#b48ead;">i64</span><span style="color:#c0c5ce;">) {
+  </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> jit : JitMemory = JitMemory::new(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">);
+
+  jit[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x48</span><span style="color:#c0c5ce;">;  </span><span style="color:#65737e;">// mov RAX, 0x3
+</span><span style="color:#c0c5ce;">  jit[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0xc7</span><span style="color:#c0c5ce;">;
+  jit[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0xc0</span><span style="color:#c0c5ce;">;
+  jit[</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x03</span><span style="color:#c0c5ce;">;
+  jit[</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x00</span><span style="color:#c0c5ce;">;
+  jit[</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x00</span><span style="color:#c0c5ce;">;
+  jit[</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">] = </span><span style="color:#d08770;">0x00</span><span style="color:#c0c5ce;">;
+
+  </span><span style="color:#b48ead;">unsafe </span><span style="color:#c0c5ce;">{ mem::transmute(jit.contents) }
+}
+</span></code></pre>
+<p>And with that, after a few handfuls of unsafe calls and transmutes, we have our function.  The only thing left is to call it:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> fun = </span><span style="color:#96b5b4;">run_jit</span><span style="color:#c0c5ce;">();
+  println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#96b5b4;">fun</span><span style="color:#c0c5ce;">());
+}
+</span></code></pre><h1 id="debugging">Debugging</h1>
+<p>When working with a JIT, it's inevitable at some point something will go wrong, and we'll need to dive into the debugger.  Luckily, Rust works with LLDB out of the box.</p>
+<p>Here are some helpful LLDB commands to get you started:</p>
+<p>Start the JIT in LLDB:</p>
+<p><code>lldb target/debug/rustyjit</code></p>
+<p>Set a breakpoint for the line that contains the call into our JIT code:</p>
+<p><code>&gt; br set -line 64</code></p>
+<p>Run to our breakpoint:</p>
+<p><code>&gt; run</code></p>
+<p>Now that we're about to run our JIT code, there are a few things we can do.</p>
+<p>The first one is to verify the address of our code:</p>
+<p><code>&gt; p fun</code></p>
+<p>Unfortunately, that's not the most helpful thing in the world.  What we often want is look at the memory behind the function:</p>
+<p><code>&gt; mem read fun</code></p>
+<p>This gives us back something like this:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">0x100804000: 48 c7 c0 03 00 00 00 c3 c3 c3 c3 c3 c3 c3 c3 c3  H??....?????????
+0x100804010: c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3 c3  ????????????????
+</span></code></pre>
+<p>That's better.  Now we can see if the bytes we expect to be there are in fact there.  If we wanted, we could update memory using <code>mem write</code> if something was out of place.</p>
+<p>We can also use the built in disassembler to read back out what the asm instructions are for our function:</p>
+<p><code>&gt; dis -A x64 -s fun</code></p>
+<p>Finally, we can continue with the program:</p>
+<p><code>&gt; cont</code></p>
+<h1 id="lots-ahead">Lots ahead</h1>
+<p>Now that we have a tiny JIT and a way to debug it, the sky is the limit.  Turning source code into machine code is the heart of any compiler, and with these few additional steps that compiler could be made to output code that we can run directly.</p>
+
+  </div>
+
+  <hr class="footer-rule" />
+
+  
+    <div class="footer-about">
+      <p>A simple dev-blog theme created by Bennett. You can follow him on <a href="https://github.com/bennetthardwick">Github</a> (if you like).</p>
+
+    </div>
+  
+
+  <div class="related-container">
+
+    
+      <div class="link">
+        Previous <br />
+        <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;porting-csharp-nes-emu-to-rust&#x2F;">Porting a C# NES emulator to Rust</a>
+      </div>
+    
+
+    
+      <div class="link">
+        Next <br />
+        <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;travel-log-blacksburg&#x2F;">Travel log (Blacksburg)</a>
+      </div>
+    
+
+  </div>
+
+
+    </main>
+  </body>
+</html>

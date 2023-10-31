@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <style>
+      :root {
+        --accent-color: #05a081;
+        --accent-color-light: #82d0c0;
+      }
+    </style>
+
+    <meta name="theme-color" content="#05a081" />
+
+    
+      <link rel="icon" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;444e76059742f47b00.png" />
+      <link rel="apple-touch-icon" sizes="48x48" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;444e76059742f47b00.png" />
+      <link rel="apple-touch-icon" sizes="72x72" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;6dfeb9b0bd094d5a00.png" />
+      <link rel="apple-touch-icon" sizes="96x96" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;3959b3b31b7ae92700.png" />
+      <link rel="apple-touch-icon" sizes="144x144" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;e644b27af091684500.png" />
+      <link rel="apple-touch-icon" sizes="192x192" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;3344ee474c2d849c00.png" />
+      <link rel="apple-touch-icon" sizes="256x256" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;d92103ca49c6bd5e00.png" />
+      <link rel="apple-touch-icon" sizes="384x384" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;b8dd2689e662c9cd00.png" />
+      <link rel="apple-touch-icon" sizes="512x512" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;c0d9496000275d3400.png" />
+    
+
+    
+
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary">
+
+    
+
+    
+
+    
+      
+        <meta name="description" content="" />
+        <meta name="twitter:description" content="">
+      
+    
+
+    
+      <meta name="twitter:title" content="Going down the rabbit hole with Rust traits">
+    
+
+    
+      <link rel="prerender" href="&#x2F;" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;tags" rel="me" />
+    
+      <link rel="prerender" href="https:&#x2F;&#x2F;www.twitter.com&#x2F;jntrnr" rel="me" />
+    
+      <link rel="prerender" href="https:&#x2F;&#x2F;fosstodon.org&#x2F;@jntrnr" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;atom.xml" rel="me" />
+    
+      <link rel="prerender" href="&#x2F;poems&#x2F;waitingtogrow" rel="me" />
+    
+
+    <link rel="prefetch" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;53af5229a2f8852200.png" />
+
+    <title>
+      
+        
+          Going down the rabbit hole with Rust traits
+        
+      
+    </title>
+
+    
+    
+      <link rel="stylesheet" href="https://www.jntrnr.com/main.css">
+    
+    
+  
+    <link rel="prerender" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;rust-quickie-matching-strings&#x2F;">
+  
+
+  
+    <link rel="prerender" href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;embedded-scripting-in-rust&#x2F;">
+  
+
+  
+    <link rel="prerender"  href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rust&#x2F;">
+  
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://google.com/article"
+      },
+      "headline": "Going down the rabbit hole with Rust traits",
+      "image": [],
+      "datePublished": "2016-02-09T00:00:00+00:00",
+      "dateModified": "2016-02-09T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Sophia June Turner"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "Sophia June Turner",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.jntrnr.com/icon.png"
+        }
+        
+      }
+      
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        
+
+        
+        {
+          
+          "@type": "ListItem",
+          "position": 1,
+          "name": "",
+          "item": "https://www.jntrnr.com/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Going down the rabbit hole with Rust traits",
+          "item": "https://www.jntrnr.com/down-the-rabbit-hole-with-traits/"
+        }
+      ]
+    }
+  </script>
+
+  </head>
+  <body>
+    
+      <header>
+        <a class="profile-icon" href="/">
+          <img src="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;processed_images&#x2F;53af5229a2f8852200.png" alt="profile picture">
+        </a>
+        <nav>
+          
+            <a rel="me" href="&#x2F;">Home</a>
+          
+            <a rel="me" href="&#x2F;tags">Tags</a>
+          
+            <a rel="me" href="https:&#x2F;&#x2F;www.twitter.com&#x2F;jntrnr">Twitter</a>
+          
+            <a rel="me" href="https:&#x2F;&#x2F;fosstodon.org&#x2F;@jntrnr">Mastodon</a>
+          
+            <a rel="me" href="&#x2F;atom.xml">Atom&#x2F;RSS</a>
+          
+            <a rel="me" href="&#x2F;poems&#x2F;waitingtogrow">Poems</a>
+          
+        </nav>
+      </header>
+    
+    <main>
+    
+  <div class="post-title">
+    <h1>Going down the rabbit hole with Rust traits</h1>
+    <small>
+      February 09, 2016
+      
+        - 
+        <span class="tags">
+          
+            <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;tags&#x2F;rust&#x2F;">rust</a>
+          
+        </span>
+      
+    </small>
+  </div>
+
+  <div>
+    <p>One of the first things you might notice about Rust, if you come to it from other OOP-style languages, is that Rust separates methods from the data they work on.  You create your <code>struct</code>, then you <code>impl</code> a few methods on it later.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">Rect {
+    </span><span style="color:#bf616a;">height</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">i32</span><span style="color:#c0c5ce;">,
+    </span><span style="color:#bf616a;">width</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">i32
+</span><span style="color:#c0c5ce;">}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">Rect {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">area</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">i32 </span><span style="color:#c0c5ce;">{ </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.height * </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.width }
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> r = Rect { height: </span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">, width: </span><span style="color:#d08770;">5 </span><span style="color:#c0c5ce;">};
+    println!(&quot;</span><span style="color:#a3be8c;">area: </span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, r.</span><span style="color:#96b5b4;">area</span><span style="color:#c0c5ce;">());
+}
+</span></code></pre>
+<p>Which, to me, seemed slightly awkward at first.  But, as I dug in a little futher, I started asking questions like &quot;Can I do that to existing types?  Even basic types like the String type?&quot;  Indeed you can.  In this post we'll see some of what's possible.</p>
+<p><em>Warning: we're going down a rabbit hole under the influence of the <a href="https://en.wikipedia.org/wiki/Avenue_Q">Bad Idea Bears</a>.  I hope you have your snorkel. :)</em></p>
+<h1 id="warming-up">Warming up</h1>
+<p>We've talked a little about the basics already.  In Rust, <code>impl</code> gives us a way to &quot;add&quot; methods onto types.  But, when we try to do the same thing to <code>String</code>, we hit a snag:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">String {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">my_len</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">usize </span><span style="color:#c0c5ce;">{ </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">() }
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> name = &quot;</span><span style="color:#a3be8c;">foo</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">();
+
+    println!(&quot;</span><span style="color:#a3be8c;">my length: </span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, name.</span><span style="color:#96b5b4;">my_len</span><span style="color:#c0c5ce;">());
+}
+</span></code></pre>
+<p>When we try to compile this, the compiler gives us back an error:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">mylen.rs:1:1: 3:2 error: cannot define inherent `impl` for a type outside of the crate where the type is defined; define and implement a trait or new type instead [E0116]
+mylen.rs:1 impl String {
+mylen.rs:2     fn my_len(&amp;self) -&gt; usize { self.len() }
+mylen.rs:3 }
+</span></code></pre>
+<p>So we can't <code>impl</code> for a type outside of... oh wait.  We can do it, so long as we give it a trait to work with.</p>
+<p>Try #2:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">trait </span><span style="color:#c0c5ce;">MyLen {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">my_len</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">;
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">MyLen </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">String {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">my_len</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">usize </span><span style="color:#c0c5ce;">{ </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">() }
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> name = &quot;</span><span style="color:#a3be8c;">foo</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#96b5b4;">to_string</span><span style="color:#c0c5ce;">();
+
+    println!(&quot;</span><span style="color:#a3be8c;">my length: </span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, name.</span><span style="color:#96b5b4;">my_len</span><span style="color:#c0c5ce;">());
+}
+</span></code></pre>
+<p>Woah, that worked!  With that, we peek into the rabbit hole.</p>
+<h1 id="traits-and-extending-strings">Traits and extending strings</h1>
+<p>To kick off our explorations, let's give ourselves an example to use.  Let's say we want to read in the contents of some file, and we get the filename for that file from the commandline.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::Error;
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_all</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">fname</span><span style="color:#c0c5ce;">: String) -&gt; Result&lt;String, Error&gt; {
+    </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::fs::File;
+    </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::prelude::*;
+
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> contents = String::new();
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> f = try!(File::open(fname));
+    try!(f.</span><span style="color:#96b5b4;">read_to_string</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> contents));
+    Ok(contents)
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::env::args; 
+
+    </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Some(fname) = </span><span style="color:#96b5b4;">args</span><span style="color:#c0c5ce;">().</span><span style="color:#96b5b4;">nth</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">) {
+        </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Ok(contents) = </span><span style="color:#96b5b4;">read_all</span><span style="color:#c0c5ce;">(fname) {
+            println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, contents);
+        }
+    }
+} 
+</span></code></pre>
+<p>Wouldn't it be nice to not mix and match helper functions and methods?  Wouldn't it read a little nicer to have<code>fname.read_all()</code>?</p>
+<p>Using the same pattern we used before, this is pretty easy to do. </p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::Error;
+
+</span><span style="color:#b48ead;">trait </span><span style="color:#c0c5ce;">FileReader {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_all</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; Result&lt;String, Error&gt;;
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">FileReader </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">str {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_all</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; Result&lt;String, Error&gt; {
+        </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::fs::File;
+        </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::prelude::*;
+
+        </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> contents = String::new();
+        </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> f = try!(File::open(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">));
+        try!(f.</span><span style="color:#96b5b4;">read_to_string</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> contents));
+        Ok(contents)
+    }
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::env::args; 
+
+    </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Some(fname) = </span><span style="color:#96b5b4;">args</span><span style="color:#c0c5ce;">().</span><span style="color:#96b5b4;">nth</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">) {
+        </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Ok(contents) = fname.</span><span style="color:#96b5b4;">read_all</span><span style="color:#c0c5ce;">() {
+            println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, contents);
+        }
+    }
+}    
+</span></code></pre>
+<p>That's not bad!  Go get my nth argument, check if we're good, then read the contents.</p>
+<p>If we could stop ourselves there, we'd be mostly okay.  Our example is still pretty readable, though we might get a few dirty looks from the senior devs in the lunch line.</p>
+<h1 id="traits-and-extending-option">Traits and extending Option</h1>
+<p>The Bad Idea Bears call us deeper!  Can we play a little <a href="https://en.wikipedia.org/wiki/Code_golf">code &quot;golf&quot;</a> and squeeze out using <code>Option</code> in our main?  Sure!  All we need to do is create another <code>impl</code> for our <code>FileReader</code> trait, this time for <code>Option</code> (specifically those that contain Strings):</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::Error;
+
+</span><span style="color:#b48ead;">trait </span><span style="color:#c0c5ce;">FileReader {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_all</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; Result&lt;String, Error&gt;;
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">FileReader </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">str {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_all</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; Result&lt;String, Error&gt; {
+        </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::fs::File;
+        </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::prelude::*;
+
+        </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> contents = String::new();
+        </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> f = try!(File::open(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">));
+        try!(f.</span><span style="color:#96b5b4;">read_to_string</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> contents));
+        Ok(contents)
+    }
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">FileReader </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">Option&lt;String&gt; {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_all</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) -&gt; Result&lt;String, Error&gt; {
+        </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::io::ErrorKind;
+        </span><span style="color:#b48ead;">match </span><span style="color:#c0c5ce;">*</span><span style="color:#bf616a;">self </span><span style="color:#c0c5ce;">{
+            Option::None =&gt; Err(Error::new(ErrorKind::NotFound, 
+                &quot;</span><span style="color:#a3be8c;">No such file or directory</span><span style="color:#c0c5ce;">&quot;)),
+            Option::Some(</span><span style="color:#b48ead;">ref</span><span style="color:#c0c5ce;"> s) =&gt; s.</span><span style="color:#96b5b4;">read_all</span><span style="color:#c0c5ce;">()
+        }
+    }
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::env::args; 
+    
+    </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Ok(contents) = </span><span style="color:#96b5b4;">args</span><span style="color:#c0c5ce;">().</span><span style="color:#96b5b4;">nth</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">).</span><span style="color:#96b5b4;">read_all</span><span style="color:#c0c5ce;">() {
+        println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, contents);
+    }
+}
+</span></code></pre>
+<p>Yay!  Our main is smaller, and we've still managed to maintain at least a <em>little</em> of our decency.  I mean, we could have used <code>unwrap</code>, and thrown care to the wind!  Instead, we're still doing error-checking on our contents. Albeit, our error-checking is kinda smooshed into one place.</p>
+<p>What's that, Bad Idea Bear?  We should go further?  Okay!</p>
+<h1 id="traits-and-extending-iterators">Traits and extending iterators</h1>
+<p>We're doing a <code>read_all()</code> on the Option, but what if we go right to the arguments themselves?</p>
+<p>If we poke around in the docs, we find out that args() returns its own type, <a href="https://doc.rust-lang.org/std/env/struct.Args.html">Args</a>. As we read on we see that Args is just an <a href="https://doc.rust-lang.org/std/iter/trait.Iterator.html">Iterator</a>.</p>
+<p>That gives us a couple choices.  We can implement a new trait on Args:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">trait </span><span style="color:#c0c5ce;">FileReaderIter {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_nth</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">pos</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">) -&gt; Result&lt;String, Error&gt;;
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">FileReaderIter </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">Args {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_nth</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">pos</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">) -&gt; Result&lt;String, Error&gt; {
+        </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">nth</span><span style="color:#c0c5ce;">(pos).</span><span style="color:#96b5b4;">read_all</span><span style="color:#c0c5ce;">()
+    }    
+}
+</span></code></pre>
+<p>Or, we can work with Iterator:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">trait </span><span style="color:#c0c5ce;">FileReaderIter : Iterator&lt;Item=String&gt; + Sized {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_nth</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">pos</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">usize</span><span style="color:#c0c5ce;">) -&gt; Result&lt;String, Error&gt; {
+        </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">nth</span><span style="color:#c0c5ce;">(pos).</span><span style="color:#96b5b4;">read_all</span><span style="color:#c0c5ce;">()
+    }
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">FileReaderIter </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">Args {}
+</span></code></pre>
+<p>Let's actually stop here for a minute and look at this one.  We can't extend Iterator itself.  This is a Good Thing(tm), because if we could, we would end up having to extend countless implementors of Iterator.  Instead, we need to create a new trait that extends from Iterator.</p>
+<p>Next, we need to say what <em>kind</em> of iterator we can work on.  We know ahead of time that this works on specifically iterators over Strings.  We use the <code>&lt;Item=String&gt;</code> to lock that knowledge in place for the compiler.  This is called an <em>associated type</em>.</p>
+<p>With the new trait and associated type, we're almost done.  Lastly, we're doing something a little different this time around.  We have a default implementation inside of the trait instead of just having a prototype.  A default implementation saves you the trouble of having to repeat yourself with each type that implements the trait, if the function is general and trivial.</p>
+<p>The gotcha is that if you use a default implementation that uses <code>self</code>, the compiler needs to know how big <code>self</code> will be because it will pass it by-value.  Hence, anything that implements <code>FileReaderIter</code> must have a known size so the compiler knows how many bytes to copy in when <code>self</code> is passed to the method.  To ensure this, we add another trait to inherit from, <code>Sized</code>.  With that, we can say that Args trivially implements this trait.</p>
+<p>Phew, okay, that's it.  What have we gotten for our effort? </p>
+<p>Both approaches give us this simple main:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::env::args;
+
+    </span><span style="color:#b48ead;">if let </span><span style="color:#c0c5ce;">Ok(contents) = </span><span style="color:#96b5b4;">args</span><span style="color:#c0c5ce;">().</span><span style="color:#96b5b4;">read_nth</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">) {
+        println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, contents);    
+    }
+}
+</span></code></pre>
+<p>At this point we're far enough down in the rabbit hole that there's only a pinpoint of light from the entrance. </p>
+<p>Let's work our way back out, shall we?</p>
+<p><em>(ps: if you want to follow Bad Idea Bear further, this little nugget is hidden in the Rust docs: both Result and Option implement iterator traits and can be <a href="https://play.rust-lang.org/?gist=3a890c9c2617c4f1d4f1&amp;version=stable">used as iterators</a>)</em></p>
+<h1 id="climbing-back-out-of-the-rabbit-hole">Climbing back out of the rabbit hole</h1>
+<p>Cleverness and readability often trade off with each other.  As we tried to get more clever and squeeze our main down, the end result became more code we had to maintain.  We also increased the amount of 'magic' we used, whether it was treating multiple failure styles/cases as one case or the amount of additional capabilities we were giving types like String and Option.</p>
+<p>Rust's trait system is powerful and clever.  It lets you express the algorithms that are core to your project in a way that can even extend the basic Rust API.  Indeed, that's one reason why the Rust language and core libraries are intentionally kept pretty small and tidy: so you can make these kind of additions (using eg. modules from <a href="https://crates.io/">creates.io</a>) and the standard library doesn't get in your way.</p>
+<p>But, as they say, with great power comes great opportunities to follow Bad Idea Bears down rabbit holes.</p>
+
+  </div>
+
+  <hr class="footer-rule" />
+
+  
+    <div class="footer-about">
+      <p>A simple dev-blog theme created by Bennett. You can follow him on <a href="https://github.com/bennetthardwick">Github</a> (if you like).</p>
+
+    </div>
+  
+
+  <div class="related-container">
+
+    
+      <div class="link">
+        Previous <br />
+        <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;rust-quickie-matching-strings&#x2F;">Rust quickie - matching Strings</a>
+      </div>
+    
+
+    
+      <div class="link">
+        Next <br />
+        <a href="https:&#x2F;&#x2F;www.jntrnr.com&#x2F;embedded-scripting-in-rust&#x2F;">Embedded scripting in Rust</a>
+      </div>
+    
+
+  </div>
+
+
+    </main>
+  </body>
+</html>
