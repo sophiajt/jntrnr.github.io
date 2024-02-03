@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://www.sophiajt.com"
+base_url = "https://www.jntrnr.com"
 theme = "simple-dev-blog"
 
 # Whether to automatically compile all Sass files in the sass directory
